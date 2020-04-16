@@ -5,11 +5,110 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title></title>
-    <link rel="stylesheet" href="">
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        h1 {
+            font-size: 4rem;
+        }
+
+    </style>
 </head>
 
 <body>
-    <script src=""></script>
+
+
+    <div id="the_container">
+        <section id="basisside">
+            <div class="text_container">
+
+                <template class="template_text">
+                    <article class="afsnit_text_container">
+                        <h1 id="overskrift"></h1>
+                        <h2 class="rubrik"></h2>
+                        <p class="tekst"></p>
+                    </article>
+                </template>
+
+            </div>
+
+            <div class="image_container">
+
+                <template class="template_image">
+                    <article class="afsnit_image_container">
+                        <img src="" alt="">
+                    </article>
+                </template>
+
+            </div>
+        </section>
+    </div>
+
+
+
+    <script>
+        let urlParams = new URLSearchParams(window.location.search);
+        let id = urlParams.get("id");
+        //        let afsnitter = [];
+
+        let afsnittet;
+        const detalje = document.querySelector("#basisside");
+        const container = document.querySelector("#the_container");
+        const TextTemplate = document.querySelector(".template_text");
+
+        const ImageTemplate = document.querySelector(".template_image");
+
+        const endpoint = "http://michelleyoung.dk/kea/09_cms/21-5_wp/wordpress/wp-json/wp/v2/basisside/432";
+
+        const h1 = document.querySelector("h1");
+
+
+
+
+
+        document.addEventListener("DOMContentLoaded", start);
+
+
+        function start() {
+            loadData();
+        }
+
+        async function loadData() {
+
+            //                        let jsonData = await fetch(`http://michelleyoung.dk/kea/09_cms/21-5_wp/wordpress/wp-json/wp/v2/${id}`);
+            //                        console.log(jsonData)
+
+            const resspons = await fetch(endpoint)
+
+            afsnitter = await resspons.json();
+
+            visBasisSide();
+        }
+
+
+        function visBasisSide() {
+            container.innerHTML = "";
+            console.log(afsnitter)
+
+
+            const klonText = TextTemplate.cloneNode(true).content;
+
+
+            klonText.document.querySelector("h2").textContent = afsnitter.overskrift_1;
+
+            container.appendChild(klonText);
+
+            const klonImage = ImageTemplate.cloneNode(true).content;
+
+            klonImage.document.querySelector("img").src = afsnit.galleri.guid;
+
+            container.appendChild(klonImage);
+        }
+
+    </script>
+
+
+    <script src="script.js"></script>
 </body>
 
 </html>
