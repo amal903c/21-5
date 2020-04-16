@@ -39,7 +39,10 @@
                     <p>&gt;</p>
                 </div>
             </div>
-            <div class="karrusel_tekst"></div>
+            <div class="karrusel_tekst">
+                <h1 class="karrusel_h1"></h1>
+                <p class="karrusel_brod"></p>
+            </div>
         </div>
 
         <!--KARRUSEL SEKTIOIN SLUT-->
@@ -51,7 +54,7 @@
         //use strict gør, at den ikke finder sig i at fx en variabel ikek er defineret ordentliigt. Den finder sig ikke i fejl.
         "use strict";
         // I URL INDSÆTTER DU LINK TIL DET ID I JSON, SOM HAR ARRAYET MED BILLEDER
-        const url_billedgalleri = "http://michelleyoung.dk/kea/09_cms/21-5_wp/wordpress/wp-json/wp/v2/forside/166";
+        const url = "http://michelleyoung.dk/kea/09_cms/21-5_wp/wordpress/wp-json/wp/v2/forside/166";
         let theJSON;
         //Variabel for, at finde ud af hvor mange billeder der er.
         let numberOfPicsInKarrrusel;
@@ -66,8 +69,10 @@
             document.querySelector(".tilbage").addEventListener("click", tilbage);
         }
 
+
+
         async function hentJSON() {
-            const response = await fetch(url_billedgalleri);
+            const response = await fetch(url);
             theJSON = await response.json();
             buildKarrusel();
         }
@@ -81,15 +86,19 @@
             theJSON.billedgalleri.forEach((billede, index) => {
                 //vi skal have for både det store billede - theclone, og så de små legend billeder - secondclone:
                 const theClone = document.querySelector("template").cloneNode(true).content;
-
                 //billederne sættes ind
                 theClone.querySelector("img").src = billede.guid;
-
                 //vi skal appende vores kloner til dokumentet:
                 document.querySelector(".the_container").appendChild(theClone);
             })
-
             document.querySelector(".the_container").addEventListener("scroll", scrollFunction);
+
+            //SPLASH
+            document.querySelector(".splashbillede").src = theJSON.splash.guid;
+
+            //TEKST SOM FLEXER MED KARRUSEL
+            document.querySelector(".karrusel_h1").textContent = theJSON.overskrift1;
+            document.querySelector(".karrusel_brod").textContent = theJSON.tekst1;
         }
 
         function scrollFunction() {
