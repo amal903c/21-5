@@ -707,13 +707,43 @@ body {
 
 /*                                   MICHELLE START                                */
 
+#forside .main {
+    width: 50vw;
+}
 
+#forside .karrusel {
+    height: 100%;
+    width: 100%;
+}
 
+#forside .the_container {
+    display: flex;
+    overflow-x: scroll;
+    scroll-snap-type: x mandatory;
+}
 
+#forside .the_container section {
+    scroll-snap-align: start;
+    min-width: 100%;
+}
 
+#forside .karrusel_inner {
+    display: flex;
+}
 
+#forside .tilbage,
+.foran {
+    display: flex;
+    cursor: pointer;
+    align-items: center;
+}
 
-
+#forside .tilbage p,
+#forside .foran p {
+    z-index: 10;
+    font-size: 40px;
+    color: #E0BD02;
+}
 
 
 
