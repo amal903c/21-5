@@ -10,7 +10,111 @@
 
 <body>
 
+    <!--   TEMPLATE TIL BILLEDKARRUSEL-->
+    <template>
+        <section>
+            <img class="karrusel_imgs" src="" alt="">
+        </section>
+    </template>
 
+
+
+    <main id="forside">
+
+        <!--       SPLASH FORSIDE-->
+        <div class="splash"> <img class="splashbillede" src="" alt="">
+            <h1 class="splash_tekst_1"></h1>
+            <h1 class="splash_tekst_2"></h1>
+        </div>
+
+
+        <!--       KARRUSEL SEKTIOIN START-->
+        <div class="karrusel">
+            <div class="karrusel_inner">
+                <div class="tilbage">
+                    <p>&lt;</p>
+                </div>
+                <div class="the_container"></div>
+                <div class="foran">
+                    <p>&gt;</p>
+                </div>
+            </div>
+            <div class="karrusel_tekst"></div>
+        </div>
+
+        <!--KARRUSEL SEKTIOIN SLUT-->
+
+    </main>
+
+
+    <script>
+        //use strict gør, at den ikke finder sig i at fx en variabel ikek er defineret ordentliigt. Den finder sig ikke i fejl.
+        "use strict";
+        // I URL INDSÆTTER DU LINK TIL DET ID I JSON, SOM HAR ARRAYET MED BILLEDER
+        const url_billedgalleri = "http://michelleyoung.dk/kea/09_cms/21-5_wp/wordpress/wp-json/wp/v2/forside/166";
+        let theJSON;
+        //Variabel for, at finde ud af hvor mange billeder der er.
+        let numberOfPicsInKarrrusel;
+        let karruselCurrentNumber = 0;
+
+        document.addEventListener("DOMContentLoaded", start);
+
+
+        function start() {
+            hentJSON();
+            document.querySelector(".foran").addEventListener("click", foran);
+            document.querySelector(".tilbage").addEventListener("click", tilbage);
+        }
+
+        async function hentJSON() {
+            const response = await fetch(url_billedgalleri);
+            theJSON = await response.json();
+            buildKarrusel();
+        }
+
+
+        function buildKarrusel() {
+            //Antallet af bilelder finder vi, fordi det svarer til det antal elementer i arrayet som indeholder billederne.
+            numberOfPicsInKarrrusel = theJSON.billedgalleri.length;
+
+            //For each ud fra vorers array af husbilelderne:
+            theJSON.billedgalleri.forEach((billede, index) => {
+                //vi skal have for både det store billede - theclone, og så de små legend billeder - secondclone:
+                const theClone = document.querySelector("template").cloneNode(true).content;
+
+                //billederne sættes ind
+                theClone.querySelector("img").src = billede.guid;
+
+                //vi skal appende vores kloner til dokumentet:
+                document.querySelector(".the_container").appendChild(theClone);
+            })
+
+            document.querySelector(".the_container").addEventListener("scroll", scrollFunction);
+        }
+
+        function scrollFunction() {
+            numberOfPicsInKarrrusel = Math.round(document.querySelector(".the_container").scrollLeft / document.querySelector(".karrusel_imgs").width);
+            console.log(numberOfPicsInKarrrusel);
+        }
+
+        function foran() {
+            numberOfPicsInKarrrusel++;
+            navigate();
+        }
+
+        function tilbage() {
+            numberOfPicsInKarrrusel--;
+            navigate();
+        }
+
+        function navigate() {
+            document.querySelector(".the_container").scrollTo({
+                left: numberOfPicsInKarrrusel * document.querySelector(".karrusel_imgs").width,
+                behavior: "smooth"
+            })
+        }
+
+    </script>
 </body>
 
 </html>
