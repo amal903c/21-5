@@ -9,22 +9,44 @@
 
     <style>
 
+        #basisside {
+            display: grid;
+            grid-template-rows: auto 100vh;
+        }
+
+        @media only screen and (min-width: 768px){
+            #basisside {
+            display: grid;
+            grid-template-columns: 50vw 50vw;
+        }
+
+        }
+
+        .afsnit_image_container{
+            height: 100vh;
+        }
+
+        hide{
+            display: none;
+        }
 
     </style>
 </head>
 
 <body>
-   <template class="template_text">
-                    <article class="afsnit_text_container">
-                        <h1 id="overskrift"></h1>
-                        <h2 class="rubrik"></h2>
-                        <p class="tekst"></p>
-                    </article>
-                </template>
+
 
                 <template class="template_image">
                     <article class="afsnit_image_container">
                         <img src="" alt="">
+                    </article>
+                </template>
+
+                <template class="template_text">
+                    <article class="afsnit_text_container">
+                        <h1 id="overskrift"></h1>
+                        <h2 class="rubrik"></h2>
+                        <p class="tekst"></p>
                     </article>
                 </template>
 
@@ -33,13 +55,15 @@
 
     <div id="the_container">
         <section id="basisside">
-            <div class="text_container">
+
+            <div id="text_container">
 
             </div>
 
-            <div class="image_container">
+            <div id="image_container">
 
             </div>
+
         </section>
     </div>
 
@@ -56,8 +80,8 @@
         const container = document.querySelector("#the_container");
         const TextTemplate = document.querySelector(".template_text");
 
-        const textContainer = document.querySelector(".afsnit_text_container")
-        const imageContainer = document.querySelector(".afsnit_image_container")
+        const textContainer = document.querySelector("#text_container")
+        const imageContainer = document.querySelector("#image_container")
 
         const ImageTemplate = document.querySelector(".template_image");
 
@@ -89,7 +113,7 @@
 
 
         function visBasisSide() {
-            container.innerHTML = "";
+//            container.innerHTML = "";
             console.log(theJSON)
 
 
@@ -100,7 +124,7 @@
 
                const klonText = TextTemplate.cloneNode(true).content;
                 klonText.querySelector("h1").textContent = theJSON.main_overskrift;
-                container.appendChild(klonText);
+                textContainer.appendChild(klonText);
 
             }
 
@@ -111,7 +135,7 @@
 
                const klonText = TextTemplate.cloneNode(true).content;
                 klonText.querySelector("h2").textContent = theJSON.overskrift_1;
-                container.appendChild(klonText);
+                textContainer.appendChild(klonText);
 
             }
 
@@ -122,7 +146,7 @@
 
                const klonText = TextTemplate.cloneNode(true).content;
                 klonText.querySelector("p").textContent = theJSON.tekst_1;
-                container.appendChild(klonText);
+                textContainer.appendChild(klonText);
 
             }
 
@@ -132,7 +156,7 @@
 
                const klonText = TextTemplate.cloneNode(true).content;
                 klonText.querySelector("h2").textContent = theJSON.overskrift_2;
-                container.appendChild(klonText);
+                textContainer.appendChild(klonText);
 
             }
 
@@ -142,7 +166,7 @@
 
                const klonText = TextTemplate.cloneNode(true).content;
                 klonText.querySelector("p").textContent = theJSON.tekst_2;
-                container.appendChild(klonText);
+                textContainer.appendChild(klonText);
 
             }
 
@@ -152,7 +176,7 @@
 
                   const klonText = TextTemplate.cloneNode(true).content;
                   klonText.querySelector("h2").textContent = theJSON.overskrift_3;
-                        container.appendChild(klonText);
+                        textContainer.appendChild(klonText);
 
             }
 
@@ -162,7 +186,7 @@
 
                 const klonText = TextTemplate.cloneNode(true).content;
                 klonText.querySelector("p").textContent = theJSON.tekst_3;
-                container.appendChild(klonText);
+                textContainer.appendChild(klonText);
 
             }
 
@@ -172,7 +196,7 @@
 
                 const klonText = TextTemplate.cloneNode(true).content;
                 klonText.querySelector("h2").textContent = theJSON.overskrift_4;
-                container.appendChild(klonText);
+                textContainer.appendChild(klonText);
 
             }
 
@@ -182,7 +206,7 @@
 
                 const klonText = TextTemplate.cloneNode(true).content;
                 klonText.querySelector("p").textContent = theJSON.tekst_4;
-                container.appendChild(klonText);
+                textContainer.appendChild(klonText);
 
             }
 
@@ -196,7 +220,7 @@
                 //billederne sættes ind
                 klonImage.querySelector("img").src = billede.guid;
                 //vi skal appende vores kloner til dokumentet:
-       container.appendChild(klonImage);
+       imageContainer.appendChild(klonImage);
             })
         }
 
