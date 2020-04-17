@@ -309,6 +309,16 @@ body {
 
 /*                             AMALIE START                                       */
 
+/* TEAMET LOOPVIEW */
+
+.person {
+    cursor: pointer;
+}
+
+.liste {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+}
 
 
 
