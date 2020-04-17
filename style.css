@@ -13,7 +13,19 @@ body {
     margin: 0;
 }
 
+h1 {
+    font-family: 'Raleway', sans-serif;
+    font-size: 2.5rem;
+    line-height: 50px;
+}
 
+p {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;
+    font-weight: 300;
+    letter-spacing: 1px;
+    line-height: 25px;
+}
 
 
 
@@ -741,14 +753,14 @@ body {
 
 #forside .karrusel_inner {
     display: flex;
-    margin: 20px 50px 20px 50px;
+    margin: 50px 75px 20px 75px;
 
     flex-grow: 1;
     flex-basis: 800px;
 }
 
 #forside .karrusel_tekst {
-    margin: 20px 50px 20px 50px;
+    margin: 70px 50px 20px 50px;
 
     flex-grow: 1;
     flex-basis: 800px;
@@ -757,12 +769,19 @@ body {
 @media only screen and (min-width: 768px) {
     #forside .karrusel_inner {
         flex-basis: 200px;
-        margin: 100px 10px 20px 10px;
+        margin: 110px 10px 20px 10px;
     }
 
     #forside .karrusel_tekst {
         flex-basis: 200px;
+        margin-top: 40px;
     }
+
+    #forside .karrusel_brod {
+        margin-top: 50px;
+        margin-left: 20px;
+    }
+
 }
 
 
@@ -781,13 +800,13 @@ body {
 }
 
 /* Tekst styling */
-#forside .karrusel_h1 {
+#forside h1 {
     font-family: 'Raleway', sans-serif;
     font-size: 2.5rem;
     line-height: 50px;
 }
 
-#forside .karrusel_brod {
+#forside p {
     font-family: 'Montserrat', sans-serif;
     font-size: 1rem;
     font-weight: 300;
@@ -795,17 +814,62 @@ body {
     line-height: 25px;
 }
 
+/*Sektion 2*/
+
+#forside .sektion_2 {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#forside .sektion_2_billedet {}
+
+#forside .guloverlay20 {
+    margin-top: 20vw;
+    margin-left: -50vw;
+    position: absolute;
+    opacity: 0.6;
+    width: 60%;
+}
 
 
+#forside .sektion_2_tekst {
+    flex-grow: 1;
+    flex-basis: 800px;
 
 
+    margin: 10px 50px 20px 50px;
+}
 
+#forside .sektion_2_brod {
+    margin: 20px 0px 20px 40px;
+}
 
+#forside .sektion_2_billede {
+    flex-grow: 1;
+    flex-basis: 800px;
 
+    margin: 20px 120px 20px 50px;
+}
 
+@media only screen and (min-width: 768px) {
+    #forside .sektion_2_tekst {
+        flex-basis: 200px;
+    }
 
+    #forside .sektion_2_billede {
+        flex-basis: 200px;
+    }
 
+    #forside .guloverlay20 {
+        margin-top: 15vw;
+        margin-left: -25vw;
+        width: 30%;
+    }
 
+    #forside .sektion_2_brod {
+        margin: 80px 0px 20px 40px;
+    }
+}
 
 
 

@@ -48,6 +48,18 @@
 
         <!--KARRUSEL SEKTIOIN SLUT-->
 
+        <!--        SEKTION2-->
+
+        <div class="sektion_2">
+            <div class="sektion_2_tekst">
+                <h1 class="sektion_2_h1"></h1>
+                <p class="sektion_2_brod"></p>
+            </div>
+            <div class="sektion_2_billede"><img class="sektion_2_billedet" src="" alt=""> <img class="guloverlay20" src="" alt=""></div>
+        </div>
+
+        <!--        SEKTION2 SLUT-->
+
     </main>
 
 
@@ -100,6 +112,12 @@
             //TEKST SOM FLEXER MED KARRUSEL
             document.querySelector(".karrusel_h1").textContent = theJSON.overskrift1;
             document.querySelector(".karrusel_brod").textContent = theJSON.tekst1;
+
+            //Sektion 2
+            document.querySelector(".sektion_2_h1").textContent = theJSON.overskrift2;
+            document.querySelector(".sektion_2_brod").textContent = theJSON.tekst2;
+            document.querySelector(".sektion_2_billedet").src = theJSON.billede2.guid;
+            document.querySelector(".guloverlay20").src = theJSON.guloverlay20.guid;
         }
 
         function scrollFunction() {
