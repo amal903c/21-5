@@ -8,21 +8,13 @@
     <link rel="stylesheet" href="style.css">
 
     <style>
-        h1 {
-            font-size: 4rem;
-        }
+
 
     </style>
 </head>
 
 <body>
-
-
-    <div id="the_container">
-        <section id="basisside">
-            <div class="text_container">
-
-                <template class="template_text">
+   <template class="template_text">
                     <article class="afsnit_text_container">
                         <h1 id="overskrift"></h1>
                         <h2 class="rubrik"></h2>
@@ -30,15 +22,22 @@
                     </article>
                 </template>
 
-            </div>
-
-            <div class="image_container">
-
                 <template class="template_image">
                     <article class="afsnit_image_container">
                         <img src="" alt="">
                     </article>
                 </template>
+
+
+
+
+    <div id="the_container">
+        <section id="basisside">
+            <div class="text_container">
+
+            </div>
+
+            <div class="image_container">
 
             </div>
         </section>
@@ -51,16 +50,19 @@
         let id = urlParams.get("id");
         //        let afsnitter = [];
 
-        let afsnittet;
+        let theJSON;
+
         const detalje = document.querySelector("#basisside");
         const container = document.querySelector("#the_container");
         const TextTemplate = document.querySelector(".template_text");
+
+        const textContainer = document.querySelector(".afsnit_text_container")
+        const imageContainer = document.querySelector(".afsnit_image_container")
 
         const ImageTemplate = document.querySelector(".template_image");
 
         const endpoint = "http://michelleyoung.dk/kea/09_cms/21-5_wp/wordpress/wp-json/wp/v2/basisside/432";
 
-        const h1 = document.querySelector("h1");
 
 
 
@@ -80,7 +82,7 @@
 
             const resspons = await fetch(endpoint)
 
-            afsnitter = await resspons.json();
+            theJSON = await resspons.json();
 
             visBasisSide();
         }
@@ -88,21 +90,114 @@
 
         function visBasisSide() {
             container.innerHTML = "";
-            console.log(afsnitter)
+            console.log(theJSON)
 
 
-            const klonText = TextTemplate.cloneNode(true).content;
+     // mainoverskrift
+            if(theJSON.main_overskrift ){
+
+                console.log(theJSON.main_overskrift)
+
+               const klonText = TextTemplate.cloneNode(true).content;
+                klonText.querySelector("h1").textContent = theJSON.main_overskrift;
+                container.appendChild(klonText);
+
+            }
+
+    // overskrift 1
+            if(theJSON.overskrift_1 ){
+
+                console.log(theJSON.overskrift_1)
+
+               const klonText = TextTemplate.cloneNode(true).content;
+                klonText.querySelector("h2").textContent = theJSON.overskrift_1;
+                container.appendChild(klonText);
+
+            }
+
+     // tekst 1
+            if(theJSON.tekst_1 ){
+
+                console.log(theJSON.tekst_1_1)
+
+               const klonText = TextTemplate.cloneNode(true).content;
+                klonText.querySelector("p").textContent = theJSON.tekst_1;
+                container.appendChild(klonText);
+
+            }
+
+    // overskrift 2
+         if(theJSON.overskrift_2 ){
+                console.log(theJSON.overskrift_2)
+
+               const klonText = TextTemplate.cloneNode(true).content;
+                klonText.querySelector("h2").textContent = theJSON.overskrift_2;
+                container.appendChild(klonText);
+
+            }
+
+     // tekst 2
+         if(theJSON.tekst_2 ){
+                console.log(theJSON.overskrift_2)
+
+               const klonText = TextTemplate.cloneNode(true).content;
+                klonText.querySelector("p").textContent = theJSON.tekst_2;
+                container.appendChild(klonText);
+
+            }
+
+    // overskrift 3
+        if(theJSON.overskrift_3 ){
+                console.log(theJSON.overskrift_3)
+
+                  const klonText = TextTemplate.cloneNode(true).content;
+                  klonText.querySelector("h2").textContent = theJSON.overskrift_3;
+                        container.appendChild(klonText);
+
+            }
+
+    // tekst 3
+        if(theJSON.tekst_3 ){
+                console.log(theJSON.overskrift_3)
+
+                const klonText = TextTemplate.cloneNode(true).content;
+                klonText.querySelector("p").textContent = theJSON.tekst_3;
+                container.appendChild(klonText);
+
+            }
+
+     // overskrift 4
+        if(theJSON.overskrift_4 ){
+                console.log(theJSON.overskrift_4)
+
+                const klonText = TextTemplate.cloneNode(true).content;
+                klonText.querySelector("h2").textContent = theJSON.overskrift_4;
+                container.appendChild(klonText);
+
+            }
+
+    // tekst 4
+        if(theJSON.tekst_4 ){
+                console.log(theJSON.overskrift_4)
+
+                const klonText = TextTemplate.cloneNode(true).content;
+                klonText.querySelector("p").textContent = theJSON.tekst_4;
+                container.appendChild(klonText);
+
+            }
 
 
-            klonText.document.querySelector("h2").textContent = afsnitter.overskrift_1;
+    //Hver billede (image foreach)
 
-            container.appendChild(klonText);
-
-            const klonImage = ImageTemplate.cloneNode(true).content;
-
-            klonImage.document.querySelector("img").src = afsnit.galleri.guid;
-
-            container.appendChild(klonImage);
+             //For each ud fra vorers array af husbilelderne:
+            theJSON.galleri.forEach((billede, index) => {
+                //vi skal have for både det store billede - theclone, og så de små legend billeder - secondclone:
+                 const klonImage = ImageTemplate.cloneNode(true).content;
+                //billederne sættes ind
+                klonImage.querySelector("img").src = billede.guid;
+                //vi skal appende vores kloner til dokumentet:
+       container.appendChild(klonImage);
+            })
         }
 
     </script>
