@@ -1141,8 +1141,82 @@ p {
 
 
 
+/* Footer */
+
+.footer_wrap {
+    text-align: center;
+    margin: 50px 0px 50px 0px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.footer_wrap li {
+    font-family: 'Montserrat', sans-serif;
+    list-style-type: none;
+    font-size: 0.8rem;
+    line-height: 20px;
+}
+
+.footer_wrap a {
+    color: black;
+}
+
+.footer_wrap h3 {
+    font-size: 1.5rem;
+    color: #E0BD02;
+    font-family: 'Raleway', sans-serif;
+}
+
+.footer_wrap input {
+    width: 200px;
+    padding: 5px;
+}
+
+.footer_wrap button {
+    margin-top: 10px;
+    padding: 5px;
+    cursor: pointer;
+    background-color: rgba(182, 219, 232, 0.58);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.8rem;
+}
+
+.footer_wrap button:hover {
+    background-color: rgba(182, 219, 232, 0.98);
+}
+
+.nyhedsbrev_container,
+.kontakt_container,
+.andet_container,
+.some {
+    border-top: 0.5px rgba(182, 219, 232, 0.98) solid;
+
+    flex-grow: 1;
+    flex-basis: 270px;
+}
 
 
+
+
+
+
+@media only screen and (min-width: 768px) {
+
+    .nyhedsbrev_container,
+    .kontakt_container,
+    .andet_container,
+    .some {
+        flex-basis: 100px;
+    }
+
+    .nyhedsbrev_container {
+        margin-left: 40px;
+    }
+
+    .some {
+        margin-right: 50px;
+    }
+}
 
 
 
