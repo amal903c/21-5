@@ -35,8 +35,8 @@
         }
 
         input[type=submit] {
-            background-color: #00ff80;
-            color: white;
+            background-color: #E9F4F8;
+            color: black;
             padding: 12px 20px;
             border: none;
             border-radius: 4px;
@@ -44,7 +44,7 @@
         }
 
         input[type=submit]:hover {
-            background-color: #45a049;
+            background-color: #c4ebf8;
         }
 
         .contact {
@@ -83,7 +83,7 @@
         }
 
         button:hover {
-            background: #00ff80;
+            background: #E9F4F8;
             opacity: 0.9;
         }
 
@@ -92,14 +92,15 @@
             top: 1px;
         }
 
+        /*
         .overskrift,
         .kontakt h1 {
-            text-align: center;
-        }
+        text-align: center;
+        }*/
 
         .clicked {
             color: black;
-            background: #00ff80;
+            background: #E9F4F8;
         }
 
         .contactform h2 {
@@ -117,6 +118,8 @@
                 height: 90vh;
                 width: 80vw;
                 overflow: hidden;
+                object-fit: cover;
+                margin-top: 90px;
             }
 
             .contactform {
@@ -200,6 +203,57 @@
             </form>
         </div>
     </section>
+
+
+    <!--/*footer start*/-->
+    <section class="footer_wrap">
+        <div class="nyhedsbrev_container">
+            <ul>
+                <li>
+                    <h3>Nyhedsbrev</h3>
+                </li>
+                <li>
+                    <div id="nyhedsbrev_input"><input type="tekst" placeholder="e-mail"></div>
+                </li>
+                <li><button class="nyhedsbrev_knap">Tilmeld</button></li>
+            </ul>
+        </div>
+        <div class="kontakt_container">
+            <ul>
+                <li>
+                    <h3>Kontakt os</h3>
+                </li>
+                <li>21-5 A/S</li>
+                <li>Rungstedvej 41</li>
+                <li>2970 Hørsholm</li>
+                <br>
+                <li>Telefon: 70 26 11 55</li>
+                <li>E-mail: info@21-5.dk</li>
+                <li>Åbent mellem 9-17</li>
+            </ul>
+        </div>
+        <div class="andet_container">
+            <ul>
+                <li>
+                    <h3>Andet</h3>
+                </li>
+                <li><a href="">Nyheder</a></li>
+                <li><a href="">Presse</a></li>
+                <li><a href="">Cookie- og privatlivspolitik</a></li>
+                <li><a href="">Ofte stillede spørgsmål</a></li>
+            </ul>
+        </div>
+        <div class="some">
+            <ul>
+                <li>
+                    <h3>Følg med</h3>
+                </li>
+                <li><a href="">Facebook</a></li>
+                <li><a href="">Instagram</a></li>
+            </ul>
+        </div>
+    </section>
+
 
     <script>
         "use strict";
