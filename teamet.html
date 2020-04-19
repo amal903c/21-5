@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="da">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teamet</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+
+
+
+
+
+
+<body>
+
+    <h1>Teamet</h1>
+
+
+
+    <!--       POPUP-->
+    <section id="detalje" class="skjul">
+        <button class="luk">X</button>
+        <article id="article_team">
+            <div class="col_team col_team_img"><img src=""></div>
+            <div class="col_team col_team_text">
+                <h2 class="navn_popup"></h2>
+                <p class="stilling_popup"></p>
+                <p class="text_popup"></p>
+                <a class="mail_popup" href="mailto:"></a>
+            </div>
+        </article>
+    </section>
+    <!--LOOPVIEW-->
+
+    <section class="liste"></section>
+
+    <template>
+        <article class="person">
+            <img src="" alt="">
+            <h2 class="h2_navn"></h2>
+            <p class="stilling"></p>
+
+        </article>
+    </template>
+
+
+
+
+
+
+
+
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", start);
+
+        const listeELM = document.querySelector(".liste");
+        const template = document.querySelector("template").content;
+
+        //        HENT WORDPRESS
+        const url = "http://michelleyoung.dk/kea/09_cms/21-5_wp/wordpress/wp-json/wp/v2/teamet?per_page=100";
+
+
+        async function start() {
+            const resspons = await fetch(url);
+            const json = await resspons.json();
+            vis(json);
+        }
+
+
+        function vis(personer) {
+            listeELM.innerHTML = "";
+            personer.forEach(person => {
+                console.log(person);
+                const klon = template.cloneNode(true);
+                klon.querySelector(".h2_navn").textContent = person.navn;
+                klon.querySelector(".stilling").innerHTML = person.stilling;
+                klon.querySelector("img").src = person.billede_ansigt.guid;
+                klon.querySelector("img").alt = "Portæt af" + person.navn;
+
+                klon.querySelector(".person").addEventListener("click", () => {
+                    visDetalje(person)
+                });
+
+                listeELM.appendChild(klon);
+
+            })
+        }
+
+
+        //HENT POPUP DATA
+        function visDetalje(person) {
+            detalje.classList.remove("skjul");
+            detalje.querySelector("button").addEventListener("click", () => detalje.classList.add("skjul"));
+            console.log(person.navn);
+            detalje.querySelector("img").src = person.billede_stort.guid;
+            detalje.querySelector("img").alt = "Portæt af" + person.navn;
+            detalje.querySelector(".navn_popup").textContent = person.navn;
+            detalje.querySelector(".stilling_popup").textContent = person.stilling;
+            detalje.querySelector(".text_popup").innerHTML = person.tekst_1;
+            detalje.querySelector(".mail_popup").innerHTML = person.mail;
+        }
+
+    </script>
+
+
+
+
+
+</body>
+
+</html>

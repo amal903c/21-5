@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="da">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stiftede foreninger</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+
+
+
+
+
+
+<body>
+
+    <h1>Stiftede foreninger </h1>
+
+
+
+    <!--LOOPVIEW-->
+
+    <section class="liste_foreninger"></section>
+
+    <template>
+        <article class="forening">
+            <img src="" alt="">
+            <h2 class="h2_navn"></h2>
+            <p class="by"></p>
+
+        </article>
+    </template>
+
+
+
+
+
+
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", start);
+
+        const listeELM = document.querySelector(".liste_foreninger");
+        const template = document.querySelector("template").content;
+
+        //        HENT WORDPRESS
+        const url = "http://michelleyoung.dk/kea/09_cms/21-5_wp/wordpress/wp-json/wp/v2/stiftede_foreninger";
+
+
+        async function start() {
+            const resspons = await fetch(url);
+            const json = await resspons.json();
+            vis(json);
+        }
+
+
+        function vis(foreninger) {
+            listeELM.innerHTML = "";
+            foreninger.forEach(forening => {
+                console.log(forening);
+                const klon = template.cloneNode(true);
+                klon.querySelector(".h2_navn").textContent = forening.navn;
+                klon.querySelector("img").src = forening.billede.guid;
+
+
+                klon.querySelector("article").addEventListener("click", () => {
+                    location.href = `singleView.html?id=${forening.id}`;
+                })
+
+                listeELM.appendChild(klon);
+            })
+        }
+
+    </script>
+
+
+
+
+
+</body>
+
+</html>

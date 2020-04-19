@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="da">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Familiernes oplevelser</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+
+
+
+
+
+
+<body>
+
+    <h1>Familiernes oplevelser </h1>
+
+
+
+    <!--LOOPVIEW-->
+
+    <section class="liste_familier"></section>
+
+    <template>
+        <article class="familie">
+            <img src="" alt="">
+            <h2 class="h2_navn"></h2>
+            <p class="by"></p>
+
+        </article>
+    </template>
+
+
+
+
+
+
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", start);
+
+        const listeELM = document.querySelector(".liste_familier");
+        const template = document.querySelector("template").content;
+
+        //        HENT WORDPRESS
+        const url = "http://michelleyoung.dk/kea/09_cms/21-5_wp/wordpress/wp-json/wp/v2/familiernes_oplevels";
+
+
+        async function start() {
+            const resspons = await fetch(url);
+            const json = await resspons.json();
+            vis(json);
+        }
+
+
+        function vis(familier) {
+            listeELM.innerHTML = "";
+            familier.forEach(familie => {
+                console.log(familie);
+                const klon = template.cloneNode(true);
+                klon.querySelector(".h2_navn").textContent = familie.navn;
+                klon.querySelector(".by").textContent = familie.by;
+                klon.querySelector("img").src = familie.billede.guid;
+
+
+                klon.querySelector("article").addEventListener("click", () => {
+                    location.href = `singleView.html?id=${familie.id}`;
+                })
+
+                listeELM.appendChild(klon);
+            })
+        }
+
+    </script>
+
+
+
+
+
+</body>
+
+</html>
