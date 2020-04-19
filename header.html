@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="da">
+
+<head>
+    <meta charset="UTF-8">
+    <title>header</title>
+
+    <style>
+        nav {}
+
+        .logoimg,
+        .land_img {
+            width: 60px;
+        }
+
+        .land {}
+
+        .hidden {
+            opacity: 0
+        }
+
+        a {
+            cursor: pointer;
+        }
+
+        .dropdown_container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            width: 47vw;
+            margin: 0 auto;
+            grid-gap: 17px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <template id="menutemplate">
+        <article>
+            <h3 id="title"></h3>
+            <img src="">
+        </article>
+    </template>
+
+
+
+    <nav class="web_nav">
+        <div class="menu_linje">
+            <div class="menupunkter_container">
+                <a href="index.html"><img class="logoimg" src="img/logo.svg"></a>
+                <a id="destinationer">Destinationer</a>
+                <a id="boliger">Boliger</a>
+                <a id="om_215">Om 21-5</a>
+                <a id="økonomi_jura_skat">Økonomi, Jura og Skat</a>
+                <a id="kob_af_andel">Køb af andel i 21-5</a>
+                <a id="praktisk_info">Praktisk info</a>
+                <input type="text" placeholder="Søg...">
+                <button>Log in</button>
+                <img class="land_img" src="img/danmark.svg">
+            </div>
+        </div>
+        <div class="dropdown_container hidden">
+
+        </div>
+
+    </nav>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", start);
+
+        const endpoint = "http://michelleyoung.dk/kea/09_cms/21-5_wp/wordpress/wp-json/wp/v2/basisside_galleri";
+
+        let theJSON = [];
+
+        let menuboksetemplate = document.querySelector("#menutemplate");
+        const container = document.querySelector(".dropdown_container");
+
+        function start() {
+            loadData();
+
+            document.querySelector("#destinationer").addEventListener("click", clickDestinationerFrem);
+
+
+        }
+
+        async function loadData() {
+
+            const resspons = await fetch(endpoint);
+            theJSON = await resspons.json();
+
+
+        }
+
+        function clickDestinationerFrem() {
+            container.classList.remove("hidden")
+            visDestinationer();
+        }
+
+
+        function visDestinationer() {
+            //    container.innerHTML = "";
+            console.log(theJSON);
+
+
+            //løb listen igennem og indsæt data i en template
+
+            theJSON.forEach(destination => {
+
+                console.log(destination);
+
+                const klon = menuboksetemplate.cloneNode(true).content;
+
+                klon.querySelector("h3").textContent = destination.title.rendered;
+
+                //                klon.querySelector("img").src = destination.billede.guid;
+
+                klon.querySelector("article").addEventListener("click", () => {
+
+                    location.href = `basisside_galleri.html?id=${destination.id}`;
+                })
+
+
+
+                container.appendChild(klon);
+
+
+            })
+        }
+    </script>
+
+</body></html>
