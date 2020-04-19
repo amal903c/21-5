@@ -17,6 +17,7 @@ h1 {
     font-family: 'Raleway', sans-serif;
     font-size: 2.5rem;
     line-height: 50px;
+    font-weight: bold;
 }
 
 p {
@@ -25,6 +26,12 @@ p {
     font-weight: 300;
     letter-spacing: 1px;
     line-height: 25px;
+}
+
+h2 {
+    font-family: 'Raleway', sans-serif;
+    font-size: 1.5rem;
+    line-height: 50px;
 }
 
 
@@ -885,7 +892,7 @@ a .mail_popup {
 }
 
 #forside .karrusel_tekst {
-    margin: 70px 50px 20px 50px;
+    margin: 10px 50px 20px 50px;
 
     flex-grow: 1;
     flex-basis: 800px;
@@ -899,20 +906,32 @@ a .mail_popup {
 
     #forside .karrusel_tekst {
         flex-basis: 200px;
-        margin-top: 40px;
+        margin-top: 20px;
     }
 
     #forside .karrusel_brod {
         margin-top: 50px;
-        margin-left: 20px;
+        margin-left: -10px;
     }
+
+    #forside .karrusel_h1 {
+        margin-top: 50px;
+        margin-left: 30px;
+    }
+}
+
+@media only screen and (min-width: 1024px) {
+    #forside .karrusel_tekst {
+        margin-top: 180px;
+    }
+
 
 }
 
 
 #forside .tilbage,
 #forside .foran {
-    margin-top: 10%;
+    margin-top: 30%;
     cursor: pointer;
     align-items: center;
 }
@@ -921,7 +940,7 @@ a .mail_popup {
 #forside .foran p {
     z-index: 10;
     font-size: 40px;
-    color: #E0BD02;
+    color: rgba(224, 189, 2, 0.57);
 }
 
 /* Tekst styling */
@@ -948,13 +967,6 @@ a .mail_popup {
 
 #forside .sektion_2_billedet {}
 
-#forside .guloverlay20 {
-    margin-top: 20vw;
-    margin-left: -50vw;
-    position: absolute;
-    opacity: 0.6;
-    width: 60%;
-}
 
 
 #forside .sektion_2_tekst {
@@ -973,8 +985,29 @@ a .mail_popup {
     flex-grow: 1;
     flex-basis: 800px;
 
-    margin: 20px 120px 20px 50px;
+    margin: 20px 80px 20px 80px;
 }
+
+
+#forside h2 {
+    font-family: 'Raleway', sans-serif;
+    font-size: 1.2rem;
+    line-height: 30px;
+    max-width: 180px;
+    background-color: rgba(233, 244, 248, 0.67);
+    position: absolute;
+    padding: 15px;
+
+    margin-top: -35vw;
+    margin-left: 40%;
+    color: black;
+    opacity: 1;
+}
+
+
+
+
+
 
 @media only screen and (min-width: 768px) {
     #forside .sektion_2_tekst {
@@ -983,17 +1016,325 @@ a .mail_popup {
 
     #forside .sektion_2_billede {
         flex-basis: 200px;
+
+        margin: 100px 50px 10px 0px;
     }
 
-    #forside .guloverlay20 {
-        margin-top: 15vw;
-        margin-left: -25vw;
-        width: 30%;
-    }
+
 
     #forside .sektion_2_brod {
         margin: 80px 0px 20px 40px;
     }
+
+    #forside h2 {
+        margin-top: -25vw;
+        margin-left: 25%;
+        max-width: 150px;
+    }
+}
+
+@media only screen and (min-width: 1024px) {
+    #forside .sektion_2_tekst {
+        margin-top: 50px;
+    }
+
+    #forside h2 {
+        margin-top: -20vw;
+        margin-left: 25%;
+        max-width: 180px;
+    }
+}
+
+/*VIIDEDO START*/
+
+#forside .video_container {
+    margin-top: 50px;
+    display: flex;
+    flex-wrap: wrap-reverse;
+}
+
+#forside .iframe_video {
+    flex-grow: 1;
+    flex-basis: 800px;
+}
+
+#forside .video_h1 {
+    flex-grow: 1;
+    flex-basis: 800px;
+    margin: 20px 50px 0px 50px;
+}
+
+#forside iframe {
+    margin: 20px 50px 10px 50px;
+    width: 500px;
+    height: 300px;
+}
+
+#forside .videobrod {
+    max-width: 400px;
+    margin: 10px 50px 10px 50px;
+    margin-left: 40vw;
+}
+
+
+@media only screen and (min-width: 768px) {
+    #forside .iframe_video {
+        flex-basis: 200px;
+    }
+
+    #forside iframe {
+        margin: 20px 10px 10px 50px;
+        max-width: 550px;
+    }
+
+    #forside .video_h1 {
+        flex-basis: 200px;
+        max-width: 370px;
+
+        margin: 20px 50px 0px 10px;
+    }
+
+    #forside .videobrod {
+        max-width: 400px;
+        margin: 40px 50px 10px 50px;
+        margin-left: 20vw;
+    }
+}
+
+@media only screen and (min-width: 1024px) {
+    #forside .videobrod {
+        max-width: 700px;
+        margin-left: 40vw;
+    }
+
+    #forside .video_h1 {
+        flex-basis: 200px;
+        max-width: 370px;
+
+        margin: 20px 50px 0px 70px;
+    }
+}
+
+
+/*Bente*/
+
+#forside .bente_containere {
+    display: flex;
+    flex-wrap: wrap-reverse;
+    margin-bottom: 200px;
+}
+
+#forside .bente_billede {
+    flex-grow: 1;
+    flex-basis: 800px;
+}
+
+#forside .bente_tekst {
+    flex-grow: 1;
+    flex-basis: 800px;
+    margin: 20px 50px 20px 120px;
+}
+
+#forside .bente_brod {
+    margin: 0px 0px 0px -40px;
+}
+
+#forside .bente_billede {
+    margin: 20px 50px 20px 100px;
+    max-width: 500px;
+}
+
+
+@media only screen and (min-width: 768px) {
+    #forside .bente_billede {
+        flex-basis: 200px;
+        margin-right: 0px;
+        margin-top: 100px;
+        margin-left: 50px;
+        max-width: 700px;
+    }
+
+    #forside .bente_tekst {
+        flex-basis: 200px;
+    }
+
+    #forside .bente_brod {
+        margin-top: 50px;
+    }
+}
+
+
+@media only screen and (min-width: 1024px) {
+    #forside .bente_brod {
+        margin-top: 50px;
+    }
+}
+
+
+#forside .loes_mere h2 {
+    font-family: 'Raleway', sans-serif;
+    font-size: 1.2rem;
+    line-height: 30px;
+    max-width: none;
+    background-color: rgba(216, 234, 240, 0.98);
+    padding: 15px;
+    margin: 30px 10px 20px 0px;
+    color: black;
+    opacity: 1;
+}
+
+
+
+#forside h2:hover {
+    color: black;
+    background-color: rgba(233, 244, 248, 0.98);
+}
+
+#forside .loes_mere h2:hover {
+    color: black;
+    background-color: rgba(233, 244, 248, 0.88);
+}
+
+.hvid {
+    width: 350px;
+    height: 400px;
+    background-color: rgba(182, 219, 232, 0.98);
+    position: absolute;
+    opacity: 0.1;
+    margin-top: 150px;
+    margin-left: 220px;
+}
+
+
+
+@media only screen and (min-width: 768px) {
+    #forside .loes_mere h2 {
+        max-width: 165px;
+        margin-left: 22%;
+        margin-top: 80px;
+    }
+
+    .hvid {
+        width: 500px;
+        height: 400px;
+        margin-top: -10%;
+        margin-left: 200px;
+    }
+
+}
+
+@media only screen and (min-width: 1024px) {
+    #forside .loes_mere h2 {
+        margin-top: 100px;
+        max-width: 400px;
+    }
+
+
+    .hvid {
+        width: 580px;
+        height: 450px;
+        margin-top: 200px;
+        margin-left: 200px;
+    }
+
+}
+
+
+
+/*splash*/
+
+#forside .splashbillede {
+    background-image: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url(img/Le%20Tignet-114.jpg);
+    height: 100vh;
+    width: 100vw;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#forside .splash_tekst_1 {
+    font-size: 9vw;
+    position: absolute;
+    top: 8%;
+    left: 5%;
+    line-height: 110px;
+}
+
+#forside .splash_tekst_2 {
+    font-size: 9vw;
+    position: absolute;
+    top: 37%;
+    left: 55%;
+    line-height: 120px;
+}
+
+
+@media only screen and (max-width: 768px) {
+    #forside .splash_tekst_1 {
+        line-height: 70px;
+        top: 22%;
+    }
+
+    #forside .splash_tekst_2 {
+        top: 45%;
+        line-height: 70px;
+    }
+}
+
+
+
+/* Footer */
+
+.footer_wrap {
+    text-align: center;
+    margin: 50px 0px 50px 0px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.footer_wrap li {
+    font-family: 'Montserrat', sans-serif;
+    list-style-type: none;
+    font-size: 0.8rem;
+    line-height: 20px;
+}
+
+.footer_wrap a {
+    color: black;
+}
+
+.footer_wrap h3 {
+    font-size: 1.5rem;
+    color: #E0BD02;
+    font-family: 'Raleway', sans-serif;
+}
+
+.footer_wrap input {
+    width: 200px;
+    padding: 5px;
+}
+
+.footer_wrap button {
+    margin-top: 10px;
+    padding: 5px;
+    cursor: pointer;
+    background-color: rgba(182, 219, 232, 0.58);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.8rem;
+}
+
+.footer_wrap button:hover {
+    background-color: rgba(182, 219, 232, 0.98);
+}
+
+.nyhedsbrev_container,
+.kontakt_container,
+.andet_container,
+.some {
+    border-top: 0.5px rgba(182, 219, 232, 0.98) solid;
+
+    flex-grow: 1;
+    flex-basis: 270px;
 }
 
 
@@ -1001,42 +1342,23 @@ a .mail_popup {
 
 
 
+@media only screen and (min-width: 768px) {
 
+    .nyhedsbrev_container,
+    .kontakt_container,
+    .andet_container,
+    .some {
+        flex-basis: 100px;
+    }
 
+    .nyhedsbrev_container {
+        margin-left: 40px;
+    }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    .some {
+        margin-right: 50px;
+    }
+}
 
 
 
