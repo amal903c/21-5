@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>header</title>
+    <link rel="stylesheet" href="style.css">
 
     <style>
         /* billeder og logo */
@@ -63,6 +64,7 @@
             margin: 0 auto;
             grid-gap: 17px;
             cursor: pointer;
+            background-color: white;
         }
 
         /* flagene */
@@ -101,6 +103,25 @@
 
             .ombyt {
                 flex-direction: column-reverse;
+            }
+
+            .mobil_nav_container {
+                padding: 1rem;
+            }
+
+            #menu_punkter_content {
+                flex-direction: row-reverse;
+                align-items: center;
+                justify-content: space-around;
+
+            }
+
+            .dropdown_container {
+                margin-left: 7vw;
+            }
+
+            #menu_punkter_content img {
+                height: 20vw;
             }
         }
 
@@ -144,6 +165,26 @@
                 display: none;
             }
 
+            .mobil_nav_container {
+                padding: 0rem;
+            }
+
+            /*dropdown */
+            .dropdown_container {
+                position: absolute;
+                left: 0;
+                top: 10vw;
+                width: auto;
+                margin: 0 auto;
+                right: 0;
+            }
+
+            #menu_punkter_content img {
+                height: 6.5vw;
+            }
+
+
+
         }
 
         .hidden {
@@ -168,18 +209,37 @@
             display: flex;
             justify-content: space-between;
             align-self: center;
+
         }
 
         .ombyt {
             display: flex;
         }
+
+        /* grid med billederne og teskten */
+
+        #menu_punkter_content {
+            display: flex;
+        }
+
+        #menu_punkter_content img {
+            width: 40%;
+            object-fit: cover;
+
+        }
+
+        #title {
+            color: #989898;
+
+        }
+
     </style>
 </head>
 
 <body>
 
     <template id="menutemplate">
-        <article>
+        <article id="menu_punkter_content">
             <h3 id="title"></h3>
             <img src="">
         </article>
@@ -261,6 +321,14 @@
             visDestinationer();
             document.querySelector("#destinationer").removeEventListener("click", clickDestinationerFrem);
 
+            //når man klikker på destinationer igen
+            document.querySelector("#destinationer").addEventListener("click", () => {
+                container.classList.add("hidden")
+                document.querySelector("#destinationer").addEventListener("click", clickDestinationerFrem);
+
+            })
+
+
         }
 
         // viser alt data
@@ -279,7 +347,7 @@
 
                 klon.querySelector("h3").textContent = destination.title.rendered;
 
-                //                klon.querySelector("img").src = destination.billede.guid;
+                klon.querySelector("img").src = destination.lillebillede.guid;
 
                 klon.querySelector("article").addEventListener("click", () => {
 
@@ -311,6 +379,9 @@
 
 
         }
+
     </script>
 
-</body></html>
+</body>
+
+</html>
