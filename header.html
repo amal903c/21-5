@@ -6,23 +6,43 @@
     <title>header</title>
 
     <style>
-        nav {}
-
+        /* billeder og logo */
         .logoimg,
         .land_img {
             width: 60px;
         }
 
-        .land {}
-
-        .hidden {
-            opacity: 0
+        .user {
+            width: 20px;
         }
 
-        a {
+        /* generelt */
+        li {
             cursor: pointer;
+            color: #989898;
+
+            display: flex;
+            align-self: center;
         }
 
+        li:hover {
+            border-bottom: 1px solid #E0BD02;
+            color: #E0BD02;
+        }
+
+        /* knapperne */
+        .menuknap,
+        .lukkeknap {
+            color: #E0BD02;
+            font-size: 2.5rem;
+        }
+
+        button {
+            display: flex;
+            flex-direction: row;
+        }
+
+        /* drop downmenu */
         .dropdown_container {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -31,6 +51,50 @@
             grid-gap: 17px;
             cursor: pointer;
         }
+
+
+        /* resonsiv design */
+
+        @media only screen and (min-width: 1020px) {
+            #menu_linje {
+                display: block;
+                opacity: 1;
+            }
+
+            .menuknap {
+                display: none;
+
+
+            }
+
+            .logo_mobil {
+                display: none;
+            }
+
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        /* webdesign */
+        #menu_linje {}
+
+        .menupunkter_container {
+            display: flex;
+            justify-content: space-around;
+            align-self: center;
+            list-style-type: none;
+        }
+
+        /* mobil design */
+
+        .mobil_nav_container {
+            display: flex;
+            justify-content: space-between;
+            align-self: center;
+        }
+
     </style>
 </head>
 
@@ -45,20 +109,27 @@
 
 
 
-    <nav class="web_nav">
-        <div class="menu_linje">
-            <div class="menupunkter_container">
+    <nav>
+
+        <div class="mobil_nav_container">
+            <a class="logo_mobil logoimg" href="index.html"><img class="logoimg" src="img/logo.svg"></a>
+            <div class="menuknap">☰</div>
+            <div class="lukkeknap hidden">X</div>
+        </div>
+
+        <div id="menu_linje" class="hidden">
+            <ul class="menupunkter_container">
                 <a href="index.html"><img class="logoimg" src="img/logo.svg"></a>
-                <a id="destinationer">Destinationer</a>
-                <a id="boliger">Boliger</a>
-                <a id="om_215">Om 21-5</a>
-                <a id="økonomi_jura_skat">Økonomi, Jura og Skat</a>
-                <a id="kob_af_andel">Køb af andel i 21-5</a>
-                <a id="praktisk_info">Praktisk info</a>
+                <li id="destinationer">Destinationer</li>
+                <li id="boliger">Boliger</li>
+                <li id="om_215">Om 21-5</li>
+                <li id="økonomi_jura_skat">Økonomi, Jura og Skat</li>
+                <li id="kob_af_andel">Køb af andel i 21-5</li>
+                <li id="praktisk_info">Praktisk info</li>
                 <input type="text" placeholder="Søg...">
-                <button>Log in</button>
+                <button>Log in <img class="user" src="grafik/user.svg"> </button>
                 <img class="land_img" src="img/danmark.svg">
-            </div>
+            </ul>
         </div>
         <div class="dropdown_container hidden">
 
@@ -72,6 +143,7 @@
         const endpoint = "http://michelleyoung.dk/kea/09_cms/21-5_wp/wordpress/wp-json/wp/v2/basisside_galleri";
 
         let theJSON = [];
+        let destinatinerEndpoints = ["http://michelleyoung.dk/kea/09_cms/21-5_wp/wordpress/wp-json/wp/v2/basisside_galleri/241", "http://michelleyoung.dk/kea/09_cms/21-5_wp/wordpress/wp-json/wp/v2/basisside_galleri/240", "http://michelleyoung.dk/kea/09_cms/21-5_wp/wordpress/wp-json/wp/v2/basisside_galleri/239", "238", "237", "236", "235", "234", ]
 
         let menuboksetemplate = document.querySelector("#menutemplate");
         const container = document.querySelector(".dropdown_container");
@@ -95,6 +167,8 @@
         function clickDestinationerFrem() {
             container.classList.remove("hidden")
             visDestinationer();
+            document.querySelector("#destinationer").removeEventListener("click", clickDestinationerFrem);
+
         }
 
 
@@ -120,13 +194,14 @@
                     location.href = `basisside_galleri.html?id=${destination.id}`;
                 })
 
-
-
                 container.appendChild(klon);
 
 
             })
         }
+
     </script>
 
-</body></html>
+</body>
+
+</html>
