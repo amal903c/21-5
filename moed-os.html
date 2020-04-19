@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="da">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        img {
+            width: 100vw;
+        }
+
+        #the_container {
+            display: grid;
+            overflow: hidden;
+        }
+
+        .kontakt {
+            padding: 40px;
+        }
+
+
+        /*Kontaktformular*/
+        input[type=text],
+        select,
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            margin-top: 6px;
+            margin-bottom: 16px;
+            resize: vertical;
+        }
+
+        input[type=submit] {
+            background-color: #00ff80;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        input[type=submit]:hover {
+            background-color: #45a049;
+        }
+
+        .contact {
+            display: flex;
+            justify-content: center;
+            text-align: center;
+            align-items: center;
+        }
+
+        .contactform {
+            width: 600px;
+            border-radius: 5px;
+            border: 1px solid #f2f2f2;
+            background-color: #fdfdfd;
+            padding: 20px;
+            text-align: center;
+            margin: 20px 0;
+        }
+
+
+        .knapper {
+            text-align: center;
+            margin 10px;
+        }
+
+        button {
+            background-color: #ffffff;
+            border-radius: 15px;
+            border: 1px solid #ccc;
+            cursor: pointer;
+            color: #000000;
+            font-size: 1.2rem;
+            font-weight: bold;
+            padding: 12px 25px;
+            text-decoration: none;
+        }
+
+        button:hover {
+            background: #00ff80;
+            opacity: 0.9;
+        }
+
+        button:active {
+            position: relative;
+            top: 1px;
+        }
+
+        .overskrift,
+        .kontakt h1 {
+            text-align: center;
+        }
+
+        .clicked {
+            color: black;
+            background: #00ff80;
+        }
+
+        .contactform h2 {
+            margin-top: 0;
+        }
+
+        @media only screen and (min-width: 1024px) {
+            #the_container {
+                display: grid;
+                grid-template-columns: 60vw 40vw;
+                overflow: hidden;
+            }
+
+            img {
+                height: 90vh;
+                width: 80vw;
+                overflow: hidden;
+            }
+
+            .contactform {
+                width: 1000px;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="overskrift">
+    </div>
+    <main id="the_container">
+        <section id="kontakt">
+            <div class="text_container">
+
+                <template class="template_text">
+                    <article class="kontakt">
+                        <h1>Mød os</h1>
+                        <h2 class="overskrift_rubrik1"></h2>
+                        <p class="tekst1"></p>
+                        <h2 class="overskrift_rubrik2"></h2>
+                        <p class="tekst2"></p>
+                    </article>
+                </template>
+
+            </div>
+
+            <div class="image_container">
+
+                <template class="template_image">
+                    <article class="kontakt_image_container">
+                        <img src="" alt="">
+                    </article>
+                </template>
+
+            </div>
+        </section>
+    </main>
+    <section class="contact">
+        <div class="contactform">
+            <h2>Book et møde</h2>
+            <div id="knapper">
+                <button class="buttons clicked">Kaffemøde</button> <button class="buttons">Orienteringsmøde</button>
+            </div>
+            <form action="/action_page.php">
+                <input type="text" id="navn" name="navn" placeholder="Navn">
+
+                <input type="text" id="email" name="email" placeholder="E-mail">
+                <input type="text" id="mobiltlf" name="mobiltlf" placeholder="Mobiltelefon">
+                <input type="text" id="adresse" name="adresse" placeholder="Adresse">
+                <input type="text" id="postnr" name="postnr" placeholder="Postnummer">
+                <input type="text" id="by" name="by" placeholder="By">
+                <input type="text" id="email" name="email" placeholder="E-mail">
+
+
+                <select id="antal" name="antal">
+                    <option value="" disabled selected>Antal deltagere</option>
+                    <option value="1">1 Deltager</option>
+                    <option value="2">2 Deltagere</option>
+                    <option value="3">3 Deltagere</option>
+                </select>
+
+                <select id="network" name="network">
+                    <option value="" disabled selected>Jeg har hørt om 21-5 via</option>
+                    <option value="instagram">Instagram</option>
+                    <option value="linkedin">LinkedIn</option>
+                    <option value="google">Google</option>
+                    <option value="tryktemedier">Trykte medier</option>
+                    <option value="familievenner">Familie/Venner</option>
+                    <option value="netwærk">Netværk</option>
+                    <option value="215ejere">21-5 Ejere</option>
+                    <option value="vedikke">Ved ikke</option>
+                    <option value="andet">Andet (Angiv gerne i kommentarfeltet hvor) </option>
+                </select>
+
+                <textarea id="subject" name="subject" placeholder="Eventuel kommentar" style="height:100px"></textarea>
+
+                <input type="submit" value="Send">
+            </form>
+        </div>
+    </section>
+
+    <script>
+        "use strict";
+
+        let theJSON;
+        const detalje = document.querySelector("#kontakt");
+        const container = document.querySelector("#the_container");
+        const TextTemplate = document.querySelector(".template_text");
+
+        const ImageTemplate = document.querySelector(".template_image");
+
+        const endpoint = "http://michelleyoung.dk/kea/09_cms/21-5_wp/wordpress/wp-json/wp/v2/kontakt/200";
+
+
+
+
+
+        document.addEventListener("DOMContentLoaded", start);
+
+
+        function start() {
+            loadData();
+            /*            document.querySelectorAll(".buttons").forEach(knap => {
+                            knap.addEventListener("click", buttonClicked);
+                        });*/
+        }
+
+        /*        function buttonClicked() {
+                    document.querySelector(".buttons").classList.remove("clicked"); // fjern klassen valgt fra aktuel knap
+                    this.classList.add("clicked") // marker den nyvalgte knap
+                }*/
+        async function loadData() {
+
+
+            const resspons = await fetch(endpoint)
+
+            theJSON = await resspons.json();
+
+            visKontakt();
+        }
+
+
+        function visKontakt() {
+            container.innerHTML = "";
+            console.log(theJSON)
+
+
+            const klonText = TextTemplate.cloneNode(true).content;
+            klonText.querySelector(".overskrift_rubrik1").textContent = theJSON.overskrift_rubrik1;
+            klonText.querySelector(".tekst1").textContent = theJSON.tekst1;
+            klonText.querySelector(".overskrift_rubrik2").textContent = theJSON.overskrift_rubrik2;
+            klonText.querySelector(".tekst2").textContent = theJSON.tekst2;
+
+            container.appendChild(klonText);
+
+
+            const klonImage = ImageTemplate.cloneNode(true).content;
+
+            klonImage.querySelector("img").src = theJSON.img1.guid;
+
+            container.appendChild(klonImage);
+
+
+
+
+        }
+        /**/
+        let knap = document.querySelector("#knapper");
+        let btns = knap.querySelectorAll(".buttons");
+        for (let i = 0; i < btns.length; i++) {
+            btns[i].addEventListener("click", function() {
+                let current = document.querySelectorAll(".clicked");
+                if (current.length > 0) {
+                    current[0].className = current[0].className.replace(" clicked", "");
+                }
+                this.className += " clicked";
+            });
+        }
+
+    </script>
+</body>
+
+</html>
