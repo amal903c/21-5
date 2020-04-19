@@ -14,6 +14,7 @@
 
         .user {
             width: 20px;
+            margin-left: 5px;
         }
 
         /* generelt */
@@ -22,7 +23,7 @@
             color: #989898;
 
             display: flex;
-            align-self: center;
+            /*            align-self: center;*/
         }
 
         li:hover {
@@ -30,16 +31,28 @@
             color: #E0BD02;
         }
 
+        ul {
+            padding: 0;
+
+        }
+
+
+
         /* knapperne */
         .menuknap,
         .lukkeknap {
-            color: #E0BD02;
+            color: #989898;
             font-size: 2.5rem;
+            cursor: pointer;
+            font-family: 'Open Sans', sans-serif;
         }
 
         button {
             display: flex;
             flex-direction: row;
+            border: none;
+            align-self: center;
+            cursor: pointer;
         }
 
         /* drop downmenu */
@@ -52,8 +65,44 @@
             cursor: pointer;
         }
 
+        /* flagene */
+        #alle_flag_container {
+            display: flex;
+            align-self: center;
+            justify-content: space-around;
+        }
+
+        .flag_container {
+            display: flex;
+        }
+
+        .flag_container img {
+            padding: 0.5rem;
+        }
+
+        #alle_flag_container img {
+            padding: 0.5rem;
+        }
 
         /* resonsiv design */
+
+        /* mobil */
+        @media only screen and (min-width: 320px) {
+            li {
+                font-size: 1.3rem;
+                margin: 1rem;
+                border-bottom: 0.1px solid #989898;
+            }
+
+            input {
+                margin: 2rem;
+                padding: 1.2rem;
+            }
+
+            .ombyt {
+                flex-direction: column-reverse;
+            }
+        }
 
         @media only screen and (min-width: 1020px) {
             #menu_linje {
@@ -71,6 +120,30 @@
                 display: none;
             }
 
+            #menu_punkter {
+                /*menupunkter container bare med id */
+                flex-direction: row;
+            }
+
+            li {
+                align-self: center;
+                font-size: 1rem;
+                border: none;
+            }
+
+            input {
+                margin: 1rem;
+                padding: 1rem;
+            }
+
+            .ombyt {
+                flex-direction: row;
+            }
+
+            .flag_container {
+                display: none;
+            }
+
         }
 
         .hidden {
@@ -85,6 +158,8 @@
             justify-content: space-around;
             align-self: center;
             list-style-type: none;
+
+            flex-direction: column;
         }
 
         /* mobil design */
@@ -95,6 +170,9 @@
             align-self: center;
         }
 
+        .ombyt {
+            display: flex;
+        }
     </style>
 </head>
 
@@ -118,17 +196,27 @@
         </div>
 
         <div id="menu_linje" class="hidden">
-            <ul class="menupunkter_container">
-                <a href="index.html"><img class="logoimg" src="img/logo.svg"></a>
+            <ul id="menu_punkter" class="menupunkter_container">
+                <a href="index.html"><img class="logoimg logoweb" src="img/logo.svg"></a>
                 <li id="destinationer">Destinationer</li>
                 <li id="boliger">Boliger</li>
                 <li id="om_215">Om 21-5</li>
                 <li id="økonomi_jura_skat">Økonomi, Jura og Skat</li>
                 <li id="kob_af_andel">Køb af andel i 21-5</li>
                 <li id="praktisk_info">Praktisk info</li>
-                <input type="text" placeholder="Søg...">
-                <button>Log in <img class="user" src="grafik/user.svg"> </button>
-                <img class="land_img" src="img/danmark.svg">
+                <div class="ombyt">
+                    <input type="text" placeholder="Søg...">
+                    <button>Log in <img class="user" src="grafik/user.svg"> </button>
+                </div>
+                <div id="alle_flag_container">
+                    <img class="land_img" src="img/danmark.svg">
+                    <div class="flag_container">
+                        <img class="land_img" src="img/danmark.svg">
+                        <img class="land_img" src="img/danmark.svg">
+                        <img class="land_img" src="img/danmark.svg">
+                        <img class="land_img" src="img/danmark.svg">
+                    </div>
+                </div>
             </ul>
         </div>
         <div class="dropdown_container hidden">
@@ -152,10 +240,12 @@
             loadData();
 
             document.querySelector("#destinationer").addEventListener("click", clickDestinationerFrem);
+            document.querySelector(".menuknap").addEventListener("click", clickMenu);
 
 
         }
 
+        // henter json
         async function loadData() {
 
             const resspons = await fetch(endpoint);
@@ -164,6 +254,7 @@
 
         }
 
+        //hvad der sker når man kilkker på destinationer
         function clickDestinationerFrem() {
             container.classList.remove("hidden")
             visDestinationer();
@@ -171,7 +262,7 @@
 
         }
 
-
+        // viser alt data
         function visDestinationer() {
             //    container.innerHTML = "";
             console.log(theJSON);
@@ -200,8 +291,25 @@
             })
         }
 
+        function clickMenu() {
+            console.log("jeg har klikket på menukanp")
+
+            //gør så man kan se menuen, fjerner menuknap, tilføjer lukkeknap
+            document.querySelector("#menu_linje").classList.remove("hidden");
+            document.querySelector(".menuknap").classList.add("hidden");
+            document.querySelector(".lukkeknap").classList.remove("hidden")
+            document.querySelector(".logoweb").classList.add("hidden");
+
+            //klik på lukkeknap, en anonymfunktion lukker den igen
+            document.querySelector(".lukkeknap").addEventListener("click", () => {
+                document.querySelector("#menu_linje").classList.add("hidden");
+                document.querySelector(".menuknap").classList.remove("hidden");
+                document.querySelector(".lukkeknap").classList.add("hidden")
+                document.querySelector(".logoweb").classList.remove("hidden");
+            })
+
+
+        }
     </script>
 
-</body>
-
-</html>
+</body></html>
