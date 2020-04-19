@@ -1168,6 +1168,10 @@ h2 {
     color: black;
 }
 
+.footer_wrap a:hover {
+    background-color: rgba(182, 219, 232, 0.58);
+}
+
 .footer_wrap h3 {
     font-size: 1.5rem;
     color: #E0BD02;
