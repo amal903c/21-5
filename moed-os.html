@@ -7,7 +7,8 @@
     <link rel="stylesheet" href="style.css">
     <style>
         img {
-            width: 100vw;
+            height: 100vh;
+            object-fit: cover;
         }
 
         #the_container {
@@ -35,7 +36,7 @@
         }
 
         input[type=submit] {
-            background-color: #00ff80;
+            background-color: #E0BD02;
             color: white;
             padding: 12px 20px;
             border: none;
@@ -44,7 +45,8 @@
         }
 
         input[type=submit]:hover {
-            background-color: #45a049;
+            background-color: #E0BD02;
+            opacity: 0.8
         }
 
         .contact {
@@ -64,12 +66,6 @@
             margin: 20px 0;
         }
 
-
-        .knapper {
-            text-align: center;
-            margin 10px;
-        }
-
         button {
             background-color: #ffffff;
             border-radius: 15px;
@@ -80,10 +76,11 @@
             font-weight: bold;
             padding: 12px 25px;
             text-decoration: none;
+            margin-bottom: 10px;
         }
 
         button:hover {
-            background: #00ff80;
+            background: #E0BD02;
             opacity: 0.9;
         }
 
@@ -99,7 +96,7 @@
 
         .clicked {
             color: black;
-            background: #00ff80;
+            background: #E0BD02
         }
 
         .contactform h2 {
@@ -179,6 +176,8 @@
                     <option value="1">1 Deltager</option>
                     <option value="2">2 Deltagere</option>
                     <option value="3">3 Deltagere</option>
+                    <option value="4">4 Deltagere</option>
+                    <option value="5">5 Deltagere</option>
                 </select>
 
                 <select id="network" name="network">
