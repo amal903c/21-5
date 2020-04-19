@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .accordion {
+            background-color: #eee;
+            color: #7b7b7b;
+            cursor: pointer;
+            padding: 18px;
+            width: 100%;
+            border: none;
+            text-align: left;
+            outline: none;
+            font-size: 15px;
+            transition: 0.4s;
+        }
+
+        .active,
+        .accordion:hover {
+            background-color: #dbdbdb;
+        }
+
+        .panel {
+            padding: 0 18px;
+            background-color: white;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.2s ease-out;
+        }
+
+        details:hover {
+            background: #fafafa
+        }
+
+        details {
+            border: 1px solid #aaa;
+            border-radius: 4px;
+            padding: .5em .5em 0;
+            margin: 10px 0;
+        }
+
+        summary {
+            font-weight: bold;
+            margin: -.5em -.5em 0;
+            padding: .5em;
+            cursor: pointer;
+            font-size: 2rem;
+            color: #4b4b4b;
+        }
+
+        details[open] {
+            padding: .5em;
+        }
+
+        details[open] summary {
+            border-bottom: 1px solid #aaa;
+            margin-bottom: .5em;
+        }
+
+        details summary::-webkit-details-marker {
+            display: none;
+        }
+
+
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .faq {
+            width: 500px;
+            padding: 40px;
+            padding-top: 0;
+        }
+
+        .overrubrik {
+            padding: 40px;
+            flex-direction: column;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        @media only screen and (min-width: 768px) {
+            .faq {
+                width: 700px;
+            }
+
+    </style>
+</head>
+
+<body>
+
+    <section class="overrubrik">
+        <h1>Ofte stillede spørgsmål</h1>
+        <p>I dette afsnit kan I finde svar på mange af de gængse spørgsmål, som vi oplever at få i hverdagen.
+
+            Hvis I ikke finder svar på jeres spørgsmål, så tøv endelig ikke med at tage fat i os.</p>
+    </section>
+
+    <div class="container">
+        <div class="faq">
+            <details>
+                <summary>21-5 Generelle spørgsmål</summary>
+                <section id="generel">
+                </section>
+            </details>
+            <details>
+                <summary>21-5 Feriebolig-del</summary>
+                <section id="feriebolig">
+                </section>
+            </details>
+            <details>
+                <summary>21-5 Jura og teknik</summary>
+                <section id="jura">
+                </section>
+            </details>
+            <details>
+                <summary>21-5 Boligerne</summary>
+                <section id="boligerne">
+                </section>
+            </details>
+            <details>
+                <summary>21-5 Driften og hverdagen</summary>
+                <section id="hverdagen">
+                </section>
+            </details>
+
+
+
+
+            <template>
+                <button class="accordion"></button>
+                <div class="panel">
+                    <p></p>
+                </div>
+            </template>
+        </div>
+    </div>
+    <script>
+        "use strict";
+
+        let theJSON;
+
+        const container = document.querySelector("#faq");
+        const TextTemplate = document.querySelector("template");
+
+        const ImageTemplate = document.querySelector(".template_image");
+
+        const endpoint = "http://michelleyoung.dk/kea/09_cms/21-5_wp/wordpress/wp-json/wp/v2/faq?per_page=100";
+
+
+
+
+
+        document.addEventListener("DOMContentLoaded", start);
+
+
+        function start() {
+            loadData();
+        }
+
+        async function loadData() {
+
+            //            let jsonData = await fetch(`http://michelleyoung.dk/kea/09_cms/21-5_wp/wordpress/wp-json/wp/v2/${id}`);
+            //            console.log(jsonData)
+
+            const resspons = await fetch(endpoint)
+
+            theJSON = await resspons.json();
+
+            visFAQ();
+        }
+
+
+        function visFAQ() {
+            console.log(theJSON)
+            theJSON.forEach(question => {
+                const klonText = TextTemplate.cloneNode(true).content;
+                klonText.querySelector(".accordion").textContent = question.question;
+                klonText.querySelector(".panel p").textContent = question.svar;
+
+                if (question.kategori[0] == "21-5 generelle spørgsmål") {
+                    document.querySelector("#generel").appendChild(klonText);
+                }
+                if (question.kategori[0] == "21-5 feriebolig-del") {
+                    document.querySelector("#feriebolig").appendChild(klonText);
+                }
+                if (question.kategori[0] == "21-5 jura og teknik") {
+                    document.querySelector("#jura").appendChild(klonText);
+                }
+                if (question.kategori[0] == "21-5 boligerne") {
+                    document.querySelector("#boligerne").appendChild(klonText);
+                }
+                if (question.kategori[0] == "21-5 driften og hverdagen") {
+                    document.querySelector("#hverdagen").appendChild(klonText);
+                }
+
+
+            })
+            accordion();
+
+        }
+
+
+
+
+
+        function accordion() {
+            var acc = document.getElementsByClassName("accordion");
+            var i;
+
+            for (i = 0; i < acc.length; i++) {
+                acc[i].addEventListener("click", function() {
+                    this.classList.toggle("active");
+                    var panel = this.nextElementSibling;
+                    if (panel.style.maxHeight) {
+                        panel.style.maxHeight = null;
+                    } else {
+                        panel.style.maxHeight = panel.scrollHeight + "px";
+                    }
+                });
+            }
+        }
+
+    </script>
+</body>
+
+</html>
