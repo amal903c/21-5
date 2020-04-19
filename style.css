@@ -340,6 +340,7 @@ h2 {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
     padding: 50px;
+    flex-direction: row-reverse;
 }
 
 .person p {
@@ -453,8 +454,8 @@ h2 {
 
 
 .familie {
-    cursor: pointer;
     padding: 34px 0;
+    cursor: pointer;
 }
 
 .liste_familier {
@@ -535,7 +536,7 @@ h2 {
     display: none;
 }
 
-.luk {
+.luk_familier {
     color: black;
     cursor: pointer;
     margin: 0;
@@ -560,8 +561,7 @@ h2 {
 
 
 
-/* STIFTEDE FORENINGER */
-
+/* STIFTEDE FORENINGER LOOPVIEW */
 
 .forening {
     cursor: pointer;
@@ -572,6 +572,28 @@ h2 {
     grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
     padding: 50px;
 }
+
+.forening h2 {
+    text-align: center;
+    margin: 7px 0 35px 0;
+    font-size: 1.3rem;
+}
+
+@media only screen and (min-width: 650px) {
+    .liste_forninger {
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    }
+
+    .forening {
+        padding: 34px;
+    }
+
+    .forening h2 {
+        margin: 7px 0 0 0;
+    }
+}
+
+
 
 
 
