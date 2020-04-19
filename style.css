@@ -30,7 +30,7 @@ p {
 
 h2 {
     font-family: 'Raleway', sans-serif;
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     line-height: 50px;
 }
 
@@ -329,6 +329,106 @@ h2 {
 /*                             AMALIE START                                       */
 
 
+/* TEAMET LOOPVIEW */
+
+.person {
+    cursor: pointer;
+    padding: 34px;
+}
+
+.liste {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    padding: 50px;
+}
+
+.person p {
+    text-align: center;
+    margin: 7px 0 0 0;
+    font-size: 0.9rem;
+    font-style: italic;
+}
+
+.person h2 {
+    text-align: center;
+    margin: 7px 0 0 0;
+    font-size: 1.3rem;
+    line-height: 20px;
+}
+
+
+
+@media only screen and (min-width: 650px) {
+    .liste {
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    }
+}
+
+
+
+
+
+
+/* TEAMET POPUP */
+
+#team_detalje {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    z-index: 10;
+    overflow: auto;
+    top: 0;
+
+    background-color: white;
+}
+
+
+#article_team {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.col_team {
+    flex-grow: 1;
+    flex-basis: 400px;
+}
+
+.col_team_img {
+    margin: 35px 35px 0 35px;
+}
+
+.col_team_text {
+    margin: 0 35px;
+}
+
+.stilling_popup {
+    margin: 10px 0 35px 0;
+    text-align: center;
+    font-style: italic;
+}
+
+.navn_popup {
+    margin: 13px 0 0 0;
+    text-align: center;
+    line-height: 20px;
+}
+
+.text_popup {
+    margin: 0 0 60px 0;
+}
+
+.mail_popup {
+    padding-bottom: 60px;
+}
+
+.skjul {
+    display: none;
+}
+
+.luk {
+    color: black;
+    cursor: pointer;
+}
 
 
 
@@ -336,6 +436,223 @@ h2 {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* FAMILIERNES OPLEVELSER LOOPVIEW */
+
+
+.familie {
+    cursor: pointer;
+    padding: 34px 0;
+}
+
+.liste_familier {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    padding: 50px;
+}
+
+.familie p {
+    text-align: center;
+    margin: 7px 0 0 0;
+    font-size: 0.9rem;
+}
+
+
+.familie h2 {
+    text-align: center;
+    margin: 7px 0 0 0;
+    font-size: 1.3rem;
+    line-height: 20px;
+}
+
+
+@media only screen and (min-width: 700px) {
+    .liste_familier {
+        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    }
+
+    .familie {
+        padding: 34px;
+    }
+}
+
+
+
+
+
+
+/* FAMILIERNS OPLEVELSER POPUP */
+
+#familier_detalje {
+    width: 340px;
+    height: 500px;
+    position: fixed;
+    z-index: 10;
+    overflow: auto;
+
+
+    background-color: rgb(242, 242, 242);
+
+    margin: auto;
+}
+
+.col_familier {
+    padding: 0 35px;
+}
+
+.by_popup {
+    margin: 10px 0 35px 0;
+    text-align: center;
+}
+
+.navn_popup {
+    margin: 13px 0 0 0;
+    text-align: center;
+    line-height: 20px;
+}
+
+.text_popup {
+    margin: 0 0 60px 0;
+}
+
+.link_popup {
+    padding-bottom: 60px;
+}
+
+.skjul {
+    display: none;
+}
+
+.luk {
+    color: black;
+    cursor: pointer;
+    margin: 0;
+    float: right;
+    border: none;
+    font-size: 1.5rem;
+    background-color: rgb(242, 242, 242);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* STIFTEDE FORENINGER */
+
+
+.forening {
+    cursor: pointer;
+}
+
+.liste_foreninger {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    padding: 50px;
+}
+
+
+
+
+
+
+
+
+
+
+/* BASISSIDE GALLERI */
+
+#galleri_side {
+    display: grid;
+    grid-template-rows: auto auto;
+}
+
+@media only screen and (min-width: 768px) {
+    #galleri_side {
+        display: grid;
+        grid-template-columns: 50vw 50vw;
+    }
+
+    #image_container {
+        position: fixed;
+        top: 0;
+        right: 0;
+        height: 100vh;
+        width: 40vw;
+    }
+}
+
+h1,
+h2 {
+    margin-bottom: 0;
+}
+
+
+
+/* billederne */
+.article_image {
+    height: 100vh;
+}
+
+.article_image img {
+    height: 100vh;
+    object-fit: cover;
+}
+
+/* teksten */
+
+#text_container {
+    padding: 40px;
+    background-image: url()
+}
+
+/* stregen */
+
+.streg,
+.streg_h2 {
+    margin-left: -36px;
+    margin-top: -40px;
+    width: 50%;
+}
+
+.article_text {
+    margin-bottom: 0;
+    margin-top: 40px;
+}
+
+.article_text p {
+    margin: 0;
+}
+
+
+
+/* clases */
+
+.hide {
+    display: none;
+}
 
 
 
