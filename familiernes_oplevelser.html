@@ -19,6 +19,21 @@
     <h1>Familiernes oplevelser </h1>
 
 
+    <!--       POPUP-->
+    <section id="familier_detalje" class="skjul">
+        <button class="luk">X</button>
+        <article id="article_familier">
+            <div class="col_familier">
+                <h2 class="navn_popup"></h2>
+                <p class="by_popup"></p>
+                <p class="text_popup"></p>
+                <a class="link_popup" href=""></a>
+            </div>
+        </article>
+    </section>
+
+
+
 
     <!--LOOPVIEW-->
 
@@ -67,12 +82,26 @@
                 klon.querySelector("img").src = familie.billede.guid;
 
 
-                klon.querySelector("article").addEventListener("click", () => {
-                    location.href = `singleView.html?id=${familie.id}`;
+                // Click -> Popup
+                klon.querySelector(".familie").addEventListener("click", () => {
+                    visFamilie_detalje(familie)
                 })
 
                 listeELM.appendChild(klon);
             })
+        }
+
+
+
+        //HENT POPUP DATA
+        function visFamilie_detalje(familie) {
+            familier_detalje.classList.remove("skjul");
+            familier_detalje.querySelector("button").addEventListener("click", () => familier_detalje.classList.add("skjul"));
+            console.log(familie.navn);
+            //            familier_detalje.querySelector(".navn_popup").textContent = familie.navn;
+            // familier_detalje.querySelector(".by_popup").textContent = familie.by;
+            familier_detalje.querySelector(".text_popup").innerHTML = familie.tekst;
+            familier_detalje.querySelector(".link_popup").innerHTML = familie.interview_link;
         }
 
     </script>

@@ -21,8 +21,8 @@
 
 
     <!--       POPUP-->
-    <section id="detalje" class="skjul">
-        <button class="luk">X</button>
+    <section id="team_detalje" class="skjul">
+        <button class="luk">Tilbage</button>
         <article id="article_team">
             <div class="col_team col_team_img"><img src=""></div>
             <div class="col_team col_team_text">
@@ -33,6 +33,10 @@
             </div>
         </article>
     </section>
+
+
+
+
     <!--LOOPVIEW-->
 
     <section class="liste"></section>
@@ -82,8 +86,9 @@
                 klon.querySelector("img").src = person.billede_ansigt.guid;
                 klon.querySelector("img").alt = "Portæt af" + person.navn;
 
+                // Click -> Popup
                 klon.querySelector(".person").addEventListener("click", () => {
-                    visDetalje(person)
+                    visteam_detalje(person)
                 });
 
                 listeELM.appendChild(klon);
@@ -93,16 +98,16 @@
 
 
         //HENT POPUP DATA
-        function visDetalje(person) {
-            detalje.classList.remove("skjul");
-            detalje.querySelector("button").addEventListener("click", () => detalje.classList.add("skjul"));
+        function visteam_detalje(person) {
+            team_detalje.classList.remove("skjul");
+            team_detalje.querySelector("button").addEventListener("click", () => team_detalje.classList.add("skjul"));
             console.log(person.navn);
-            detalje.querySelector("img").src = person.billede_stort.guid;
-            detalje.querySelector("img").alt = "Portæt af" + person.navn;
-            detalje.querySelector(".navn_popup").textContent = person.navn;
-            detalje.querySelector(".stilling_popup").textContent = person.stilling;
-            detalje.querySelector(".text_popup").innerHTML = person.tekst_1;
-            detalje.querySelector(".mail_popup").innerHTML = person.mail;
+            team_detalje.querySelector("img").src = person.billede_stort.guid;
+            team_detalje.querySelector("img").alt = "Portæt af" + person.navn;
+            team_detalje.querySelector(".navn_popup").textContent = person.navn;
+            team_detalje.querySelector(".stilling_popup").textContent = person.stilling;
+            team_detalje.querySelector(".text_popup").innerHTML = person.tekst_1;
+            team_detalje.querySelector(".mail_popup").innerHTML = person.mail;
         }
 
     </script>

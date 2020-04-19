@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="da">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+
+
+
+
+
+<body>
+
+
+    <!--TEKST TEMPLATE-->
+    <template class="template_text">
+        <article class="article_text">
+            <h1 id="overskrift" class="hide"></h1>
+            <img class="streg hide" src="">
+            <h2 class="rubrik hide"></h2>
+            <img class="streg_h2 hide" src="">
+            <p class="tekst hide"></p>
+        </article>
+    </template>
+
+
+
+
+    <!--BILLEDE TEMPLATE-->
+    <template class="template_image">
+        <article class="article_image">
+            <img src="" alt="">
+        </article>
+    </template>
+
+
+
+
+
+    <div id="the_container">
+        <section id="galleri_side">
+            <div id="text_container"></div>
+            <div id="image_container"></div>
+        </section>
+    </div>
+
+
+
+
+
+
+
+
+    <script>
+        let urlParams = new URLSearchParams(window.location.search);
+        let id = urlParams.get("id");
+
+
+        let theJSON;
+
+        const detalje = document.querySelector("#galleri_side");
+        const container = document.querySelector("#the_container");
+        const TextTemplate = document.querySelector(".template_text");
+
+        const textContainer = document.querySelector("#text_container")
+        const imageContainer = document.querySelector("#image_container")
+
+        const ImageTemplate = document.querySelector(".template_image");
+
+        const endpoint = "http://michelleyoung.dk/kea/09_cms/21-5_wp/wordpress/wp-json/wp/v2/basisside_galleri/235";
+
+
+
+
+
+
+        document.addEventListener("DOMContentLoaded", start);
+
+
+        function start() {
+            loadData();
+        }
+
+        async function loadData() {
+            const resspons = await fetch(endpoint)
+            theJSON = await resspons.json();
+            visGalleriSide();
+        }
+
+
+        function visGalleriSide() {
+            console.log(theJSON)
+
+
+            // mainoverskrift
+            if (theJSON.main_overskrift) {
+
+                console.log(theJSON.main_overskrift)
+
+
+
+                const klonText = TextTemplate.cloneNode(true).content;
+
+                klonText.querySelector("h1").classList.remove("hide");
+                klonText.querySelector("h1").textContent = theJSON.main_overskrift;
+                //
+                klonText.querySelector(".streg").classList.remove("hide");
+                klonText.querySelector(".streg").src = `grafik/streg.svg`;
+                textContainer.appendChild(klonText);
+
+            }
+
+            // overskrift 1
+            if (theJSON.overskrift_1) {
+
+                console.log(theJSON.overskrift_1)
+
+                const klonText = TextTemplate.cloneNode(true).content;
+
+                klonText.querySelector("h2").classList.remove("hide");
+                klonText.querySelector("h2").textContent = theJSON.overskrift_1;
+
+
+                klonText.querySelector(".streg_h2").classList.remove("hide");
+                klonText.querySelector(".streg_h2").src = `grafik/streg.svg`;
+                textContainer.appendChild(klonText);
+
+            }
+
+            // tekst 1
+            if (theJSON.tekst_1) {
+
+                console.log(theJSON.tekst_1_1)
+
+                const klonText = TextTemplate.cloneNode(true).content;
+
+                klonText.querySelector("p").classList.remove("hide");
+                klonText.querySelector("p").innerHTML = theJSON.tekst_1;
+                textContainer.appendChild(klonText);
+
+            }
+
+            // overskrift 2
+            if (theJSON.overskrift_2) {
+                console.log(theJSON.overskrift_2)
+
+                const klonText = TextTemplate.cloneNode(true).content;
+
+                klonText.querySelector("h2").classList.remove("hide");
+                klonText.querySelector("h2").innerHTML = theJSON.overskrift_2;
+
+                klonText.querySelector(".streg_h2").classList.remove("hide");
+                klonText.querySelector(".streg_h2").src = `grafik/streg.svg`;
+                textContainer.appendChild(klonText);
+
+            }
+
+            // tekst 2
+            if (theJSON.tekst_2) {
+                console.log(theJSON.overskrift_2)
+
+                const klonText = TextTemplate.cloneNode(true).content;
+
+                klonText.querySelector("p").classList.remove("hide");
+                klonText.querySelector("p").innerHTML = theJSON.tekst_2;
+                textContainer.appendChild(klonText);
+
+            }
+
+            // overskrift 3
+            if (theJSON.overskrift_3) {
+                console.log(theJSON.overskrift_3)
+
+                const klonText = TextTemplate.cloneNode(true).content;
+                klonText.querySelector("h2").classList.remove("hide");
+                klonText.querySelector("h2").textContent = theJSON.overskrift_3;
+
+                klonText.querySelector(".streg_h2").classList.remove("hide");
+                klonText.querySelector(".streg_h2").src = `grafik/streg.svg`;
+                textContainer.appendChild(klonText);
+
+            }
+
+            // tekst 3
+            if (theJSON.tekst_3) {
+                console.log(theJSON.overskrift_3)
+
+                const klonText = TextTemplate.cloneNode(true).content;
+                klonText.querySelector("p").classList.remove("hide");
+                klonText.querySelector("p").innerHTML = theJSON.tekst_3;
+                textContainer.appendChild(klonText);
+            }
+
+            // overskrift 4
+            if (theJSON.overskrift_4) {
+                console.log(theJSON.overskrift_4)
+
+                const klonText = TextTemplate.cloneNode(true).content;
+                klonText.querySelector("h2").classList.remove("hide");
+                klonText.querySelector("h2").textContent = theJSON.overskrift_4;
+
+                klonText.querySelector(".streg_h2").classList.remove("hide");
+                klonText.querySelector(".streg_h2").src = `grafik/streg.svg`;
+                textContainer.appendChild(klonText);
+            }
+
+            // tekst 4
+            if (theJSON.tekst_4) {
+                console.log(theJSON.overskrift_4)
+
+                const klonText = TextTemplate.cloneNode(true).content;
+                klonText.querySelector("p").classList.remove("hide");
+                klonText.querySelector("p").innerHTML = theJSON.tekst_4;
+                textContainer.appendChild(klonText);
+
+            }
+
+
+            //Hver billede (image foreach)
+
+            //For each ud fra vorers array af husbilelderne:
+            theJSON.galleri.forEach((billede, index) => {
+                //vi skal have for både det store billede - theclone, og så de små legend billeder - secondclone:
+                const klonImage = ImageTemplate.cloneNode(true).content;
+                //billederne sættes ind
+                klonImage.querySelector("img").src = billede.guid;
+                //vi skal appende vores kloner til dokumentet:
+                imageContainer.appendChild(klonImage);
+            })
+        }
+
+    </script>
+
+
+    <script src="script.js"></script>
+</body>
+
+</html>
