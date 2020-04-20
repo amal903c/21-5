@@ -198,6 +198,7 @@
             const response = await fetch(url);
             theJSON = await response.json();
             buildKarrusel();
+            setBtns()
         }
 
 
@@ -240,25 +241,51 @@
         }
 
         function scrollFunction() {
-            numberOfPicsInKarrrusel = Math.round(document.querySelector(".the_container").scrollLeft / document.querySelector(".karrusel_imgs").width);
-            console.log(numberOfPicsInKarrrusel);
+            karruselCurrentNumber = Math.round(document.querySelector(".the_container").scrollLeft / document.querySelector(".karrusel_imgs").width);
+            console.log(karruselCurrentNumber);
+            setBtns();
         }
 
         function foran() {
-            numberOfPicsInKarrrusel++;
-            navigate();
+            if (karruselCurrentNumber < numberOfPicsInKarrrusel - 1) {
+
+                karruselCurrentNumber++;
+                navigate();
+            }
         }
 
         function tilbage() {
-            numberOfPicsInKarrrusel--;
-            navigate();
+            if (karruselCurrentNumber > 0) {
+                karruselCurrentNumber--;
+                navigate();
+            }
         }
 
         function navigate() {
             document.querySelector(".the_container").scrollTo({
-                left: numberOfPicsInKarrrusel * document.querySelector(".karrusel_imgs").width,
+                left: karruselCurrentNumber * document.querySelector(".karrusel_imgs").width,
                 behavior: "smooth"
             })
+            setBtns();
+        }
+
+        function setBtns() {
+            if (karruselCurrentNumber < numberOfPicsInKarrrusel - 1) {
+                document.querySelector(".foran").style.opacity = 1;
+                document.querySelector(".foran").style.cursor = "pointer";
+            } else {
+                document.querySelector(".foran").style.opacity = 0.2;
+                document.querySelector(".foran").style.cursor = "default";
+
+            }
+            if (karruselCurrentNumber > 0) {
+                document.querySelector(".tilbage").style.opacity = 1;
+                document.querySelector(".tilbage").style.cursor = "pointer";
+            } else {
+                document.querySelector(".tilbage").style.opacity = 0.2;
+                document.querySelector(".tilbage").style.cursor = "default";
+
+            }
         }
 
     </script>
