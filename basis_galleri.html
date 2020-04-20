@@ -131,7 +131,9 @@
 
         const ImageTemplate = document.querySelector(".template_image");
 
-        const endpoint = "http://michelleyoung.dk/kea/09_cms/21-5_wp/wordpress/wp-json/wp/v2/basisside_galleri/235";
+        const endpoint = "http://michelleyoung.dk/kea/09_cms/21-5_wp/wordpress/wp-json/wp/v2/destinationer";
+
+        let ret;
 
 
 
@@ -146,7 +148,12 @@
         }
 
         async function loadData() {
-            const resspons = await fetch(endpoint)
+
+            let resspons = await fetch(`http://michelleyoung.dk/kea/09_cms/21-5_wp/wordpress/wp-json/wp/v2/destinationer/${id}`);
+
+            //            const resspons = await fetch(endpoint)
+            //            theJSON = await resspons.json();
+
             theJSON = await resspons.json();
             visGalleriSide();
         }
@@ -281,6 +288,9 @@
 
 
             //Hver billede (image foreach)
+
+            // ændre galleri ftil det fieldet hedder
+
 
             //For each ud fra vorers array af husbilelderne:
             theJSON.galleri.forEach((billede, index) => {

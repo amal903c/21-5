@@ -295,10 +295,10 @@
     <script>
         document.addEventListener("DOMContentLoaded", start);
 
-        const endpoint = "http://michelleyoung.dk/kea/09_cms/21-5_wp/wordpress/wp-json/wp/v2/basisside_galleri";
+        const endpoint = "http://michelleyoung.dk/kea/09_cms/21-5_wp/wordpress/wp-json/wp/v2/destinationer";
 
         let theJSON = [];
-        let destinatinerEndpoints = ["http://michelleyoung.dk/kea/09_cms/21-5_wp/wordpress/wp-json/wp/v2/basisside_galleri/241", "http://michelleyoung.dk/kea/09_cms/21-5_wp/wordpress/wp-json/wp/v2/basisside_galleri/240", "http://michelleyoung.dk/kea/09_cms/21-5_wp/wordpress/wp-json/wp/v2/basisside_galleri/239", "238", "237", "236", "235", "234", ]
+        //        let destinatinerEndpoints = ["http://michelleyoung.dk/kea/09_cms/21-5_wp/wordpress/wp-json/wp/v2/basisside_galleri/241", "http://michelleyoung.dk/kea/09_cms/21-5_wp/wordpress/wp-json/wp/v2/basisside_galleri/240", "http://michelleyoung.dk/kea/09_cms/21-5_wp/wordpress/wp-json/wp/v2/basisside_galleri/239", "238", "237", "236", "235", "234", ]
 
         let menuboksetemplate = document.querySelector("#menutemplate");
         const container = document.querySelector(".dropdown_container");
@@ -357,7 +357,7 @@
 
                 klon.querySelector("article").addEventListener("click", () => {
 
-                    location.href = `basisside_galleri.html?id=${destination.id}`;
+                    location.href = `basis_galleri.html?id=${destination.id}`;
                 })
 
                 container.appendChild(klon);
