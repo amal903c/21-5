@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pakker</title>
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="myIcons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="myIcons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="myIcons/favicon-16x16.png">
+    <link rel="manifest" href="myIcons/site.webmanifest">
+    <link rel="mask-icon" href="myIcons/safari-pinned-tab.svg" color="#35aaa8">
+    <link rel="shortcut icon" href="myIcons/favicon.ico">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="msapplication-config" content="myIcons/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
+
+</head>
+
+<body>
+
+
+    <section class="liste"></section>
+    <template class="pakker_template"></template>
+    <article class="pakke">
+        <h1></h1>
+        <img src="" alt="">
+    </article>
+
+
+
+
+
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", start);
+
+        const listeELM = document.querySelector(".liste");
+
+        const template = document.querySelector(".pakker_template").content;
+
+        // HENT INDHOLD
+        const url = "http://michelleyoung.dk/kea/09_cms/21-5_wp/wordpress/wp-json/wp/v2/kb_andel";
+
+
+        async function start() {
+            const resspons = await fetch(url);
+            const json = await resspons.json();
+            vis(json);
+        }
+
+        function vis(pakker) {
+            listeELM.innerHTML = "";
+            pakker.forEach(pakke => {
+                console.log(pakke);
+                const klon = template.cloneNode(true);
+
+                // HENT PAKKE BILLEDE
+                klon.querySelector("img").src = pakke..guid;
+                klon.querySelector("h1") = pakke.main_overskrift;
+
+
+                listeELM.appendChild(klon);
+            })
+        }
+
+    </script>
+</body>
+
+</html>
