@@ -44,9 +44,34 @@
     <!--BILLEDE TEMPLATE-->
     <template class="template_image">
         <article class="article_image">
-            <img src="" alt="">
+            <img class="karussel_images" src="" alt="">
         </article>
     </template>
+
+
+
+
+    <!--KARUSSEL-->
+    <main class="main_galleri">
+        <div class="karussel_galleri">
+            <div class="inner_galleri">
+                <div class="tilbage_galleri">
+                    <p>⭅</p>
+                </div>
+
+                <div class="container_galleri"></div>
+
+                <div class="frem_galleri">
+                    <p>⭆</p>
+                </div>
+            </div>
+
+
+            <div class="legend_pic_container"></div>
+
+        </div>
+    </main>
+
 
 
 
@@ -115,9 +140,15 @@
 
 
 
+
+
+
     <script>
+        "use strict"
+
         let urlParams = new URLSearchParams(window.location.search);
         let id = urlParams.get("id");
+
 
 
         let theJSON;
@@ -131,7 +162,12 @@
 
         const ImageTemplate = document.querySelector(".template_image");
 
-        const endpoint = "http://michelleyoung.dk/kea/09_cms/21-5_wp/wordpress/wp-json/wp/v2/basisside_galleri/235";
+        const endpoint = "http://michelleyoung.dk/kea/09_cms/21-5_wp/wordpress/wp-json/wp/v2/destinationer";
+
+        let ret;
+
+        let numberOfPics;
+        let caroCurrentNum = 0;
 
 
 
@@ -142,14 +178,60 @@
 
 
         function start() {
+            document.querySelector(".frem_galleri").addEventListener("click", frem_galleri);
+            document.querySelector(".tilbage_galleri").addEventListener("click", tilbage_galleri);
             loadData();
         }
 
         async function loadData() {
-            const resspons = await fetch(endpoint)
+
+            let resspons = await fetch(`http://michelleyoung.dk/kea/09_cms/21-5_wp/wordpress/wp-json/wp/v2/destinationer/${id}`);
+
+            //            const resspons = await fetch(endpoint)
+            //            theJSON = await resspons.json();
+
             theJSON = await resspons.json();
             visGalleriSide();
+            visKarussel();
         }
+
+
+        function visKarussel() {
+            numberOfPics = theJSON.billede_family.lenght;
+            theJSON.billede_family.forEach((billede, index) => {
+                const theClone = document.querySelector(".template_image").cloneNode(true).content;
+                const secondClone = document.querySelector(".template_image").cloneNode(true).content;
+
+                theClone.querySelector("img").src = billede.guid;
+                secondClone.querySelector("img").src = billede.guid;
+
+                document.querySelector(".container_galleri").appendChild(theClone);
+                document.querySelector(".legend_pic_container").appendChild(secondClone);
+            })
+        }
+
+
+        function frem_galleri() {
+            caroCurrentNum = 3;
+            navigate()
+        }
+
+        function tilbage_galleri() {
+            navigate()
+        }
+
+        function navigate() {
+            document.querySelector(".container_galleri").scrollTo({
+                left: caroCurrentNum * document.querySelector(".karussel_images").width
+            })
+        }
+
+
+
+
+
+
+
 
 
         function visGalleriSide() {
@@ -280,17 +362,27 @@
             }
 
 
+
+
+
+
+
+
+
             //Hver billede (image foreach)
 
+            // ændre galleri ftil det fieldet hedder
+
+
             //For each ud fra vorers array af husbilelderne:
-            theJSON.galleri.forEach((billede, index) => {
-                //vi skal have for både det store billede - theclone, og så de små legend billeder - secondclone:
-                const klonImage = ImageTemplate.cloneNode(true).content;
-                //billederne sættes ind
-                klonImage.querySelector("img").src = billede.guid;
-                //vi skal appende vores kloner til dokumentet:
-                imageContainer.appendChild(klonImage);
-            })
+            //            theJSON.galleri.forEach((billede, index) => {
+            // //vi skal have for både det store billede - theclone, og så de små legend billeder - secondclone:
+            // const klonImage = ImageTemplate.cloneNode(true).content;
+            // //billederne sættes ind
+            // klonImage.querySelector("img").src = billede.guid;
+            // //vi skal appende vores kloner til dokumentet:
+            // imageContainer.appendChild(klonImage);
+            // })
         }
 
     </script>

@@ -42,6 +42,10 @@
             margin-bottom: 0;
         }
 
+        p {
+            max-width:
+                500px;
+        }
 
 
         /* billederne */
@@ -91,34 +95,6 @@
             display: none;
         }
 
-        /*content menu */
-
-        .underside {
-            border-bottom: 0.5px solid black;
-            width: 200px;
-            cursor: pointer;
-            text-align: center;
-        }
-
-        .contentmenu_container {
-            display: flex;
-            /* center vertically: */
-            align-items: center;
-            /* center horizontally: */
-            justify-content: center;
-            flex-direction: column;
-            background-image: url(img/_GS30472.jpg);
-            background-size: cover;
-
-        }
-
-        .contentmenu_inner {
-            background-color: white;
-            margin: 10px;
-            padding-left: 70px;
-            padding-right: 70px;
-        }
-
     </style>
 </head>
 
@@ -152,13 +128,7 @@
         <section id="basisside">
 
             <div id="text_container">
-                <div class="contentmenu_container">
-                    <div class="contentmenu_inner">
-                        <p class="underside1 underside">Underside</p>
-                        <p class="underside2 underside">Underside</p>
-                        <p class="underside3 underside">Underside</p>
-                    </div>
-                </div>
+
 
             </div>
 
@@ -238,7 +208,7 @@
 
         const ImageTemplate = document.querySelector(".template_image");
 
-        const endpoint = "http://michelleyoung.dk/kea/09_cms/21-5_wp/wordpress/wp-json/wp/v2/basisside/432";
+        const endpoint = "http://michelleyoung.dk/kea/09_cms/21-5_wp/wordpress/wp-json/wp/v2/boliger";
 
 
 
@@ -257,7 +227,7 @@
             //                        let jsonData = await fetch(`http://michelleyoung.dk/kea/09_cms/21-5_wp/wordpress/wp-json/wp/v2/${id}`);
             //                        console.log(jsonData)
 
-            const resspons = await fetch(endpoint)
+            const resspons = await fetch(`http://michelleyoung.dk/kea/09_cms/21-5_wp/wordpress/wp-json/wp/v2/boliger/${id}`)
 
             theJSON = await resspons.json();
 

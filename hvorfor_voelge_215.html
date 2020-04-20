@@ -253,11 +253,7 @@
         }
 
         async function loadData() {
-
-            //                        let jsonData = await fetch(`http://michelleyoung.dk/kea/09_cms/21-5_wp/wordpress/wp-json/wp/v2/${id}`);
-            //                        console.log(jsonData)
-
-            const resspons = await fetch(endpoint)
+            let resspons = await fetch(`http://michelleyoung.dk/kea/09_cms/21-5_wp/wordpress/wp-json/wp/v2/om215/${id}`);
 
             theJSON = await resspons.json();
 
@@ -396,17 +392,22 @@
             }
 
 
+            const klonImage = ImageTemplate.cloneNode(true).content;
+            //billederne sættes ind
+            klonImage.querySelector("img").src = theJSON.billede.guid;
+            //vi skal appende vores kloner til dokumentet:
+            imageContainer.appendChild(klonImage);
             //Hver billede (image foreach)
 
             //For each ud fra vorers array af husbilelderne:
-            theJSON.galleri.forEach((billede, index) => {
-                //vi skal have for både det store billede - theclone, og så de små legend billeder - secondclone:
-                const klonImage = ImageTemplate.cloneNode(true).content;
-                //billederne sættes ind
-                klonImage.querySelector("img").src = billede.guid;
-                //vi skal appende vores kloner til dokumentet:
-                imageContainer.appendChild(klonImage);
-            })
+            //            theJSON.galleri.forEach((billede, index) => {
+            //                //vi skal have for både det store billede - theclone, og så de små legend billeder - secondclone:
+            //                const klonImage = ImageTemplate.cloneNode(true).content;
+            //                //billederne sættes ind
+            //                klonImage.querySelector("img").src = billede.guid;
+            //                //vi skal appende vores kloner til dokumentet:
+            //                imageContainer.appendChild(klonImage);
+            //            })
         }
 
     </script>

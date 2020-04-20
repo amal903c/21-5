@@ -58,7 +58,28 @@
         }
 
         /* drop downmenu */
-        .dropdown_container {
+        .dropdown_container,
+        .dropdown_container_om215 {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            width: 47vw;
+            margin: 0 auto;
+            grid-gap: 17px;
+            cursor: pointer;
+            background-color: white;
+        }
+
+        .dropdown_container_boliger {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            width: 47vw;
+            margin: 0 auto;
+            grid-gap: 17px;
+            cursor: pointer;
+            background-color: white;
+        }
+
+        .dropdown_container_okonomi {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
             width: 47vw;
@@ -117,7 +138,16 @@
 
             }
 
-            .dropdown_container {
+            .dropdown_container,
+            .dropdown_container_om215 {
+                margin-left: 7vw;
+            }
+
+            .dropdown_container_boliger {
+                margin-left: 7vw;
+            }
+
+            .dropdown_container_okonomi {
                 margin-left: 7vw;
             }
 
@@ -171,7 +201,35 @@
             }
 
             /*dropdown */
-            .dropdown_container {
+            .dropdown_container,
+            . {
+                position: absolute;
+                left: 0;
+                top: 10vw;
+                width: auto;
+                margin: 0 auto;
+                right: 0;
+            }
+
+            .dropdown_container_boliger {
+                position: absolute;
+                left: 0;
+                top: 10vw;
+                width: auto;
+                margin: 0 auto;
+                right: 0;
+            }
+
+            .dropdown_container_okonomi {
+                position: absolute;
+                left: 0;
+                top: 10vw;
+                width: auto;
+                margin: 0 auto;
+                right: 0;
+            }
+
+            .dropdown_container_om215 {
                 position: absolute;
                 left: 0;
                 top: 10vw;
@@ -236,6 +294,10 @@
 
         }
 
+        .atag {
+            display: flex;
+        }
+
     </style>
 </head>
 
@@ -260,14 +322,23 @@
 
         <div id="menu_linje" class="hidden">
             <ul id="menu_punkter" class="menupunkter_container">
-                <a href="index.html"><img class="logoimg logoweb" src="img/logo.svg"></a>
+                <a class="atag" href="index.html"><img class="logoimg logoweb" src="img/logo.svg"></a>
                 <li id="destinationer">Destinationer</li>
                 <div class="dropdown_container hidden">
 
                 </div>
                 <li id="boliger">Boliger</li>
+                <div class="dropdown_container_boliger hidden">
+
+                </div>
                 <li id="om_215">Om 21-5</li>
+                <div class="dropdown_container_om215 hidden">
+
+                </div>
                 <li id="økonomi_jura_skat">Økonomi, Jura og Skat</li>
+                <div class="dropdown_container_okonomi hidden">
+
+                </div>
                 <li id="kob_af_andel">Køb af andel i 21-5</li>
                 <li id="praktisk_info">Praktisk info</li>
                 <div class="ombyt">
@@ -292,18 +363,59 @@
     <script>
         document.addEventListener("DOMContentLoaded", start);
 
-        const endpoint = "http://michelleyoung.dk/kea/09_cms/21-5_wp/wordpress/wp-json/wp/v2/basisside_galleri";
+        //destinationer url
+        const endpoint = "http://michelleyoung.dk/kea/09_cms/21-5_wp/wordpress/wp-json/wp/v2/destinationer";
 
+        //Boliger url
+        const endpoint_boliger = "http://michelleyoung.dk/kea/09_cms/21-5_wp/wordpress/wp-json/wp/v2/boliger";
+
+        //Økonomi url
+        const endpoint_okonomi = "http://michelleyoung.dk/kea/09_cms/21-5_wp/wordpress/wp-json/wp/v2/okonomi";
+
+        //om215 url
+        // hvorfor vælge 21-5
+        const endpoint_om215_hvorfor = "http://michelleyoung.dk/kea/09_cms/21-5_wp/wordpress/wp-json/wp/v2/om215/688";
+        const endpoint_om215_hvad = "http://michelleyoung.dk/kea/09_cms/21-5_wp/wordpress/wp-json/wp/v2/om215/684";
+        const endpoint_om215_hvem = "http://michelleyoung.dk/kea/09_cms/21-5_wp/wordpress/wp-json/wp/v2/om215/680";
+
+        // der hvor json bliver puttet ind
         let theJSON = [];
-        let destinatinerEndpoints = ["http://michelleyoung.dk/kea/09_cms/21-5_wp/wordpress/wp-json/wp/v2/basisside_galleri/241", "http://michelleyoung.dk/kea/09_cms/21-5_wp/wordpress/wp-json/wp/v2/basisside_galleri/240", "http://michelleyoung.dk/kea/09_cms/21-5_wp/wordpress/wp-json/wp/v2/basisside_galleri/239", "238", "237", "236", "235", "234", ]
+        //om215
+        let theJSON_om215_hvorfor = [];
+        let theJSON_om215_hvad = [];
+        let theJSON_om215_hvem = [];
 
+
+        // den template vi kloner ind i vores dropwdownmenu
         let menuboksetemplate = document.querySelector("#menutemplate");
+
+        //container for destinationer dropdown
         const container = document.querySelector(".dropdown_container");
+
+        //Container boliger:
+        const container_boliger = document.querySelector(".dropdown_container_boliger");
+
+        //Container økonomi
+        const container_okonomi = document.querySelector(".dropdown_container_okonomi");
+
+        //container om 21-5
+        const container_om215 = document.querySelector(".dropdown_container_om215");
 
         function start() {
             loadData();
 
+            // gør så man kan klikke på menupunkterne
+
+            //destinationer
             document.querySelector("#destinationer").addEventListener("click", clickDestinationerFrem);
+            //boliger
+            document.querySelector("#boliger").addEventListener("click", clickBoligerFrem);
+            //økonomi jura og skat
+            document.querySelector("#økonomi_jura_skat").addEventListener("click", clickOkonomiFrem);
+            //om 21-5
+            document.querySelector("#om_215").addEventListener("click", clickOm215Frem);
+
+
             document.querySelector(".menuknap").addEventListener("click", clickMenu);
 
 
@@ -313,7 +425,27 @@
         async function loadData() {
 
             const resspons = await fetch(endpoint);
+            const resspons_boliger = await fetch(endpoint_boliger);
+            const resspons_okonomi = await fetch(endpoint_okonomi);
+
+            //om215
+            const resspons_om215_hvorfor = await fetch(endpoint_om215_hvorfor);
+            const resspons_om215_hvad = await fetch(endpoint_om215_hvad);
+            const resspons_om215_hvem = await fetch(endpoint_om215_hvem);
+
+
+
             theJSON = await resspons.json();
+            theJSON_boliger = await resspons_boliger.json();
+            theJSON_okonomi = await resspons_okonomi.json();
+
+            //om215
+            theJSON_om215_hvorfor = await resspons_om215_hvorfor.json();
+            theJSON_om215_hvad = await resspons_om215_hvad.json();
+            theJSON_om215_hvem = await resspons_om215_hvem.json();
+
+
+
 
 
         }
@@ -354,7 +486,7 @@
 
                 klon.querySelector("article").addEventListener("click", () => {
 
-                    location.href = `basisside_galleri.html?id=${destination.id}`;
+                    location.href = `basis_galleri.html?id=${destination.id}`;
                 })
 
                 container.appendChild(klon);
@@ -362,6 +494,185 @@
 
             })
         }
+
+        //Når man klikker på boliger:
+        function clickBoligerFrem() {
+            container_boliger.classList.remove("hidden")
+            visBoliger();
+            document.querySelector("#boliger").removeEventListener("click", clickBoligerFrem);
+
+            //når man klikker på destinationer igen
+            document.querySelector("#boliger").addEventListener("click", () => {
+                container_boliger.classList.add("hidden")
+                document.querySelector("#boliger").addEventListener("click", clickBoligerFrem);
+
+            })
+
+
+        }
+
+        // viser alt data
+        function visBoliger() {
+            container_boliger.innerHTML = "";
+            console.log(theJSON_boliger);
+
+
+            //løb listen igennem og indsæt data i en template
+
+            theJSON_boliger.forEach(bolig => {
+
+                console.log(bolig);
+
+                const klon = menuboksetemplate.cloneNode(true).content;
+
+                klon.querySelector("h3").textContent = bolig.title.rendered;
+
+                klon.querySelector("img").src = bolig.lillebillede.guid;
+
+                klon.querySelector("article").addEventListener("click", () => {
+
+                    location.href = `boliger_basis.html?id=${bolig.id}`;
+                })
+
+                container_boliger.appendChild(klon);
+
+
+            })
+        }
+
+
+        // Når man klikker på økonomii
+        function clickOkonomiFrem() {
+            container_okonomi.classList.remove("hidden")
+            visOkonomi();
+            document.querySelector("#økonomi_jura_skat").removeEventListener("click", clickOkonomiFrem);
+
+            //når man klikker på destinationer igen
+            document.querySelector("#økonomi_jura_skat").addEventListener("click", () => {
+                container_okonomi.classList.add("hidden")
+                document.querySelector("#økonomi_jura_skat").addEventListener("click", clickOkonomiFrem);
+
+            })
+
+
+        }
+
+        // viser alt data
+        function visOkonomi() {
+            container_okonomi.innerHTML = "";
+            console.log(theJSON_okonomi);
+
+
+            //løb listen igennem og indsæt data i en template
+
+            theJSON_okonomi.forEach(okonom => {
+
+                console.log(okonom);
+
+                const klon = menuboksetemplate.cloneNode(true).content;
+
+                klon.querySelector("h3").textContent = okonom.title.rendered;
+
+                klon.querySelector("img").src = okonom.lillebillede.guid;
+
+                klon.querySelector("article").addEventListener("click", () => {
+
+                    location.href = `basisside.html?id=${okonom.id}`;
+                })
+
+                container_okonomi.appendChild(klon);
+
+
+            })
+        }
+
+        //når man klikker på om 21-5
+        function clickOm215Frem() {
+            container_om215.classList.remove("hidden")
+            visOm215();
+            document.querySelector("#om_215").removeEventListener("click", clickDestinationerFrem);
+
+            //når man klikker på destinationer igen
+            document.querySelector("#om_215").addEventListener("click", () => {
+                container.classList.add("hidden")
+                document.querySelector("#om_215").addEventListener("click", clickDestinationerFrem);
+
+            })
+
+        }
+
+        //vis data for 21-5
+        function visOm215() {
+            container_om215.innerHTML = "";
+            console.log(theJSON_om215_hvorfor);
+            console.log(theJSON_om215_hvorfor.id);
+            console.log(theJSON_om215_hvad);
+            console.log(theJSON_om215_hvad.id);
+            console.log(theJSON_om215_hvem);
+            console.log(theJSON_om215_hvem.id);
+
+            //kloner hvorfor ind
+            const klon = menuboksetemplate.cloneNode(true).content;
+            klon.querySelector("h3").textContent = theJSON_om215_hvorfor.title.rendered;
+            klon.querySelector("img").src = theJSON_om215_hvorfor.lillebillede.guid;
+            klon.querySelector("article").addEventListener("click", () => {
+
+                console.log("this.theJSON_om215_hvorfor.id")
+
+                location.href = `hvorfor_voelge_215.html?id=${theJSON_om215_hvorfor.id}`;
+            })
+
+            container_om215.appendChild(klon);
+
+            //kloner hvad ind
+            const klon2 = menuboksetemplate.cloneNode(true).content;
+            klon2.querySelector("h3").textContent = theJSON_om215_hvad.title.rendered;
+            klon2.querySelector("img").src = theJSON_om215_hvad.lillebillede.guid;
+            klon2.querySelector("article").addEventListener("click", () => {
+                console.log("this.theJSON_om215_hvad.id")
+                location.href = `hvad_er_215.html?id=${theJSON_om215_hvad.id}`;
+            })
+
+            container_om215.appendChild(klon2);
+
+            //kloner hvem ind
+            const klon3 = menuboksetemplate.cloneNode(true).content;
+            klon3.querySelector("h3").textContent = theJSON_om215_hvem.title.rendered;
+            klon3.querySelector("img").src = theJSON_om215_hvem.lillebillede.guid;
+            klon3.querySelector("article").addEventListener("click", () => {
+                console.log("this.theJSON_om215_hvem.id")
+                location.href = `hvem_er_215.html?id=${theJSON_om215_hvem.id}`;
+            })
+
+            container_om215.appendChild(klon3);
+
+
+
+            //løb listen igennem og indsæt data i en template
+
+            //            theJSON_om215.forEach(side => {
+            //
+            //                console.log(side);
+            //
+            //                const klon = menuboksetemplate.cloneNode(true).content;
+            //                klon.querySelector("h3").textContent = side.title.rendered;
+            //                klon.querySelector("img").src = side.lillebillede.guid;
+            //                klon.querySelector("article").addEventListener("click", () => {
+            //
+            //                    location.href = `basis_galleri.html?id=${destination.id}`;
+            //                })
+            //
+            //                container.appendChild(klon);
+            //
+            //
+            //            })
+        }
+
+
+
+
+
+
 
         function clickMenu() {
             console.log("jeg har klikket på menukanp")
