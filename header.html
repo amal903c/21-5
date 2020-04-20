@@ -68,6 +68,26 @@
             background-color: white;
         }
 
+        .dropdown_container_boliger {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            width: 47vw;
+            margin: 0 auto;
+            grid-gap: 17px;
+            cursor: pointer;
+            background-color: white;
+        }
+
+        .dropdown_container_okonomi {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            width: 47vw;
+            margin: 0 auto;
+            grid-gap: 17px;
+            cursor: pointer;
+            background-color: white;
+        }
+
         /* flagene */
         #alle_flag_container {
             display: flex;
@@ -118,6 +138,14 @@
             }
 
             .dropdown_container {
+                margin-left: 7vw;
+            }
+
+            .dropdown_container_boliger {
+                margin-left: 7vw;
+            }
+
+            .dropdown_container_okonomi {
                 margin-left: 7vw;
             }
 
@@ -172,6 +200,24 @@
 
             /*dropdown */
             .dropdown_container {
+                position: absolute;
+                left: 0;
+                top: 10vw;
+                width: auto;
+                margin: 0 auto;
+                right: 0;
+            }
+
+            .dropdown_container_boliger {
+                position: absolute;
+                left: 0;
+                top: 10vw;
+                width: auto;
+                margin: 0 auto;
+                right: 0;
+            }
+
+            .dropdown_container_okonomi {
                 position: absolute;
                 left: 0;
                 top: 10vw;
@@ -270,8 +316,14 @@
 
                 </div>
                 <li id="boliger">Boliger</li>
+                <div class="dropdown_container_boliger hidden">
+
+                </div>
                 <li id="om_215">Om 21-5</li>
                 <li id="økonomi_jura_skat">Økonomi, Jura og Skat</li>
+                <div class="dropdown_container_okonomi hidden">
+
+                </div>
                 <li id="kob_af_andel">Køb af andel i 21-5</li>
                 <li id="praktisk_info">Praktisk info</li>
                 <div class="ombyt">
@@ -298,16 +350,31 @@
 
         const endpoint = "http://michelleyoung.dk/kea/09_cms/21-5_wp/wordpress/wp-json/wp/v2/destinationer";
 
+        //Boliger url
+        const endpoint_boliger = "http://michelleyoung.dk/kea/09_cms/21-5_wp/wordpress/wp-json/wp/v2/boliger";
+
+        //Økonomi url
+        const endpoint_okonomi = "http://michelleyoung.dk/kea/09_cms/21-5_wp/wordpress/wp-json/wp/v2/okonomi";
+
         let theJSON = [];
         //        let destinatinerEndpoints = ["http://michelleyoung.dk/kea/09_cms/21-5_wp/wordpress/wp-json/wp/v2/basisside_galleri/241", "http://michelleyoung.dk/kea/09_cms/21-5_wp/wordpress/wp-json/wp/v2/basisside_galleri/240", "http://michelleyoung.dk/kea/09_cms/21-5_wp/wordpress/wp-json/wp/v2/basisside_galleri/239", "238", "237", "236", "235", "234", ]
 
         let menuboksetemplate = document.querySelector("#menutemplate");
         const container = document.querySelector(".dropdown_container");
 
+        //Container boliger:
+        const container_boliger = document.querySelector(".dropdown_container_boliger");
+
+        //Container økonomi
+        const container_okonomi = document.querySelector(".dropdown_container_okonomi");
+
         function start() {
             loadData();
 
             document.querySelector("#destinationer").addEventListener("click", clickDestinationerFrem);
+            document.querySelector("#boliger").addEventListener("click", clickBoligerFrem);
+            document.querySelector("#økonomi_jura_skat").addEventListener("click", clickOkonomiFrem);
+
             document.querySelector(".menuknap").addEventListener("click", clickMenu);
 
 
@@ -317,7 +384,11 @@
         async function loadData() {
 
             const resspons = await fetch(endpoint);
+            const resspons_boliger = await fetch(endpoint_boliger);
+            const resspons_okonomi = await fetch(endpoint_okonomi);
             theJSON = await resspons.json();
+            theJSON_boliger = await resspons_boliger.json();
+            theJSON_okonomi = await resspons_okonomi.json();
 
 
         }
@@ -366,6 +437,106 @@
 
             })
         }
+
+
+
+
+        //Når man klikker på boliger:
+        function clickBoligerFrem() {
+            container_boliger.classList.remove("hidden")
+            visBoliger();
+            document.querySelector("#boliger").removeEventListener("click", clickBoligerFrem);
+
+            //når man klikker på destinationer igen
+            document.querySelector("#boliger").addEventListener("click", () => {
+                container_boliger.classList.add("hidden")
+                document.querySelector("#boliger").addEventListener("click", clickBoligerFrem);
+
+            })
+
+
+        }
+
+        // viser alt data
+        function visBoliger() {
+            container_boliger.innerHTML = "";
+            console.log(theJSON_boliger);
+
+
+            //løb listen igennem og indsæt data i en template
+
+            theJSON_boliger.forEach(bolig => {
+
+                console.log(bolig);
+
+                const klon = menuboksetemplate.cloneNode(true).content;
+
+                klon.querySelector("h3").textContent = bolig.title.rendered;
+
+                klon.querySelector("img").src = bolig.lillebillede.guid;
+
+                klon.querySelector("article").addEventListener("click", () => {
+
+                    location.href = `boliger_basis.html?id=${bolig.id}`;
+                })
+
+                container_boliger.appendChild(klon);
+
+
+            })
+        }
+
+
+        // Når man klikker på økonomii
+        function clickOkonomiFrem() {
+            container_okonomi.classList.remove("hidden")
+            visOkonomi();
+            document.querySelector("#økonomi_jura_skat").removeEventListener("click", clickOkonomiFrem);
+
+            //når man klikker på destinationer igen
+            document.querySelector("#økonomi_jura_skat").addEventListener("click", () => {
+                container_okonomi.classList.add("hidden")
+                document.querySelector("#økonomi_jura_skat").addEventListener("click", clickOkonomiFrem);
+
+            })
+
+
+        }
+
+        // viser alt data
+        function visOkonomi() {
+            container_okonomi.innerHTML = "";
+            console.log(theJSON_okonomi);
+
+
+            //løb listen igennem og indsæt data i en template
+
+            theJSON_okonomi.forEach(okonom => {
+
+                console.log(okonom);
+
+                const klon = menuboksetemplate.cloneNode(true).content;
+
+                klon.querySelector("h3").textContent = okonom.title.rendered;
+
+                klon.querySelector("img").src = okonom.lillebillede.guid;
+
+                klon.querySelector("article").addEventListener("click", () => {
+
+                    location.href = `basisside.html?id=${okonom.id}`;
+                })
+
+                container_okonomi.appendChild(klon);
+
+
+            })
+        }
+
+
+
+
+
+
 
         function clickMenu() {
             console.log("jeg har klikket på menukanp")
