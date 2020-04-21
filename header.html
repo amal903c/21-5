@@ -396,6 +396,9 @@
         let theJSON_boliger_byt = [];
         let theJSON_boliger_indretning = [];
         let theJSON_boliger_udvaelg = [];
+        //økonomi
+
+        let theJSON_okonomi = [];
 
 
         // den template vi kloner ind i vores dropwdownmenu
@@ -631,7 +634,7 @@
 
                 klon.querySelector("article").addEventListener("click", () => {
 
-                    location.href = `boliger_basis.html?id=${okonom.id}`;
+                    location.href = `okonomi_basis.html?id=${okonom.id}`;
                 })
 
                 container_okonomi.appendChild(klon);
