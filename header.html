@@ -373,7 +373,9 @@
         const endpoint = "http://michelleyoung.dk/kea/09_cms/21-5_wp/wordpress/wp-json/wp/v2/destinationer";
 
         //Boliger url
-        const endpoint_boliger = "http://michelleyoung.dk/kea/09_cms/21-5_wp/wordpress/wp-json/wp/v2/boliger";
+        const endpoint_boliger_byt = "http://michelleyoung.dk/kea/09_cms/21-5_wp/wordpress/wp-json/wp/v2/boliger/644";
+        const endpoint_boliger_indretning = "http://michelleyoung.dk/kea/09_cms/21-5_wp/wordpress/wp-json/wp/v2/boliger/641";
+        const endpoint_boliger_udvaelg = "http://michelleyoung.dk/kea/09_cms/21-5_wp/wordpress/wp-json/wp/v2/boliger/640";
 
         //Økonomi url
         const endpoint_okonomi = "http://michelleyoung.dk/kea/09_cms/21-5_wp/wordpress/wp-json/wp/v2/okonomi";
@@ -390,6 +392,10 @@
         let theJSON_om215_hvorfor = [];
         let theJSON_om215_hvad = [];
         let theJSON_om215_hvem = [];
+        //Boliger
+        let theJSON_boliger_byt = [];
+        let theJSON_boliger_indretning = [];
+        let theJSON_boliger_udvaelg = [];
 
 
         // den template vi kloner ind i vores dropwdownmenu
@@ -431,7 +437,13 @@
         async function loadData() {
 
             const resspons = await fetch(endpoint);
-            const resspons_boliger = await fetch(endpoint_boliger);
+
+            //boliger
+            const resspons_boliger_byt = await fetch(endpoint_boliger_byt);
+            const resspons_boliger_indretning = await fetch(endpoint_boliger_indretning);
+            const resspons_boliger_udvaelg = await fetch(endpoint_boliger_udvaelg);
+
+            //økonomi
             const resspons_okonomi = await fetch(endpoint_okonomi);
 
             //om215
@@ -442,7 +454,13 @@
 
 
             theJSON = await resspons.json();
-            theJSON_boliger = await resspons_boliger.json();
+
+            //boliger
+            theJSON_boliger_byt = await resspons_boliger_byt.json();
+            theJSON_boliger_indretning = await resspons_boliger_indretning.json();
+            theJSON_boliger_udvaelg = await resspons_boliger_udvaelg.json();
+
+            //
             theJSON_okonomi = await resspons_okonomi.json();
 
             //om215
@@ -528,31 +546,50 @@
             container_boliger.innerHTML = "";
             container_okonomi.innerHTML = "";
             container_om215.innerHTML = "";
-            console.log(theJSON_boliger);
+            console.log(theJSON_boliger_byt);
+            console.log(theJSON_boliger_indretning);
+            console.log(theJSON_boliger_udvaelg);
 
+            //kloninger
+            const klon = menuboksetemplate.cloneNode(true).content;
 
-            //løb listen igennem og indsæt data i en template
+            klon.querySelector("h3").textContent = theJSON_boliger_byt.title.rendered;
 
-            theJSON_boliger.forEach(bolig => {
+            klon.querySelector("img").src = theJSON_boliger_byt.lillebillede.guid;
 
-                console.log(bolig);
+            klon.querySelector("article").addEventListener("click", () => {
 
-                const klon = menuboksetemplate.cloneNode(true).content;
-
-                klon.querySelector("h3").textContent = bolig.title.rendered;
-
-                klon.querySelector("img").src = bolig.lillebillede.guid;
-
-                klon.querySelector("article").addEventListener("click", () => {
-
-                    location.href = `boliger_basis.html?id=${bolig.id}`;
-                })
-
-                container_boliger.appendChild(klon);
-
-
+                location.href = `boliger_basis.html?id=${theJSON_boliger_byt.id}`;
             })
+            container_boliger.appendChild(klon);
+
+            //klon2
+            const klon2 = menuboksetemplate.cloneNode(true).content;
+
+            klon2.querySelector("h3").textContent = theJSON_boliger_udvaelg.title.rendered;
+
+            klon2.querySelector("img").src = theJSON_boliger_udvaelg.lillebillede.guid;
+
+            klon2.querySelector("article").addEventListener("click", () => {
+
+                location.href = `boliger_basis.html?id=${theJSON_boliger_udvaelg.id}`;
+            })
+            container_boliger.appendChild(klon2);
+
+            //klon3
+            const klon3 = menuboksetemplate.cloneNode(true).content;
+
+            klon3.querySelector("h3").textContent = theJSON_boliger_indretning.title.rendered;
+
+            klon3.querySelector("img").src = theJSON_boliger_indretning.lillebillede.guid;
+
+            klon3.querySelector("article").addEventListener("click", () => {
+
+                location.href = `boliger_galleri.html?id=${theJSON_boliger_indretning.id}`;
+            })
+            container_boliger.appendChild(klon3);
         }
+
 
 
         // Når man klikker på økonomii
