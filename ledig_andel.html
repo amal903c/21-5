@@ -99,7 +99,7 @@
 
         @media only screen and (min-width: 768px) {
             #text_container2 {
-                margin-top: 185px;
+                margin-top: 80px;
 
                 padding: 5vw 5vw 5vw 0vw;
             }
@@ -250,7 +250,7 @@
     <template class="template_text">
         <article class="afsnit_text_container">
 
-            <img class="model" src="">
+
             <h1 id="overskrift" class="hide"></h1>
 
             <img class="streg hide" src="">
@@ -269,6 +269,7 @@
 
 
             <p class="tekst hide"></p>
+            <img class="model" src="">
         </article>
     </template>
 
@@ -534,6 +535,8 @@
 
                 klonText.querySelector(".streg_h2").classList.remove("hide");
                 klonText.querySelector(".streg_h2").src = `grafik/streg.svg`;
+                //model
+
                 textContainer.appendChild(klonText);
 
             }
@@ -544,9 +547,12 @@
 
                 const klonText = TextTemplate.cloneNode(true).content;
 
+
                 klonText.querySelector("p").classList.remove("hide");
                 klonText.querySelector("p").innerHTML = theJSON.tekst_2;
 
+                klonText.querySelector(".model").classList.remove("hide");
+                klonText.querySelector(".model").src = theJSON.model.guid;
 
                 textContainer.appendChild(klonText);
 
@@ -556,6 +562,7 @@
             if (theJSON.destinationer) {
                 console.log(theJSON.overskrift_3)
 
+
                 const klonText = TextTemplate.cloneNode(true).content;
                 klonText.querySelector("h2").classList.remove("hide");
                 klonText.querySelector("h2").textContent = theJSON.destinationer;
@@ -563,6 +570,23 @@
 
             }
 
+
+            if (theJSON.main_overskrift2) {
+
+                console.log(theJSON.main_overskrift2)
+
+
+
+                const klonText = TextTemplate.cloneNode(true).content;
+
+                klonText.querySelector("h1").classList.remove("hide");
+                klonText.querySelector("h1").textContent = theJSON.main_overskrift2;
+                //
+                klonText.querySelector(".streg").classList.remove("hide");
+                klonText.querySelector(".streg").src = `grafik/streg.svg`;
+                textContainer3.appendChild(klonText);
+
+            }
 
             // tekst 3
             if (theJSON.tekst_3) {
@@ -584,14 +608,14 @@
 
                 const klonText = TextTemplate.cloneNode(true).content;
 
-                //model
-                klonText.querySelector(".model").classList.remove("hide");
-                klonText.querySelector(".model").src = theJSON.model.guid;
+
                 klonText.querySelector("p").classList.remove("hide");
                 klonText.querySelector("p").innerHTML = theJSON.tekst_dk21;
                 textContainer3.appendChild(klonText);
 
             }
+
+
 
             if (theJSON.tekst_2_dk21) {
                 console.log(theJSON.tekst_2_dk21)
@@ -612,6 +636,9 @@
                 textContainer4.appendChild(klonText);
 
             }
+
+
+
 
 
             //Hver billede (image foreach)
