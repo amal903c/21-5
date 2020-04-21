@@ -44,6 +44,7 @@
     <!--BILLEDE TEMPLATE-->
     <template class="template_image">
         <article class="article_image">
+            <h3 class="h3_overskrift_galleri hide"></h3>
             <img class="karussel_images" src="" alt="">
         </article>
     </template>
@@ -51,32 +52,65 @@
 
 
 
-    <!--KARUSSEL-->
-    <main class="main_galleri">
-        <div class="karussel_galleri">
-            <div class="inner_galleri">
-                <div class="tilbage_galleri">
-                    <p>⭅</p>
-                </div>
-                <div class="container_galleri"></div>
-                <div class="frem_galleri">
-                    <p>⭆</p>
-                </div>
-            </div>
-            <div class="legend_pic_container"></div>
-        </div>
-    </main>
-
-
-
-
-
-
-
     <div id="the_container">
         <section id="galleri_side">
             <div id="text_container"></div>
-            <div id="image_container"></div>
+
+            <!--KARUSSEL FAMILY-->
+            <main class="main_galleri">
+                <div class="overskrift_galleri"></div>
+                <div class="karussel_galleri">
+                    <div class="inner_galleri">
+                        <div class="tilbage_galleri">
+                            <p>⭅</p>
+                        </div>
+                        <div class="container_galleri container_family"></div>
+                        <div class="frem_galleri">
+                            <p>⭆</p>
+                        </div>
+                    </div>
+                </div>
+            </main>
+
+            <!--KARUSSEL LARGE-->
+            <main class="main_galleri">
+                <div class="overskrift_galleri"></div>
+                <div class="karussel_galleri">
+                    <div class="inner_galleri">
+                        <div class="tilbage_galleri">
+                            <p>⭅</p>
+                        </div>
+                        <div class="container_galleri container_large"></div>
+                        <div class="frem_galleri">
+                            <p>⭆</p>
+                        </div>
+                    </div>
+                </div>
+            </main>
+
+            <!--KARUSSEL GRANDE-->
+            <main class="main_galleri">
+                <div class="overskrift_galleri"></div>
+                <div class="karussel_galleri">
+                    <div class="inner_galleri">
+                        <div class="tilbage_galleri">
+                            <p>⭅</p>
+                        </div>
+                        <div class="container_galleri container_grande"></div>
+                        <div class="frem_galleri">
+                            <p>⭆</p>
+                        </div>
+                    </div>
+                </div>
+            </main>
+
+
+
+
+
+
+
+
         </section>
     </div>
 
@@ -146,16 +180,15 @@
         let urlParams = new URLSearchParams(window.location.search);
         let id = urlParams.get("id");
 
-
-
         let theJSON;
 
         const detalje = document.querySelector("#galleri_side");
         const container = document.querySelector("#the_container");
         const TextTemplate = document.querySelector(".template_text");
+        const imageTemplate = document.querySelector(".template_image");
 
         const textContainer = document.querySelector("#text_container")
-        const imageContainer = document.querySelector("#image_container")
+        const overskriftGalleri = document.querySelector(".overskrift_galleri")
 
         const ImageTemplate = document.querySelector(".template_image");
 
@@ -180,14 +213,15 @@
 
             let resspons = await fetch(`http://michelleyoung.dk/kea/09_cms/21-5_wp/wordpress/wp-json/wp/v2/destinationer/${id}`);
 
-            //            const resspons = await fetch(endpoint)
-            //            theJSON = await resspons.json();
-
             theJSON = await resspons.json();
             visGalleriSide();
             visKarusselFamily();
             visKarusselLarge();
+            visKarusselGrande();
         }
+
+
+
 
 
 
@@ -196,38 +230,49 @@
             numberOfPics = theJSON.billede_family.lenght;
             theJSON.billede_family.forEach((billede, index) => {
                 const theClone = document.querySelector(".template_image").cloneNode(true).content;
-                //                const secondClone = document.querySelector(".template_image").cloneNode(true).content;
-
                 theClone.querySelector("img").src = billede.guid;
-                //                secondClone.querySelector("img").src = billede.guid;
-
-                document.querySelector(".container_galleri").appendChild(theClone);
-                //                document.querySelector(".legend_pic_container").appendChild(secondClone);
+                document.querySelector(".container_family").appendChild(theClone);
             })
 
-            document.querySelector(".container_galleri").addEventListener("scroll", scrollFunction)
+            document.querySelector(".container_family").addEventListener("scroll", scrollFunction)
         }
 
 
-//        // BILLEDE KARUSSEL LARGE
-// function visKarusselLarge() {
-// numberOfPics = theJSON.billede_large.lenght;
-// theJSON.billede_large.forEach((billede, index) => {
-// const theSecondClone = document.querySelector(".template_image").cloneNode(true).content;
-// theSecondClone.querySelector("img").src = billede.guid;
-// document.querySelector(".container_galleri").appendChild(theSecondClone);
-// })
-//
-// document.querySelector(".container_galleri").addEventListener("scroll", scrollFunction)
-// }
+
+        // BILLEDE KARUSSEL LARGE
+        function visKarusselLarge() {
+            numberOfPics = theJSON.billede_large.lenght;
+            theJSON.billede_large.forEach((billede, index) => {
+                const theSecondClone = document.querySelector(".template_image").cloneNode(true).content;
+                theSecondClone.querySelector("img").src = billede.guid;
+                document.querySelector(".container_large").appendChild(theSecondClone);
+            })
+
+            document.querySelector(".container_large").addEventListener("scroll", scrollFunction)
+        }
 
 
 
+        // BILLEDE KARUSSEL GRANDE
+        function visKarusselGrande() {
+            numberOfPics = theJSON.billede_grande.lenght;
+            theJSON.billede_grande.forEach((billede, index) => {
+                const theThirdClone = document.querySelector(".template_image").cloneNode(true).content;
+                theThirdClone.querySelector("img").src = billede.guid;
+                document.querySelector(".container_grande").appendChild(theThirdClone);
+            })
+
+            document.querySelector(".container_grande").addEventListener("scroll", scrollFunction)
+        }
+
+
+
+
+        // SCROLL EFFEKT GALLERI
         function scrollFunction() {
             caroCurrentNum = Math.round(document.querySelector(".container_galleri").scrollLeft / document.querySelector(".karussel_images").width);
             console.log(caroCurrentNum);
         }
-
 
         function frem_galleri() {
             caroCurrentNum++;
@@ -256,6 +301,17 @@
 
         function visGalleriSide() {
             console.log(theJSON)
+
+            // OVERSKRIFT FAMILY GALLERI
+
+            if (theJSON.h3_overskrift_galleri) {
+                console.log(theJSON.h3_overskrift_galleri)
+
+                const klonText = imageTemplate.cloneNode(true).content;
+                klonText.querySelector(".galleri_overskrift").classList.remove("hide");
+                klonText.querySelector(".galleri_overskrift").innerHTML = theJSON.overskrift_family;
+                overskriftGalleri.appendChild(klonText);
+            }
 
 
             // mainoverskrift
@@ -372,7 +428,7 @@
 
             // tekst 4
             if (theJSON.tekst_4) {
-                console.log(theJSON.overskrift_4)
+                console.log(theJSON.tekst_4)
 
                 const klonText = TextTemplate.cloneNode(true).content;
                 klonText.querySelector("p").classList.remove("hide");
