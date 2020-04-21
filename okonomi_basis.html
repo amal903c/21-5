@@ -208,7 +208,7 @@
 
         const ImageTemplate = document.querySelector(".template_image");
 
-        const endpoint = "http://michelleyoung.dk/kea/09_cms/21-5_wp/wordpress/wp-json/wp/v2/boliger";
+        const endpoint = "http://michelleyoung.dk/kea/09_cms/21-5_wp/wordpress/wp-json/wp/v2/okonomi";
 
 
 
@@ -227,7 +227,7 @@
             //                        let jsonData = await fetch(`http://michelleyoung.dk/kea/09_cms/21-5_wp/wordpress/wp-json/wp/v2/${id}`);
             //                        console.log(jsonData)
 
-            const resspons = await fetch(`http://michelleyoung.dk/kea/09_cms/21-5_wp/wordpress/wp-json/wp/v2/boliger/${id}`)
+            const resspons = await fetch(`http://michelleyoung.dk/kea/09_cms/21-5_wp/wordpress/wp-json/wp/v2/okonomi/${id}`)
 
             theJSON = await resspons.json();
 
@@ -366,17 +366,12 @@
             }
 
 
-            //Hver billede (image foreach)
-
-            //For each ud fra vorers array af husbilelderne:
-            theJSON.galleri.forEach((billede, index) => {
-                //vi skal have for både det store billede - theclone, og så de små legend billeder - secondclone:
-                const klonImage = ImageTemplate.cloneNode(true).content;
-                //billederne sættes ind
-                klonImage.querySelector("img").src = billede.guid;
-                //vi skal appende vores kloner til dokumentet:
-                imageContainer.appendChild(klonImage);
-            })
+            //billede
+            const klonImage = ImageTemplate.cloneNode(true).content;
+            //billederne sættes ind
+            klonImage.querySelector("img").src = theJSON.galleri.guid;
+            //vi skal appende vores kloner til dokumentet:
+            imageContainer.appendChild(klonImage);
         }
 
     </script>
