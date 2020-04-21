@@ -95,6 +95,10 @@
             display: none;
         }
 
+        .graf_billede {
+            max-width: 500px;
+        }
+
     </style>
 </head>
 
@@ -118,6 +122,7 @@
             <img class="streg_h2 hide" src="">
 
             <p class="tekst hide"></p>
+            <img class="graf_billede" src="">
         </article>
     </template>
 
@@ -299,6 +304,8 @@
 
                 klonText.querySelector(".streg_h2").classList.remove("hide");
                 klonText.querySelector(".streg_h2").src = `grafik/streg.svg`;
+
+
                 textContainer.appendChild(klonText);
 
             }
@@ -311,6 +318,8 @@
 
                 klonText.querySelector("p").classList.remove("hide");
                 klonText.querySelector("p").textContent = theJSON.tekst_2;
+                klonText.querySelector(".graf_billede").classList.remove("hide");
+                klonText.querySelector(".graf_billede").src = theJSON.graf_billede.guid;
                 textContainer.appendChild(klonText);
 
             }
@@ -372,6 +381,9 @@
             klonImage.querySelector("img").src = theJSON.galleri.guid;
             //vi skal appende vores kloner til dokumentet:
             imageContainer.appendChild(klonImage);
+
+
+
         }
 
     </script>

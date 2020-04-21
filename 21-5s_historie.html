@@ -6,6 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title></title>
     <link rel="stylesheet" href="style.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="myIcons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="myIcons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="myIcons/favicon-16x16.png">
+    <link rel="manifest" href="myIcons/site.webmanifest">
+    <link rel="mask-icon" href="myIcons/safari-pinned-tab.svg" color="#35aaa8">
+    <link rel="shortcut icon" href="myIcons/favicon.ico">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="msapplication-config" content="myIcons/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
 
     <style>
         #basisside {
@@ -20,7 +29,7 @@
             }
 
             #image_container {
-                position: fixed;
+                position: sticky;
                 top: 0;
                 right: 0;
                 height: 100vh;
@@ -82,6 +91,60 @@
             display: none;
         }
 
+        /*content menu */
+
+        .underside {
+            /*            border-bottom: 0.5px solid black;*/
+            width: 200px;
+            cursor: pointer;
+            text-align: center;
+            border: none;
+            padding: 0.5rem;
+            text-decoration: none;
+            min-width: 17vw;
+
+        }
+
+        .underside:hover {
+            border-bottom: 0.5px solid black;
+        }
+
+        .underside {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+            font-weight: 300;
+            letter-spacing: 1px;
+            line-height: 25px;
+            color: black;
+        }
+
+        .contentmenu_container {
+            display: flex;
+            /* center vertically: */
+            align-items: center;
+            /* center horizontally: */
+            justify-content: center;
+            flex-direction: column;
+            background-image: url(img/_GS30472.jpg);
+            background-size: cover;
+
+        }
+
+        .contentmenu_inner {
+            background-color: white;
+            margin: 10px;
+            padding-left: 70px;
+            padding-right: 70px;
+            display: flex;
+            flex-direction: column;
+            padding-top: 0.5vw;
+            padding-bottom: 0.5vw;
+        }
+
+        .valgt_underside {
+
+            border-bottom: 0.5px solid black;
+        }
     </style>
 </head>
 
@@ -115,6 +178,14 @@
         <section id="basisside">
 
             <div id="text_container">
+                <div class="contentmenu_container">
+                    <div class="contentmenu_inner">
+                        <a class="underside" id="tilbageknap">Hvem er 21-5</a>
+                        <a class="underside" href="teamet.html">Teamet</a>
+                        <a class="underside" href="foellesskab.html">Fællesskab i forening</a>
+                        <a class="underside valgt_underside" href="21-5s_historie.html">21-5's historie</a>
+                    </div>
+                </div>
 
             </div>
 
@@ -175,6 +246,9 @@
     </section>
 
 
+
+
+
     <script>
         let urlParams = new URLSearchParams(window.location.search);
         let id = urlParams.get("id");
@@ -191,7 +265,7 @@
 
         const ImageTemplate = document.querySelector(".template_image");
 
-        const endpoint = "http://michelleyoung.dk/kea/09_cms/21-5_wp/wordpress/wp-json/wp/v2/pinfo/648";
+        const endpoint = "http://michelleyoung.dk/kea/09_cms/21-5_wp/wordpress/wp-json/wp/v2/basisside/220";
 
 
 
@@ -252,7 +326,8 @@
                 klonText.querySelector("h2").textContent = theJSON.overskrift_1;
 
 
-
+                klonText.querySelector(".streg_h2").classList.remove("hide");
+                klonText.querySelector(".streg_h2").src = `grafik/streg.svg`;
                 textContainer.appendChild(klonText);
 
             }
@@ -361,10 +436,13 @@
             })
         }
 
+        document.querySelector("#tilbageknap").addEventListener("click", skjulDetalje);
+
+        function skjulDetalje() {
+            history.back();
+        }
     </script>
 
 
     <script src="script.js"></script>
-</body>
-
-</html>
+</body></html>
