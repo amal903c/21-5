@@ -166,7 +166,6 @@
             <h2 class="rubrik hide"></h2>
 
 
-
             <p class="tekst hide"></p>
         </article>
     </template>
@@ -181,10 +180,10 @@
 
                 <div class="contentmenu_container">
                     <div class="contentmenu_inner">
-                        <a class="underside " id="tilbageknap">Hvem er 21-5</a>
-                        <a class="underside" href="teamet.html">Teamet</a>
-                        <a class="underside valgt_underside" href="foellesskab.html">Fællesskab i forening</a>
-                        <a class="underside" href="21-5s_historie.html">21-5's historie</a>
+                        <a class="underside " id="tilbageknap">Hvorfor vælge 21-5</a>
+                        <a class="underside valgt_underside" href="skab_nye_familietraditioner.html">Skab nye familietraditioner</a>
+                        <a class="underside" href="215fordele.html">21-5 fordele</a>
+                        <a class="underside" href="familiernes_oplevelser.html">Familiernes oplevelser</a>
 
                     </div>
                 </div>
@@ -271,9 +270,9 @@
 
         const ImageTemplate = document.querySelector(".template_image");
 
-        const endpoint = "http://michelleyoung.dk/kea/09_cms/21-5_wp/wordpress/wp-json/wp/v2/basisside/224";
+        const endpoint = "http://michelleyoung.dk/kea/09_cms/21-5_wp/wordpress/wp-json/wp/v2/basisside/226";
 
-        const endpoint_om215_hvem = "http://michelleyoung.dk/kea/09_cms/21-5_wp/wordpress/wp-json/wp/v2/om215/680";
+        const endpoint_om215_hvem = "http://michelleyoung.dk/kea/09_cms/21-5_wp/wordpress/wp-json/wp/v2/om215/688";
 
         let theJSON_hvem;
 
@@ -315,7 +314,7 @@
 
             document.querySelector("#tilbageknap").addEventListener("click", () => {
 
-                location.href = `hvem_er_215.html?id=${theJSON_hvem.id}`;
+                location.href = `hvorfor_voelge_215.html?id=${theJSON_hvem.id}`;
             })
 
 
