@@ -22,6 +22,72 @@
             margin-left: 70px;
         }
 
+        /* content menu */
+        .underside {
+            /*            border-bottom: 0.5px solid black;*/
+            width: 200px;
+            cursor: pointer;
+            text-align: center;
+            border: none;
+            padding: 0.5rem;
+            text-decoration: none;
+            min-width: 17vw;
+        }
+
+        .underside:hover {
+            border-bottom: 0.5px solid black;
+        }
+
+        .contentmenu_container {
+            display: flex;
+            /* center vertically: */
+            align-items: center;
+            /* center horizontally: */
+            justify-content: center;
+            flex-direction: column;
+            background-image: url(img/_GS30472.jpg);
+            background-size: cover;
+            max-width: 512px;
+            margin: 0 auto;
+
+        }
+
+        .contentmenu_inner {
+            background-color: white;
+            margin: 10px;
+            padding-left: 70px;
+            padding-right: 70px;
+            display: flex;
+            flex-direction: column;
+            padding-top: 0.5vw;
+            padding-bottom: 0.5vw;
+        }
+
+        .underside {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+            font-weight: 300;
+            letter-spacing: 1px;
+            line-height: 25px;
+            color: black;
+        }
+
+        .valgt_underside {
+
+            border-bottom: 0.5px solid black;
+        }
+
+        .plads {
+            margin-top: 2rem;
+        }
+
+        /* stregen */
+        .streg {
+            margin-left: 35px;
+            margin-top: -66px;
+            width: 15%;
+        }
+
     </style>
 </head>
 
@@ -33,7 +99,20 @@
 
 <body>
 
+    <div class="plads">
+        <div class="contentmenu_container">
+            <div class="contentmenu_inner">
+                <a class="underside " id="tilbageknap">Hvorfor vælge 21-5</a>
+                <a class="underside " href="skab_nye_familietraditioner.html">Skab nye familietraditioner</a>
+                <a class="underside" href="215fordele.html">21-5 fordele</a>
+                <a class="underside valgt_underside" href="familiernes_oplevelser.html">Familiernes oplevelser</a>
+            </div>
+
+        </div>
+    </div>
+
     <h1>Familiernes oplevelser </h1>
+    <img class="streg" src="grafik/streg.svg">
 
 
     <!--       POPUP-->
@@ -130,15 +209,26 @@
         //        HENT WORDPRESS
         const url = "http://michelleyoung.dk/kea/09_cms/21-5_wp/wordpress/wp-json/wp/v2/familiernes_oplevels";
 
+        const endpoint_om215_hvem = "http://michelleyoung.dk/kea/09_cms/21-5_wp/wordpress/wp-json/wp/v2/om215/688";
+
+        let theJSON_hvem;
+
 
         async function start() {
             const resspons = await fetch(url);
+            const resspons_hvem = await fetch(endpoint_om215_hvem)
             const json = await resspons.json();
             vis(json);
+            theJSON_hvem = await resspons_hvem.json();
         }
 
 
         function vis(familier) {
+
+            document.querySelector("#tilbageknap").addEventListener("click", () => {
+
+                location.href = `hvorfor_voelge_215.html?id=${theJSON_hvem.id}`;
+            })
             listeELM.innerHTML = "";
             familier.forEach(familie => {
                 console.log(familie);
