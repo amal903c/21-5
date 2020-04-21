@@ -29,8 +29,8 @@
         }
 
         li:hover {
-            border-bottom: 1px solid #E0BD02;
-            color: #E0BD02;
+            border-bottom: 1px solid black;
+            /*            color: rgba(216, 234, 240, 0.98);*/
         }
 
         ul {
@@ -59,9 +59,11 @@
 
         /* drop downmenu */
         .dropdown_container,
-        .dropdown_container_om215 {
+        .dropdown_container_om215,
+        .dropdown_container_boliger,
+        .dropdown_container_okonomi {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
             width: 47vw;
             margin: 0 auto;
             grid-gap: 17px;
@@ -69,6 +71,7 @@
             background-color: white;
         }
 
+        /*
         .dropdown_container_boliger {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -78,6 +81,8 @@
             cursor: pointer;
             background-color: white;
         }
+*/
+        /*
 
         .dropdown_container_okonomi {
             display: grid;
@@ -88,6 +93,7 @@
             cursor: pointer;
             background-color: white;
         }
+*/
 
         /* flagene */
         #alle_flag_container {
@@ -134,7 +140,7 @@
             #menu_punkter_content {
                 flex-direction: row-reverse;
                 align-items: center;
-                justify-content: space-around;
+                justify-content: flex-end;
 
             }
 
@@ -201,15 +207,20 @@
             }
 
             /*dropdown */
-            .dropdown_container {
+            .dropdown_container,
+            .dropdown_container_boliger,
+            .dropdown_container_okonomi,
+            .dropdown_container_om215 {
                 position: absolute;
                 left: 0;
                 top: 10vw;
                 width: auto;
                 margin: 0 auto;
                 right: 0;
+                margin-left: 3rem;
             }
 
+            /*
             .dropdown_container_boliger {
                 position: absolute;
                 left: 0;
@@ -218,7 +229,9 @@
                 margin: 0 auto;
                 right: 0;
             }
+*/
 
+            /*
             .dropdown_container_okonomi {
                 position: absolute;
                 left: 0;
@@ -227,7 +240,9 @@
                 margin: 0 auto;
                 right: 0;
             }
+*/
 
+            /*
             .dropdown_container_om215 {
                 position: absolute;
                 left: 0;
@@ -236,6 +251,7 @@
                 margin: 0 auto;
                 right: 0;
             }
+*/
 
             #menu_punkter_content img {
                 height: 6.5vw;
@@ -296,6 +312,7 @@
             color: #989898;
             font-family: 'Raleway', sans-serif;
             font-weight: 300;
+            margin-left: 15px;
 
         }
 

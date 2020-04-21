@@ -29,6 +29,12 @@
             padding: 40px;
         }
 
+        .kontakt img {
+            margin-left: -36px;
+            margin-top: -40px;
+            width: 50%;
+            height: auto;
+        }
 
         /*Kontaktformular*/
         input[type=text],
@@ -119,8 +125,7 @@
             }
 
             img {
-                height: 90vh;
-                width: 80vw;
+
                 overflow: hidden;
                 object-fit: cover;
                 margin-top: 90px;
@@ -144,6 +149,7 @@
                 <template class="template_text">
                     <article class="kontakt">
                         <h1>Mød os</h1>
+                        <img class="streg hide" src="">
                         <h2 class="overskrift_rubrik1"></h2>
                         <p class="tekst1"></p>
                         <h2 class="overskrift_rubrik2"></h2>
@@ -313,8 +319,9 @@
             klonText.querySelector(".overskrift_rubrik2").textContent = theJSON.overskrift_rubrik2;
             klonText.querySelector(".tekst2").textContent = theJSON.tekst2;
 
+            klonText.querySelector(".streg").classList.remove("hide");
+            klonText.querySelector(".streg").src = `grafik/streg.svg`;
             container.appendChild(klonText);
-
 
             const klonImage = ImageTemplate.cloneNode(true).content;
 
