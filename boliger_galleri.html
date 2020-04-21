@@ -7,6 +7,32 @@
     <title></title>
     <link rel="stylesheet" href="style.css">
 
+    <style>
+        .bo_tikken {
+            max-width: 500px;
+            margin-top: 20px;
+        }
+
+
+
+
+        /*Karrusel*/
+        #image_container {
+            display: flex;
+            overflow-x: scroll;
+
+            scroll-snap-type: x mandatory;
+
+            flex-grow: 1;
+        }
+
+        #image_container section {
+            scroll-snap-align: start;
+            min-width: 100%;
+        }
+
+    </style>
+
     <link rel="apple-touch-icon" sizes="180x180" href="myIcons/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="myIcons/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="myIcons/favicon-16x16.png">
@@ -35,6 +61,7 @@
             <h2 class="rubrik hide"></h2>
             <img class="streg_h2 hide" src="">
             <p class="tekst hide"></p>
+            <img class="bo_tikken" src="">
         </article>
     </template>
 
@@ -234,6 +261,8 @@
 
                 klonText.querySelector("p").classList.remove("hide");
                 klonText.querySelector("p").innerHTML = theJSON.tekst_2;
+                klonText.querySelector(".bo_tikken").classList.remove("hide");
+                klonText.querySelector(".bo_tikken").src = theJSON.bo_tikken_logo.guid;
                 textContainer.appendChild(klonText);
 
             }
