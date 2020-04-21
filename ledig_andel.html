@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="da">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="myIcons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="myIcons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="myIcons/favicon-16x16.png">
+    <link rel="manifest" href="myIcons/site.webmanifest">
+    <link rel="mask-icon" href="myIcons/safari-pinned-tab.svg" color="#35aaa8">
+    <link rel="shortcut icon" href="myIcons/favicon.ico">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="msapplication-config" content="myIcons/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
+
+    <style>
+        #basisside {
+            display: grid;
+            grid-template-rows: auto auto;
+        }
+
+        @media only screen and (min-width: 768px) {
+            #basisside {
+                display: grid;
+                grid-template-columns: 50vw 50vw;
+            }
+
+            /*
+            #image_container {
+            position: sticky;
+            top: 0;
+            right: 0;
+            height: 100vh;
+            width: 40vw;
+            }
+*/
+        }
+
+        h1,
+        h2 {
+            margin-bottom: 0;
+        }
+
+        p {
+            max-width:
+                700px;
+        }
+
+        strong {
+            font-weight: 400;
+        }
+
+
+        /* billederne */
+        /*
+        .afsnit_image_container {
+        height: 100vh;
+        }
+
+        .afsnit_image_container img {
+        height: 100vh;
+        object-fit: cover;
+        }
+
+        .afsnit_image_container:nth-child(2) {
+        display: none;
+        }
+
+        .afsnit_image_container:nth-child(3) {
+        display: none;
+        }
+*/
+
+        /* teksten */
+
+        #text_container {
+
+            padding: 1vw 5vw 1vw 5vw;
+            background-image: url()
+        }
+
+        #text_container2 {
+            padding: 1vw 5vw 1vw 5vw;
+            background-image: url()
+        }
+
+        #text_container3 {
+            padding: 1vw 5vw 1vw 5vw;
+            background-image: url()
+        }
+
+        #text_container4 {
+            padding: 1vw 5vw 1vw 5vw;
+            background-image: url()
+        }
+
+        @media only screen and (min-width: 768px) {
+            #text_container2 {
+                margin-top: 185px;
+
+                padding: 5vw 5vw 5vw 0vw;
+            }
+
+            #text_container4 {
+                margin-top: 125px;
+                padding: 5vw 5vw 7vw 0vw;
+            }
+        }
+
+        /* stregen */
+
+        .streg {
+            margin-left: -36px;
+            margin-top: -40px;
+            width: 50%;
+        }
+
+        .afsnit_text_container {
+            margin-bottom: 0px;
+            margin-top: 0px;
+
+        }
+
+        .model {
+            margin-left: -20px;
+            margin-top: 10px;
+        }
+
+        /* clases */
+
+        .hide {
+            display: none;
+        }
+
+        .link_billede {
+            position: relative;
+        }
+
+
+
+        /*Kontaktformular*/
+        input[type=text],
+        select,
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            margin-top: 6px;
+            margin-bottom: 16px;
+            resize: vertical;
+        }
+
+        input[type=submit] {
+            background-color: #E9F4F8;
+            color: black;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        input[type=submit]:hover {
+            background-color: #c4ebf8;
+        }
+
+        .contact {
+            display: flex;
+            justify-content: center;
+            text-align: center;
+            align-items: center;
+        }
+
+        .contactform {
+            width: 600px;
+            border-radius: 5px;
+            border: 1px solid #f2f2f2;
+            background-color: #fdfdfd;
+            padding: 20px;
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        button {
+            background-color: #ffffff;
+            border-radius: 15px;
+            border: 1px solid #ccc;
+            cursor: pointer;
+            color: #000000;
+            font-size: 1.2rem;
+            font-weight: bold;
+            padding: 12px 25px;
+            text-decoration: none;
+            margin-bottom: 10px;
+        }
+
+        button:hover {
+            background: #E9F4F8;
+        }
+
+        button:active {
+            position: relative;
+            top: 1px;
+        }
+
+        /*
+        .overskrift,
+        .kontakt h1 {
+        text-align: center;
+        }*/
+
+        .clicked {
+            color: black;
+            background: #E9F4F8;
+        }
+
+        .contactform h2 {
+            margin-top: 0;
+        }
+
+        @media only screen and (min-width: 1024px) {
+            #the_container {
+                display: grid;
+                grid-template-columns: 60vw 40vw;
+                overflow: hidden;
+            }
+
+
+            .contactform {
+                width: 1000px;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+
+    <template class="template_image">
+        <article class="afsnit_image_container">
+            <img src="" alt="">
+        </article>
+    </template>
+
+    <template class="template_text">
+        <article class="afsnit_text_container">
+
+            <img class="model" src="">
+            <h1 id="overskrift" class="hide"></h1>
+
+            <img class="streg hide" src="">
+
+            <a href="https://issuu.com/21-5/docs/dk10_20fotobog_20low?fr=sM2MzNDExMzYzNw"><img class="link_billede" src="">
+
+            </a>
+
+
+
+
+            <h2 class="rubrik hide"></h2>
+
+            <img class="streg_h2 hide" src="">
+
+
+
+            <p class="tekst hide"></p>
+        </article>
+    </template>
+
+
+
+
+    <div id="the_container">
+        <section id="basisside">
+
+            <div id="text_container">
+
+
+            </div>
+
+
+            <div id="text_container2">
+
+
+            </div>
+            <!--
+            <div id="image_container">
+
+            </div>
+-->
+
+        </section>
+    </div>
+
+    <div id="the_container3">
+        <section id="basisside">
+
+            <div id="text_container3">
+
+
+            </div>
+
+
+            <div id="text_container4">
+
+
+            </div>
+            <!--
+            <div id="image_container">
+
+            </div>
+-->
+
+        </section>
+    </div>
+
+
+
+
+
+    <section class="contact">
+        <div class="contactform">
+            <h2>Bestil materiale</h2>
+            <div id="knapper">
+                <button class="buttons clicked">DK10 Family</button> <button class="buttons">DK21 Large</button>
+            </div>
+            <form action="/action_page.php">
+                <input type="text" id="navn" name="navn" placeholder="Navn">
+
+                <input type="text" id="email" name="email" placeholder="E-mail">
+                <input type="text" id="mobiltlf" name="mobiltlf" placeholder="Mobiltelefon">
+                <input type="text" id="adresse" name="adresse" placeholder="Adresse">
+                <input type="text" id="postnr" name="postnr" placeholder="Postnummer">
+                <input type="text" id="by" name="by" placeholder="By">
+                <input type="text" id="email" name="email" placeholder="E-mail">
+
+
+
+
+                <select id="network" name="network">
+                    <option value="" disabled selected>Jeg har hørt om 21-5 via</option>
+                    <option value="instagram">Instagram</option>
+                    <option value="linkedin">LinkedIn</option>
+                    <option value="google">Google</option>
+                    <option value="tryktemedier">Trykte medier</option>
+                    <option value="familievenner">Familie/Venner</option>
+                    <option value="netwærk">Netværk</option>
+                    <option value="215ejere">21-5 Ejere</option>
+                    <option value="vedikke">Ved ikke</option>
+                    <option value="andet">Andet (Angiv gerne i kommentarfeltet hvor) </option>
+                </select>
+
+                <textarea id="subject" name="subject" placeholder="Eventuel kommentar" style="height:100px"></textarea>
+
+                <input type="submit" value="Bestil">
+            </form>
+        </div>
+    </section>
+
+
+
+    <!--/*footer start*/-->
+    <section class="footer_wrap">
+        <div class="nyhedsbrev_container">
+            <ul>
+                <li>
+                    <h3>Nyhedsbrev</h3>
+                </li>
+                <li>
+                    <div id="nyhedsbrev_input"><input type="tekst" placeholder="e-mail"></div>
+                </li>
+                <li><button class="nyhedsbrev_knap">Tilmeld</button></li>
+            </ul>
+        </div>
+        <div class="kontakt_container">
+            <ul>
+                <li>
+                    <h3>Kontakt os</h3>
+                </li>
+                <li>21-5 A/S</li>
+                <li>Rungstedvej 41</li>
+                <li>2970 Hørsholm</li>
+                <br>
+                <li>Telefon: 70 26 11 55</li>
+                <li>E-mail: info@21-5.dk</li>
+                <li>Åbent mellem 9-17</li>
+            </ul>
+        </div>
+        <div class="andet_container">
+            <ul>
+                <li>
+                    <h3>Andet</h3>
+                </li>
+                <li><a href="">Nyheder</a></li>
+                <li><a href="">Presse</a></li>
+                <li><a href="">Cookie- og privatlivspolitik</a></li>
+                <li><a href="FAQ.html">Ofte stillede spørgsmål</a></li>
+            </ul>
+        </div>
+        <div class="some">
+            <ul>
+                <li>
+                    <h3>Følg med</h3>
+                </li>
+                <li><a href="https://www.facebook.com/enogtyvefem/">Facebook</a></li>
+                <li><a href="https://www.instagram.com/215moments/">Instagram</a></li>
+            </ul>
+        </div>
+    </section>
+
+
+
+
+
+    <script>
+        let urlParams = new URLSearchParams(window.location.search);
+        let id = urlParams.get("id");
+        //        let afsnitter = [];
+
+        let theJSON;
+
+        const detalje = document.querySelector("#basisside");
+        const container = document.querySelector("#the_container");
+        const TextTemplate = document.querySelector(".template_text");
+
+        const textContainer = document.querySelector("#text_container")
+        const textContainer2 = document.querySelector("#text_container2")
+        const imageContainer = document.querySelector("#image_container")
+
+
+        const textContainer3 = document.querySelector("#text_container3")
+        const textContainer4 = document.querySelector("#text_container4")
+
+        const ImageTemplate = document.querySelector(".template_image");
+
+        const endpoint = "http://michelleyoung.dk/kea/09_cms/21-5_wp/wordpress/wp-json/wp/v2/ledig_andel/837";
+
+
+
+
+
+
+        document.addEventListener("DOMContentLoaded", start);
+
+
+        function start() {
+            loadData();
+        }
+
+        async function loadData() {
+
+            //                        let jsonData = await fetch(`http://michelleyoung.dk/kea/09_cms/21-5_wp/wordpress/wp-json/wp/v2/${id}`);
+            //                        console.log(jsonData)
+
+            const resspons = await fetch(`http://michelleyoung.dk/kea/09_cms/21-5_wp/wordpress/wp-json/wp/v2/ledig_andel/837`)
+
+            theJSON = await resspons.json();
+
+            visBasisSide();
+        }
+
+
+        function visBasisSide() {
+            //            container.innerHTML = "";
+            console.log(theJSON)
+
+
+            // mainoverskrift
+            if (theJSON.main_overskrift) {
+
+                console.log(theJSON.main_overskrift)
+
+
+
+                const klonText = TextTemplate.cloneNode(true).content;
+
+                klonText.querySelector("h1").classList.remove("hide");
+                klonText.querySelector("h1").textContent = theJSON.main_overskrift;
+                //
+                klonText.querySelector(".streg").classList.remove("hide");
+                klonText.querySelector(".streg").src = `grafik/streg.svg`;
+                textContainer.appendChild(klonText);
+
+            }
+
+            // overskrift 1
+            if (theJSON.overskrift_1) {
+
+                console.log(theJSON.overskrift_1)
+
+                const klonText = TextTemplate.cloneNode(true).content;
+
+                klonText.querySelector("h2").classList.remove("hide");
+                klonText.querySelector("h2").textContent = theJSON.overskrift_1;
+
+
+                klonText.querySelector(".streg_h2").classList.remove("hide");
+                klonText.querySelector(".streg_h2").src = `grafik/streg.svg`;
+                textContainer.appendChild(klonText);
+
+            }
+
+            // tekst 1
+            if (theJSON.tekst_1) {
+
+                console.log(theJSON.tekst_1_1)
+
+                const klonText = TextTemplate.cloneNode(true).content;
+
+                klonText.querySelector("p").classList.remove("hide");
+                klonText.querySelector("p").innerHTML = theJSON.tekst_1;
+
+                //fotobog
+
+                klonText.querySelector(".link_billede").classList.remove("hide");
+                klonText.querySelector(".link_billede").src = theJSON.link_billede.guid;
+                textContainer.appendChild(klonText);
+
+            }
+
+            // overskrift 2
+            if (theJSON.overskrift_2) {
+                console.log(theJSON.overskrift_2)
+
+                const klonText = TextTemplate.cloneNode(true).content;
+
+                klonText.querySelector("h2").classList.remove("hide");
+                klonText.querySelector("h2").textContent = theJSON.overskrift_2;
+
+                klonText.querySelector(".streg_h2").classList.remove("hide");
+                klonText.querySelector(".streg_h2").src = `grafik/streg.svg`;
+                textContainer.appendChild(klonText);
+
+            }
+
+            // tekst 2
+            if (theJSON.tekst_2) {
+                console.log(theJSON.overskrift_2)
+
+                const klonText = TextTemplate.cloneNode(true).content;
+
+                klonText.querySelector("p").classList.remove("hide");
+                klonText.querySelector("p").innerHTML = theJSON.tekst_2;
+
+
+                textContainer.appendChild(klonText);
+
+            }
+
+            // overskrift 3
+            if (theJSON.destinationer) {
+                console.log(theJSON.overskrift_3)
+
+                const klonText = TextTemplate.cloneNode(true).content;
+                klonText.querySelector("h2").classList.remove("hide");
+                klonText.querySelector("h2").textContent = theJSON.destinationer;
+                textContainer2.appendChild(klonText);
+
+            }
+
+
+            // tekst 3
+            if (theJSON.tekst_3) {
+                console.log(theJSON.overskrift_3)
+
+                const klonText = TextTemplate.cloneNode(true).content;
+                klonText.querySelector("p").classList.remove("hide");
+                klonText.querySelector("p").innerHTML = theJSON.tekst_3;
+                textContainer2.appendChild(klonText);
+
+            }
+
+
+            // tekst 4
+            if (theJSON.tekst_dk21) {
+                console.log(theJSON.tekst_dk21)
+
+
+
+                const klonText = TextTemplate.cloneNode(true).content;
+
+                //model
+                klonText.querySelector(".model").classList.remove("hide");
+                klonText.querySelector(".model").src = theJSON.model.guid;
+                klonText.querySelector("p").classList.remove("hide");
+                klonText.querySelector("p").innerHTML = theJSON.tekst_dk21;
+                textContainer3.appendChild(klonText);
+
+            }
+
+            if (theJSON.tekst_2_dk21) {
+                console.log(theJSON.tekst_2_dk21)
+
+                const klonText = TextTemplate.cloneNode(true).content;
+                klonText.querySelector("p").classList.remove("hide");
+                klonText.querySelector("p").innerHTML = theJSON.tekst_2_dk21;
+                textContainer3.appendChild(klonText);
+
+            }
+
+            if (theJSON.tekst_3_dk21) {
+                console.log(theJSON.tekst_3_dk21)
+
+                const klonText = TextTemplate.cloneNode(true).content;
+                klonText.querySelector("p").classList.remove("hide");
+                klonText.querySelector("p").innerHTML = theJSON.tekst_3_dk21;
+                textContainer4.appendChild(klonText);
+
+            }
+
+
+            //Hver billede (image foreach)
+
+            //For each ud fra vorers array af husbilelderne:
+            //            theJSON.galleri.forEach((billede, index) => {
+            //                //vi skal have for både det store billede - theclone, og så de små legend billeder - secondclone:
+            //                const klonImage = ImageTemplate.cloneNode(true).content;
+            //                //billederne sættes ind
+            //                klonImage.querySelector("img").src = billede.guid;
+            //                //vi skal appende vores kloner til dokumentet:
+            //                imageContainer.appendChild(klonImage);
+            //            })
+        }
+
+
+
+
+
+        //knappen
+        let knap = document.querySelector("#knapper");
+        let btns = knap.querySelectorAll(".buttons");
+        for (let i = 0; i < btns.length; i++) {
+            btns[i].addEventListener("click", function() {
+                let current = document.querySelectorAll(".clicked");
+                if (current.length > 0) {
+                    current[0].className = current[0].className.replace(" clicked", "");
+                }
+                this.className += " clicked";
+            });
+        }
+
+    </script>
+
+
+    <script src="script.js"></script>
+</body>
+
+</html>
