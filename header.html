@@ -475,6 +475,10 @@
         // viser alt data
         function visDestinationer() {
             container.innerHTML = "";
+            container_boliger.innerHTML = "";
+            container_okonomi.innerHTML = "";
+            container_om215.innerHTML = "";
+
             console.log(theJSON);
 
 
@@ -519,7 +523,11 @@
 
         // viser alt data
         function visBoliger() {
+
+            container.innerHTML = "";
             container_boliger.innerHTML = "";
+            container_okonomi.innerHTML = "";
+            container_om215.innerHTML = "";
             console.log(theJSON_boliger);
 
 
@@ -565,7 +573,10 @@
 
         // viser alt data
         function visOkonomi() {
+            container.innerHTML = "";
+            container_boliger.innerHTML = "";
             container_okonomi.innerHTML = "";
+            container_om215.innerHTML = "";
             console.log(theJSON_okonomi);
 
 
@@ -609,6 +620,9 @@
 
         //vis data for 21-5
         function visOm215() {
+            container.innerHTML = "";
+            container_boliger.innerHTML = "";
+            container_okonomi.innerHTML = "";
             container_om215.innerHTML = "";
             console.log(theJSON_om215_hvorfor);
             console.log(theJSON_om215_hvorfor.id);
