@@ -44,7 +44,7 @@
     <!--BILLEDE TEMPLATE-->
     <template class="template_image">
         <article class="article_image">
-            <h3 class="h3_overskrift_galleri hide"></h3>
+            <h3 class="overskrift_galleri hide"></h3>
             <img class="karussel_images" src="" alt="">
         </article>
     </template>
@@ -55,54 +55,56 @@
     <div id="the_container">
         <section id="galleri_side">
             <div id="text_container"></div>
+            <div id="galleri_container">
 
-            <!--KARUSSEL FAMILY-->
-            <main class="main_galleri">
-                <div class="overskrift_galleri"></div>
-                <div class="karussel_galleri">
-                    <div class="inner_galleri">
-                        <div class="tilbage_galleri">
-                            <p>⭅</p>
-                        </div>
-                        <div class="container_galleri container_family"></div>
-                        <div class="frem_galleri">
-                            <p>⭆</p>
+                <!--KARUSSEL FAMILY-->
+                <main class="main_galleri">
+                    <div class="overskrift_family"></div>
+                    <div class="karussel_galleri">
+                        <div class="inner_galleri">
+                            <div class="tilbage_galleri">
+                                <p>⭅</p>
+                            </div>
+                            <div class="container_galleri container_family"></div>
+                            <div class="frem_galleri">
+                                <p>⭆</p>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </main>
+                </main>
 
-            <!--KARUSSEL LARGE-->
-            <main class="main_galleri">
-                <div class="overskrift_galleri"></div>
-                <div class="karussel_galleri">
-                    <div class="inner_galleri">
-                        <div class="tilbage_galleri">
-                            <p>⭅</p>
-                        </div>
-                        <div class="container_galleri container_large"></div>
-                        <div class="frem_galleri">
-                            <p>⭆</p>
+                <!--KARUSSEL LARGE-->
+                <main class="main_galleri">
+                    <div class="overskrift_galleri"></div>
+                    <div class="karussel_galleri">
+                        <div class="inner_galleri">
+                            <div class="tilbage_galleri">
+                                <p>⭅</p>
+                            </div>
+                            <div class="container_galleri container_large"></div>
+                            <div class="frem_galleri">
+                                <p>⭆</p>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </main>
+                </main>
 
-            <!--KARUSSEL GRANDE-->
-            <main class="main_galleri">
-                <div class="overskrift_galleri"></div>
-                <div class="karussel_galleri">
-                    <div class="inner_galleri">
-                        <div class="tilbage_galleri">
-                            <p>⭅</p>
-                        </div>
-                        <div class="container_galleri container_grande"></div>
-                        <div class="frem_galleri">
-                            <p>⭆</p>
+                <!--KARUSSEL GRANDE-->
+                <main class="main_galleri">
+                    <div class="overskrift_galleri"></div>
+                    <div class="karussel_galleri">
+                        <div class="inner_galleri">
+                            <div class="tilbage_galleri">
+                                <p>⭅</p>
+                            </div>
+                            <div class="container_galleri container_grande"></div>
+                            <div class="frem_galleri">
+                                <p>⭆</p>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </main>
+                </main>
+            </div>
 
 
 
@@ -187,8 +189,8 @@
         const TextTemplate = document.querySelector(".template_text");
         const imageTemplate = document.querySelector(".template_image");
 
-        const textContainer = document.querySelector("#text_container")
-        const overskriftGalleri = document.querySelector(".overskrift_galleri")
+        const textContainer = document.querySelector("#text_container");
+        const overskriftContainer = document.querySelector(".overskrift_family");
 
         const ImageTemplate = document.querySelector(".template_image");
 
@@ -218,6 +220,27 @@
             visKarusselFamily();
             visKarusselLarge();
             visKarusselGrande();
+            visOverskriftFamily();
+
+        }
+
+        function visOverskriftFamily() {
+            console.log(theJSON);
+
+            if (theJSON.overskrift_galleri) {
+
+                console.log(theJSON.overskrift.galleri)
+
+
+                const klonText = imageTemplate.cloneNode(true).content;
+
+                klonText.querySelector("overskrift_galleri").classList.remove("hide");
+                klonText.querySelector("overskrift_galleri").textContent = theJSON.overskrift_family;
+
+
+                overskriftContainer.appendChild(klonText);
+            }
+
         }
 
 
@@ -302,16 +325,7 @@
         function visGalleriSide() {
             console.log(theJSON)
 
-            // OVERSKRIFT FAMILY GALLERI
 
-            if (theJSON.h3_overskrift_galleri) {
-                console.log(theJSON.h3_overskrift_galleri)
-
-                const klonText = imageTemplate.cloneNode(true).content;
-                klonText.querySelector(".galleri_overskrift").classList.remove("hide");
-                klonText.querySelector(".galleri_overskrift").innerHTML = theJSON.overskrift_family;
-                overskriftGalleri.appendChild(klonText);
-            }
 
 
             // mainoverskrift
@@ -328,6 +342,19 @@
                 //
                 klonText.querySelector(".streg").classList.remove("hide");
                 klonText.querySelector(".streg").src = `grafik/streg.svg`;
+                textContainer.appendChild(klonText);
+            }
+
+
+            // tekst 1
+            if (theJSON.tekst_1) {
+
+                console.log(theJSON.tekst_1_1)
+
+                const klonText = TextTemplate.cloneNode(true).content;
+
+                klonText.querySelector("p").classList.remove("hide");
+                klonText.querySelector("p").innerHTML = theJSON.tekst_1;
                 textContainer.appendChild(klonText);
 
             }
@@ -346,21 +373,20 @@
                 klonText.querySelector(".streg_h2").classList.remove("hide");
                 klonText.querySelector(".streg_h2").src = `grafik/streg.svg`;
                 textContainer.appendChild(klonText);
-
             }
 
-            // tekst 1
-            if (theJSON.tekst_1) {
-
-                console.log(theJSON.tekst_1_1)
+            // tekst 2
+            if (theJSON.tekst_2) {
+                console.log(theJSON.overskrift_2)
 
                 const klonText = TextTemplate.cloneNode(true).content;
 
                 klonText.querySelector("p").classList.remove("hide");
-                klonText.querySelector("p").innerHTML = theJSON.tekst_1;
+                klonText.querySelector("p").innerHTML = theJSON.tekst_2;
                 textContainer.appendChild(klonText);
 
             }
+
 
             // overskrift 2
             if (theJSON.overskrift_2) {
@@ -377,31 +403,6 @@
 
             }
 
-            // tekst 2
-            if (theJSON.tekst_2) {
-                console.log(theJSON.overskrift_2)
-
-                const klonText = TextTemplate.cloneNode(true).content;
-
-                klonText.querySelector("p").classList.remove("hide");
-                klonText.querySelector("p").innerHTML = theJSON.tekst_2;
-                textContainer.appendChild(klonText);
-
-            }
-
-            // overskrift 3
-            if (theJSON.overskrift_3) {
-                console.log(theJSON.overskrift_3)
-
-                const klonText = TextTemplate.cloneNode(true).content;
-                klonText.querySelector("h2").classList.remove("hide");
-                klonText.querySelector("h2").textContent = theJSON.overskrift_3;
-
-                klonText.querySelector(".streg_h2").classList.remove("hide");
-                klonText.querySelector(".streg_h2").src = `grafik/streg.svg`;
-                textContainer.appendChild(klonText);
-
-            }
 
             // tekst 3
             if (theJSON.tekst_3) {
@@ -411,30 +412,6 @@
                 klonText.querySelector("p").classList.remove("hide");
                 klonText.querySelector("p").innerHTML = theJSON.tekst_3;
                 textContainer.appendChild(klonText);
-            }
-
-            // overskrift 4
-            if (theJSON.overskrift_4) {
-                console.log(theJSON.overskrift_4)
-
-                const klonText = TextTemplate.cloneNode(true).content;
-                klonText.querySelector("h2").classList.remove("hide");
-                klonText.querySelector("h2").textContent = theJSON.overskrift_4;
-
-                klonText.querySelector(".streg_h2").classList.remove("hide");
-                klonText.querySelector(".streg_h2").src = `grafik/streg.svg`;
-                textContainer.appendChild(klonText);
-            }
-
-            // tekst 4
-            if (theJSON.tekst_4) {
-                console.log(theJSON.tekst_4)
-
-                const klonText = TextTemplate.cloneNode(true).content;
-                klonText.querySelector("p").classList.remove("hide");
-                klonText.querySelector("p").innerHTML = theJSON.tekst_4;
-                textContainer.appendChild(klonText);
-
             }
 
 
