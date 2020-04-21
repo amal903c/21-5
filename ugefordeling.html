@@ -233,11 +233,12 @@
 
                 const klonText = TextTemplate.cloneNode(true).content;
 
+                klonText.querySelector(".streg_h2").classList.remove("hide");
+                klonText.querySelector(".streg_h2").src = `grafik/streg.svg`;
                 klonText.querySelector("h1").classList.remove("hide");
                 klonText.querySelector("h1").textContent = theJSON.main_overskrift;
                 //
-                klonText.querySelector(".streg").classList.remove("hide");
-                klonText.querySelector(".streg").src = `grafik/streg.svg`;
+
                 textContainer.appendChild(klonText);
 
             }
@@ -280,8 +281,6 @@
                 klonText.querySelector("h2").classList.remove("hide");
                 klonText.querySelector("h2").textContent = theJSON.overskrift_2;
 
-                klonText.querySelector(".streg_h2").classList.remove("hide");
-                klonText.querySelector(".streg_h2").src = `grafik/streg.svg`;
                 klonText.querySelector(".kalender").classList.remove("hide");
                 klonText.querySelector(".kalender").src = theJSON.img1.guid;
                 textContainer.appendChild(klonText);
@@ -309,8 +308,6 @@
                 klonText.querySelector("h2").classList.remove("hide");
                 klonText.querySelector("h2").textContent = theJSON.overskrift_3;
 
-                klonText.querySelector(".streg_h2").classList.remove("hide");
-                klonText.querySelector(".streg_h2").src = `grafik/streg.svg`;
                 klonText.querySelector(".kalender").classList.remove("hide");
                 klonText.querySelector(".kalender").src = theJSON.img2.guid;
                 textContainer.appendChild(klonText);
@@ -336,8 +333,7 @@
                 klonText.querySelector("h2").classList.remove("hide");
                 klonText.querySelector("h2").textContent = theJSON.overskrift_4;
 
-                klonText.querySelector(".streg_h2").classList.remove("hide");
-                klonText.querySelector(".streg_h2").src = `grafik/streg.svg`;
+
                 klonText.querySelector(".kalender").classList.remove("hide");
                 klonText.querySelector(".kalender").src = theJSON.img3.guid;
                 textContainer.appendChild(klonText);
