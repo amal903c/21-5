@@ -108,81 +108,81 @@
             </div>
             <div class="sektion_2_billede">
                 <img class="sektion_2_billedet" src="" alt=""> <a href="moed-os.html">
-                    <h2>BLIV EN DEL AF VORES UNIKKE KONCEPT</h2>
+                    <h2 class="hover_h2 familiensoplevelser_link">BLIV EN DEL AF VORES UNIKKE KONCEPT</h2>
                 </a>
+
             </div>
-        </div>
 
-        <!--        SEKTION2 SLUT-->
+            <!--        SEKTION2 SLUT-->
 
-        <!--        MØD BENTE OG JESPER START-->
+            <!--        MØD BENTE OG JESPER START-->
 
 
-        <div class="bente_containere">
-            <div class="hvid"></div>
-            <div class="bente_billede"> <img class="bente_billedess" src="" alt="bente og jesper">
-                <div class="loes_mere">
-                    <a href="familiernes_oplevelser.html">
-                        <h2>HVAD SIGER VORES ANDRE FAMILIER?</h2>
-                    </a>
+            <div class="bente_containere">
+                <div class="hvid"></div>
+                <div class="bente_billede"> <img class="bente_billedess" src="" alt="bente og jesper">
+                    <div class="loes_mere">
+                        <a href="familiernes_oplevelser.html">
+                            <h2 class="hover_h2 ">HVAD SIGER VORES ANDRE FAMILIER?</h2>
+                        </a>
+                    </div>
+                </div>
+                <div class="bente_tekst">
+                    <h1 class="bente_h1"></h1>
+                    <p class="bente_brod"></p>
                 </div>
             </div>
-            <div class="bente_tekst">
-                <h1 class="bente_h1"></h1>
-                <p class="bente_brod"></p>
-            </div>
-        </div>
 
-        <!--MØD BENTE OG JESPER SLUT-->
+            <!--MØD BENTE OG JESPER SLUT-->
 
-        <!--/*footer start*/-->
-        <section class="footer_wrap">
-            <div class="nyhedsbrev_container">
-                <ul>
-                    <li>
-                        <h3>Nyhedsbrev</h3>
-                    </li>
-                    <li>
-                        <div id="nyhedsbrev_input"><input type="tekst" placeholder="e-mail"></div>
-                    </li>
-                    <li><button class="nyhedsbrev_knap">Tilmeld</button></li>
-                </ul>
-            </div>
-            <div class="kontakt_container">
-                <ul>
-                    <li>
-                        <h3>Kontakt os</h3>
-                    </li>
-                    <li>21-5 A/S</li>
-                    <li>Rungstedvej 41</li>
-                    <li>2970 Hørsholm</li>
-                    <br>
-                    <li>Telefon: 70 26 11 55</li>
-                    <li>E-mail: info@21-5.dk</li>
-                    <li>Åbent mellem 9-17</li>
-                </ul>
-            </div>
-            <div class="andet_container">
-                <ul>
-                    <li>
-                        <h3>Andet</h3>
-                    </li>
-                    <li><a href="">Nyheder</a></li>
-                    <li><a href="">Presse</a></li>
-                    <li><a href="">Cookie- og privatlivspolitik</a></li>
-                    <li><a href="FAQ.html">Ofte stillede spørgsmål</a></li>
-                </ul>
-            </div>
-            <div class="some">
-                <ul>
-                    <li>
-                        <h3>Følg med</h3>
-                    </li>
-                    <li><a href="https://www.facebook.com/enogtyvefem/">Facebook</a></li>
-                    <li><a href="https://www.instagram.com/215moments/">Instagram</a></li>
-                </ul>
-            </div>
-        </section>
+            <!--/*footer start*/-->
+            <section class="footer_wrap">
+                <div class="nyhedsbrev_container">
+                    <ul>
+                        <li>
+                            <h3>Nyhedsbrev</h3>
+                        </li>
+                        <li>
+                            <div id="nyhedsbrev_input"><input type="tekst" placeholder="e-mail"></div>
+                        </li>
+                        <li><button class="nyhedsbrev_knap">Tilmeld</button></li>
+                    </ul>
+                </div>
+                <div class="kontakt_container">
+                    <ul>
+                        <li>
+                            <h3>Kontakt os</h3>
+                        </li>
+                        <li>21-5 A/S</li>
+                        <li>Rungstedvej 41</li>
+                        <li>2970 Hørsholm</li>
+                        <br>
+                        <li>Telefon: 70 26 11 55</li>
+                        <li>E-mail: info@21-5.dk</li>
+                        <li>Åbent mellem 9-17</li>
+                    </ul>
+                </div>
+                <div class="andet_container">
+                    <ul>
+                        <li>
+                            <h3>Andet</h3>
+                        </li>
+                        <li><a href="">Nyheder</a></li>
+                        <li><a href="">Presse</a></li>
+                        <li><a href="">Cookie- og privatlivspolitik</a></li>
+                        <li><a href="FAQ.html">Ofte stillede spørgsmål</a></li>
+                    </ul>
+                </div>
+                <div class="some">
+                    <ul>
+                        <li>
+                            <h3>Følg med</h3>
+                        </li>
+                        <li><a href="https://www.facebook.com/enogtyvefem/">Facebook</a></li>
+                        <li><a href="https://www.instagram.com/215moments/">Instagram</a></li>
+                    </ul>
+                </div>
+            </section>
 
 
     </main>
@@ -243,6 +243,10 @@
             document.querySelector(".sektion_2_h1").textContent = theJSON.overskrift2;
             document.querySelector(".sektion_2_brod").textContent = theJSON.tekst2;
             document.querySelector(".sektion_2_billedet").src = theJSON.billede2.guid;
+
+
+
+
 
             //Video  sektion
             document.querySelector(".iframe_video").src = theJSON.video;
