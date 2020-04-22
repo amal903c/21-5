@@ -846,98 +846,56 @@ button {
 
 
 
-
 /* FAMILIERNS OPLEVELSER POPUP */
 
-#article_familier {
-    display: grid;
-    grid-template-rows: auto auto;
-
-    background-color: white;
-}
-
 #familier_detalje {
-    width: 100%;
-    height: 100%;
+    width: 340px;
+    height: 500px;
+    position: fixed;
     z-index: 10;
     overflow: auto;
-    position: fixed;
-    background-color: white;
-    top: 0;
     left: 0;
-    padding-top: 100px;
-    background-color: rgba(0, 0, 0, 0.4);
+    right: 0;
+    background-color: rgb(242, 242, 242);
+
+    margin: auto;
 }
 
-
-
-
-
-
-/* TEKST */
+.col_familier {
+    padding: 0 35px;
+}
 
 .by_popup {
-    margin: 12px 0 0 0;
+    margin: 10px 0 35px 0;
     text-align: center;
 }
 
 .navn_popup {
-    margin: 0;
+    margin: 13px 0 0 0;
     text-align: center;
     line-height: 20px;
 }
 
 .text_popup {
-    margin: 30px 15px 60px 15px;
-}
-
-.col_text_fam {
-    padding: 30px;
+    margin: 0 0 60px 0;
 }
 
 .link_popup {
     padding-bottom: 60px;
 }
 
-
-
-
-
-
-/* BILLEDE */
-
-.col_familier img {
-    padding: 30px;
-}
-
-
-
-
-/* LUK KNAP */
 .skjul {
     display: none;
 }
 
 .luk_familier {
-    cursor: pointer;
-    float: left;
     color: black;
+    cursor: pointer;
+    margin: 0;
+    float: right;
     border: none;
     font-size: 1.5rem;
-    background-color: white;
-    margin: 0;
-}
-
-
-@media only screen and (min-width: 768px) {
-    #article_familier {
-        display: grid;
-        grid-template-columns: 50vw 50vw;
-    }
-
-    .navn_popup {
-        margin: 30px 0 0 0;
-    }
+    background-color: rgb(242, 242, 242);
 }
 
 
@@ -1129,433 +1087,516 @@ h2 {
 
 
 
-/* VORES PAKKER */
 
-.menu img {
-    width: 50%;
-    padding: 19px;
-    margin: auto;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*                               SYLLE START                                      */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*                                   MICHELLE START                                */
+
+#forside .main {
+    width: 50vw;
 }
 
-.menu_pakker {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+#forside .karrusel {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
 }
 
-.menu img:hover {
-    opacity: 0.6;
+#forside .the_container {
+    display: flex;
+    overflow-x: scroll;
+    scroll-snap-type: x mandatory;
 }
 
-.h1_pakker {
-    margin-left: 64px;
-    margin-bottom: 40px;
+#forside .the_container section {
+    scroll-snap-align: start;
+    min-width: 100%;
 }
 
-.pakke {
-    padding: 0 64px;
-    margin: 0;
+#forside .karrusel_inner {
+    display: flex;
+    margin: 50px 75px 20px 75px;
+
+    flex-grow: 1;
+    flex-basis: 800px;
 }
 
-.overskrift_forening {
-    margin-top: 50px;
-    margin-bottom: 0;
-    line-height: 20px;
-}
+#forside .karrusel_tekst {
+    margin: 10px 50px 20px 50px;
 
-.tekst2 p {
-    margin: 0;
-}
-
-.pris {
-    border: solid black 1px;
-    border-radius: 40px;
-    text-align: center;
-}
-
-.overskrift2 {
-    margin-top: 60px;
-    margin-bottom: 0;
-    line-height: 14px;
-}
-
-
-.liste_pakker {
-    display: grid;
-    grid-template-rows: auto auto;
+    flex-grow: 1;
+    flex-basis: 800px;
 }
 
 @media only screen and (min-width: 768px) {
-    .liste_pakker {
-        display: grid;
-        grid-template-columns: 50vw 50vw;
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    /*                               SYLLE START                                      */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    /*                                   MICHELLE START                                */
-
-    #forside .main {
-        width: 50vw;
-    }
-
-    #forside .karrusel {
-        height: 100%;
-        width: 100%;
-        display: flex;
-        flex-wrap: wrap;
-    }
-
-    #forside .the_container {
-        display: flex;
-        overflow-x: scroll;
-        scroll-snap-type: x mandatory;
-    }
-
-    #forside .the_container section {
-        scroll-snap-align: start;
-        min-width: 100%;
-    }
-
     #forside .karrusel_inner {
-        display: flex;
-        margin: 50px 75px 20px 75px;
-
-        flex-grow: 1;
-        flex-basis: 800px;
+        flex-basis: 200px;
+        margin: 110px 10px 20px 10px;
     }
 
     #forside .karrusel_tekst {
-        margin: 10px 50px 20px 50px;
-
-        flex-grow: 1;
-        flex-basis: 800px;
+        flex-basis: 200px;
+        margin-top: 20px;
     }
 
-    @media only screen and (min-width: 768px) {
-        #forside .karrusel_inner {
-            flex-basis: 200px;
-            margin: 110px 10px 20px 10px;
-        }
-
-        #forside .karrusel_tekst {
-            flex-basis: 200px;
-            margin-top: 20px;
-        }
-
-        #forside .karrusel_brod {
-            margin-top: 50px;
-            margin-left: -10px;
-        }
-
-        #forside .karrusel_h1 {
-            margin-top: 50px;
-            margin-left: 30px;
-        }
+    #forside .karrusel_brod {
+        margin-top: 50px;
+        margin-left: -10px;
     }
 
-    @media only screen and (min-width: 1024px) {
-        #forside .karrusel_tekst {
-            margin-top: 180px;
-        }
+    #forside .karrusel_h1 {
+        margin-top: 50px;
+        margin-left: 30px;
+    }
+}
 
-
+@media only screen and (min-width: 1024px) {
+    #forside .karrusel_tekst {
+        margin-top: 180px;
     }
 
 
-    #forside .tilbage,
-    #forside .foran {
-        margin-top: 30%;
-        cursor: pointer;
-        align-items: center;
-    }
-
-    #forside .tilbage p,
-    #forside .foran p {
-        z-index: 10;
-        font-size: 40px;
-        color: rgba(224, 189, 2, 0.57);
-    }
-
-    /* Tekst styling */
-    #forside h1 {
-        font-family: 'Raleway', sans-serif;
-        font-size: 2.5rem;
-        line-height: 50px;
-    }
-
-    #forside p {
-        font-family: 'Montserrat', sans-serif;
-        font-size: 1rem;
-        font-weight: 300;
-        letter-spacing: 1px;
-        line-height: 25px;
-    }
-
-    /*Sektion 2*/
-
-    #forside .sektion_2 {
-        display: flex;
-        flex-wrap: wrap;
-    }
-
-    #forside .sektion_2_billedet {}
+}
 
 
+#forside .tilbage,
+#forside .foran {
+    margin-top: 30%;
+    cursor: pointer;
+    align-items: center;
+}
 
-    #forside .sektion_2_tekst {
-        flex-grow: 1;
-        flex-basis: 800px;
+#forside .tilbage p,
+#forside .foran p {
+    z-index: 10;
+    font-size: 40px;
+    color: rgba(224, 189, 2, 0.57);
+}
 
+/* Tekst styling */
+#forside h1 {
+    font-family: 'Raleway', sans-serif;
+    font-size: 2.5rem;
+    line-height: 50px;
+}
 
-        margin: 10px 50px 20px 50px;
-    }
+#forside p {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;
+    font-weight: 300;
+    letter-spacing: 1px;
+    line-height: 25px;
+}
 
-    #forside .sektion_2_brod {
-        margin: 20px 0px 20px 40px;
-    }
+/*Sektion 2*/
 
-    #forside .sektion_2_billede {
-        flex-grow: 1;
-        flex-basis: 800px;
+#forside .sektion_2 {
+    display: flex;
+    flex-wrap: wrap;
+}
 
-        margin: 20px 80px 20px 80px;
-    }
-
-
-    #forside h2 {
-        font-family: 'Raleway', sans-serif;
-        font-size: 1.2rem;
-        line-height: 30px;
-        max-width: 180px;
-        background-color: rgba(233, 244, 248, 0.67);
-        position: absolute;
-        padding: 15px;
-
-        margin-top: -35vw;
-        margin-left: 40%;
-        color: black;
-        opacity: 1;
-    }
+#forside .sektion_2_billedet {}
 
 
 
+#forside .sektion_2_tekst {
+    flex-grow: 1;
+    flex-basis: 800px;
 
-<<<<<<< HEAD
-=======
+
+    margin: 10px 50px 20px 50px;
+}
+
+#forside .sektion_2_brod {
+    margin: 20px 0px 20px 40px;
+}
+
+#forside .sektion_2_billede {
+    flex-grow: 1;
+    flex-basis: 800px;
+
+    margin: 20px 80px 20px 80px;
+}
+
+
 /*
 #forside h2 {
     font-family: 'Raleway', sans-serif;
@@ -1572,48 +1613,29 @@ h2 {
     opacity: 1;
 }
 */
->>>>>>> origin/master
-
-
-    @media only screen and (min-width: 768px) {
-        #forside .sektion_2_tekst {
-            flex-basis: 200px;
-        }
-
-        #forside .sektion_2_billede {
-            flex-basis: 200px;
-
-            margin: 100px 50px 10px 0px;
-        }
 
 
 
-        #forside .sektion_2_brod {
-            margin: 80px 0px 20px 40px;
-        }
 
-        #forside h2 {
-            margin-top: -25vw;
-            margin-left: 25%;
-            max-width: 150px;
-        }
+
+
+@media only screen and (min-width: 768px) {
+    #forside .sektion_2_tekst {
+        flex-basis: 200px;
     }
 
-    @media only screen and (min-width: 1024px) {
-        #forside .sektion_2_tekst {
-            margin-top: 50px;
-        }
+    #forside .sektion_2_billede {
+        flex-basis: 200px;
 
-        #forside h2 {
-            margin-top: -20vw;
-            margin-left: 25%;
-            max-width: 180px;
-        }
+        margin: 100px 50px 10px 0px;
     }
 
-<<<<<<< HEAD
-    /*VIIDEDO START*/
-=======
+
+
+    #forside .sektion_2_brod {
+        margin: 80px 0px 20px 40px;
+    }
+
     /*
     #forside h2 {
         margin-top: -25vw;
@@ -1622,16 +1644,12 @@ h2 {
     }
 */
 }
->>>>>>> origin/master
 
-    #forside .video_container {
+@media only screen and (min-width: 1024px) {
+    #forside .sektion_2_tekst {
         margin-top: 50px;
-        display: flex;
-        flex-wrap: wrap-reverse;
     }
 
-<<<<<<< HEAD
-=======
     /*
     #forside h2 {
         margin-top: -20vw;
@@ -1674,178 +1692,171 @@ h2 {
 
 
 @media only screen and (min-width: 768px) {
->>>>>>> origin/master
     #forside .iframe_video {
-        flex-grow: 1;
-        flex-basis: 800px;
-    }
-
-    #forside .video_h1 {
-        flex-grow: 1;
-        flex-basis: 800px;
-        margin: 20px 50px 0px 50px;
+        flex-basis: 200px;
     }
 
     #forside iframe {
-        margin: 20px 50px 10px 50px;
-        width: 500px;
-        height: 300px;
+        margin: 20px 10px 10px 50px;
+        max-width: 550px;
+    }
+
+    #forside .video_h1 {
+        flex-basis: 200px;
+        max-width: 370px;
+
+        margin: 20px 50px 0px 10px;
     }
 
     #forside .videobrod {
         max-width: 400px;
-        margin: 10px 50px 10px 50px;
+        margin: 40px 50px 10px 50px;
+        margin-left: 20vw;
+    }
+}
+
+@media only screen and (min-width: 1024px) {
+    #forside .videobrod {
+        max-width: 700px;
         margin-left: 40vw;
     }
 
+    #forside .video_h1 {
+        flex-basis: 200px;
+        max-width: 370px;
 
-    @media only screen and (min-width: 768px) {
-        #forside .iframe_video {
-            flex-basis: 200px;
-        }
-
-        #forside iframe {
-            margin: 20px 10px 10px 50px;
-            max-width: 550px;
-        }
-
-        #forside .video_h1 {
-            flex-basis: 200px;
-            max-width: 370px;
-
-            margin: 20px 50px 0px 10px;
-        }
-
-        #forside .videobrod {
-            max-width: 400px;
-            margin: 40px 50px 10px 50px;
-            margin-left: 20vw;
-        }
+        margin: 20px 50px 0px 70px;
     }
-
-    @media only screen and (min-width: 1024px) {
-        #forside .videobrod {
-            max-width: 700px;
-            margin-left: 40vw;
-        }
-
-        #forside .video_h1 {
-            flex-basis: 200px;
-            max-width: 370px;
-
-            margin: 20px 50px 0px 70px;
-        }
-    }
+}
 
 
-    /*Bente*/
+/*Bente*/
 
-    #forside .bente_containere {
-        display: flex;
-        flex-wrap: wrap-reverse;
-        margin-bottom: 200px;
-    }
+#forside .bente_containere {
+    display: flex;
+    flex-wrap: wrap-reverse;
+    margin-bottom: 200px;
+}
 
+#forside .bente_billede {
+    flex-grow: 1;
+    flex-basis: 800px;
+}
+
+#forside .bente_tekst {
+    flex-grow: 1;
+    flex-basis: 800px;
+    margin: 20px 50px 20px 120px;
+}
+
+#forside .bente_brod {
+    margin: 0px 0px 0px -40px;
+}
+
+#forside .bente_billede {
+    margin: 20px 50px 20px 100px;
+    max-width: 500px;
+}
+
+
+@media only screen and (min-width: 768px) {
     #forside .bente_billede {
-        flex-grow: 1;
-        flex-basis: 800px;
+        flex-basis: 200px;
+        margin-right: 0px;
+        margin-top: 100px;
+        margin-left: 50px;
+        max-width: 700px;
     }
 
     #forside .bente_tekst {
-        flex-grow: 1;
-        flex-basis: 800px;
-        margin: 20px 50px 20px 120px;
+        flex-basis: 200px;
     }
 
     #forside .bente_brod {
-        margin: 0px 0px 0px -40px;
+        margin-top: 50px;
     }
+}
 
-    #forside .bente_billede {
-        margin: 20px 50px 20px 100px;
-        max-width: 500px;
+
+@media only screen and (min-width: 1024px) {
+    #forside .bente_brod {
+        margin-top: 50px;
     }
+}
 
 
-    @media only screen and (min-width: 768px) {
-        #forside .bente_billede {
-            flex-basis: 200px;
-            margin-right: 0px;
-            margin-top: 100px;
-            margin-left: 50px;
-            max-width: 700px;
-        }
-
-        #forside .bente_tekst {
-            flex-basis: 200px;
-        }
-
-        #forside .bente_brod {
-            margin-top: 50px;
-        }
-    }
+#forside .loes_mere h2 {
+    font-family: 'Raleway', sans-serif;
+    font-size: 1.2rem;
+    line-height: 30px;
+    max-width: none;
+    background-color: rgba(216, 234, 240, 0.98);
+    padding: 15px;
+    margin: 30px 10px 20px 0px;
+    color: black;
+    opacity: 1;
+}
 
 
-    @media only screen and (min-width: 1024px) {
-        #forside .bente_brod {
-            margin-top: 50px;
-        }
-    }
+
+#forside h2:hover {
+    color: black;
+    background-color: rgba(233, 244, 248, 0.98);
+}
+
+#forside .loes_mere h2:hover {
+    color: black;
+    background-color: rgba(233, 244, 248, 0.88);
+}
+
+.hvid {
+    width: 350px;
+    height: 400px;
+    background-color: rgba(182, 219, 232, 0.98);
+    position: absolute;
+    opacity: 0.1;
+    margin-top: 150px;
+    margin-left: 220px;
+}
 
 
+
+@media only screen and (min-width: 768px) {
     #forside .loes_mere h2 {
-        font-family: 'Raleway', sans-serif;
-        font-size: 1.2rem;
-        line-height: 30px;
-        max-width: none;
-        background-color: rgba(216, 234, 240, 0.98);
-        padding: 15px;
-        margin: 30px 10px 20px 0px;
-        color: black;
-        opacity: 1;
-    }
-
-
-
-    #forside h2:hover {
-        color: black;
-        background-color: rgba(233, 244, 248, 0.98);
-    }
-
-    #forside .loes_mere h2:hover {
-        color: black;
-        background-color: rgba(233, 244, 248, 0.88);
+        max-width: 165px;
+        margin-left: 22%;
+        margin-top: 80px;
     }
 
     .hvid {
-        width: 350px;
+        width: 500px;
         height: 400px;
-        background-color: rgba(182, 219, 232, 0.98);
-        position: absolute;
-        opacity: 0.1;
-        margin-top: 150px;
-        margin-left: 220px;
+        margin-top: -10%;
+        margin-left: 200px;
+    }
+
+}
+
+@media only screen and (min-width: 1024px) {
+    #forside .loes_mere h2 {
+        margin-top: 100px;
+        max-width: 400px;
     }
 
 
-
-    @media only screen and (min-width: 768px) {
-        #forside .loes_mere h2 {
-            max-width: 165px;
-            margin-left: 22%;
-            margin-top: 80px;
-        }
-
-        .hvid {
-            width: 500px;
-            height: 400px;
-            margin-top: -10%;
-            margin-left: 200px;
-        }
-
-<<<<<<< HEAD
+    .hvid {
+        width: 580px;
+        height: 450px;
+        margin-top: 200px;
+        margin-left: 200px;
     }
-=======
+
+}
+
+
+
+/*splash*/
+
 #forside .splashbillede {
     background-image: url(img/splash.jpg);
     height: 100vh;
@@ -1854,24 +1865,23 @@ h2 {
     background-repeat: no-repeat;
     background-size: cover;
 }
->>>>>>> origin/master
 
-    @media only screen and (min-width: 1024px) {
-        #forside .loes_mere h2 {
-            margin-top: 100px;
-            max-width: 400px;
-        }
+#forside .splash_tekst_1 {
+    font-size: 9vw;
+    position: absolute;
+    top: 8%;
+    left: 5%;
+    line-height: 110px;
+}
 
+#forside .splash_tekst_2 {
+    font-size: 9vw;
+    position: absolute;
+    top: 37%;
+    left: 55%;
+    line-height: 120px;
+}
 
-<<<<<<< HEAD
-        .hvid {
-            width: 580px;
-            height: 450px;
-            margin-top: 200px;
-            margin-left: 200px;
-        }
-
-=======
 @media only screen and (min-width: 320px) {
     .overlay_splash {
         width: 100vw;
@@ -1879,12 +1889,9 @@ h2 {
 
     .tekst_opdeler {
         width: 100vw
->>>>>>> origin/master
     }
 }
 
-<<<<<<< HEAD
-=======
 @media only screen and (min-width: 768px) {
     .overlay_splash {
         width: 50vw;
@@ -1926,132 +1933,89 @@ h2 {
     padding: 1rem;
     padding: 0.5rem 3rem;
 }
->>>>>>> origin/master
-
-
-    /*splash*/
-
-    #forside .splashbillede {
-        background-image: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url(img/Le%20Tignet-114.jpg);
-        height: 100vh;
-        width: 100vw;
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: cover;
-    }
-
-    #forside .splash_tekst_1 {
-        font-size: 9vw;
-        position: absolute;
-        top: 8%;
-        left: 5%;
-        line-height: 110px;
-    }
-
-    #forside .splash_tekst_2 {
-        font-size: 9vw;
-        position: absolute;
-        top: 37%;
-        left: 55%;
-        line-height: 120px;
-    }
-
-
-    @media only screen and (max-width: 768px) {
-        #forside .splash_tekst_1 {
-            line-height: 70px;
-            top: 22%;
-        }
-
-        #forside .splash_tekst_2 {
-            top: 45%;
-            line-height: 70px;
-        }
-    }
 
 
 
-    /* Footer */
+/* Footer */
 
-    .footer_wrap {
-        text-align: center;
-        margin: 50px 0px 50px 0px;
-        display: flex;
-        flex-wrap: wrap;
-    }
+.footer_wrap {
+    text-align: center;
+    margin: 50px 0px 50px 0px;
+    display: flex;
+    flex-wrap: wrap;
+}
 
-    .footer_wrap li {
-        font-family: 'Montserrat', sans-serif;
-        list-style-type: none;
-        font-size: 0.8rem;
-        line-height: 20px;
-    }
+.footer_wrap li {
+    font-family: 'Montserrat', sans-serif;
+    list-style-type: none;
+    font-size: 0.8rem;
+    line-height: 20px;
+}
 
-    .footer_wrap a {
-        color: black;
-    }
+.footer_wrap a {
+    color: black;
+}
 
-    .footer_wrap a:hover {
-        background-color: rgba(182, 219, 232, 0.58);
-    }
+.footer_wrap a:hover {
+    background-color: rgba(182, 219, 232, 0.58);
+}
 
-    .footer_wrap h3 {
-        font-size: 1.5rem;
-        color: #cbcbcb;
-        font-family: 'Raleway', sans-serif;
-    }
+.footer_wrap h3 {
+    font-size: 1.5rem;
+    color: #cbcbcb;
+    font-family: 'Raleway', sans-serif;
+}
 
-    .footer_wrap input {
-        width: 200px;
-        padding: 5px;
-    }
+.footer_wrap input {
+    width: 200px;
+    padding: 5px;
+}
 
-    .footer_wrap button {
-        margin-top: 10px;
-        padding: 5px;
-        cursor: pointer;
-        background-color: rgba(182, 219, 232, 0.58);
-        font-family: 'Montserrat', sans-serif;
-        font-size: 0.8rem;
-    }
+.footer_wrap button {
+    margin-top: 10px;
+    padding: 5px;
+    cursor: pointer;
+    background-color: rgba(182, 219, 232, 0.58);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.8rem;
+}
 
-    .footer_wrap button:hover {
-        background-color: rgba(182, 219, 232, 0.98);
-    }
+.footer_wrap button:hover {
+    background-color: rgba(182, 219, 232, 0.98);
+}
+
+.nyhedsbrev_container,
+.kontakt_container,
+.andet_container,
+.some {
+    border-top: 0.5px rgba(182, 219, 232, 0.98) solid;
+
+    flex-grow: 1;
+    flex-basis: 270px;
+}
+
+
+
+
+
+
+@media only screen and (min-width: 768px) {
 
     .nyhedsbrev_container,
     .kontakt_container,
     .andet_container,
     .some {
-        border-top: 0.5px rgba(182, 219, 232, 0.98) solid;
-
-        flex-grow: 1;
-        flex-basis: 270px;
+        flex-basis: 100px;
     }
 
-
-
-
-
-
-    @media only screen and (min-width: 768px) {
-
-        .nyhedsbrev_container,
-        .kontakt_container,
-        .andet_container,
-        .some {
-            flex-basis: 100px;
-        }
-
-        .nyhedsbrev_container {
-            margin-left: 40px;
-        }
-
-        .some {
-            margin-right: 50px;
-        }
+    .nyhedsbrev_container {
+        margin-left: 40px;
     }
 
+    .some {
+        margin-right: 50px;
+    }
+}
 
 
 
@@ -2187,4 +2151,5 @@ h2 {
 
 
 
-    /*                                     Michelle slut                                 */
+
+/*                                     Michelle slut                                 */
