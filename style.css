@@ -752,6 +752,44 @@ h2 {
 
 
 
+/* VORES PAKKER */
+
+.menu img {
+    width: 50%;
+    padding: 19px;
+    margin: auto;
+}
+
+.menu_pakker {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+}
+
+.menu img:hover {
+    opacity: 0.6;
+}
+
+.h1_pakker {
+    margin-left: 64px;
+    margin-bottom: 40px;
+}
+
+.pakke {
+    padding: 0 64px;
+    margin: 0;
+}
+
+.overskrift_forening {
+    margin-top: 50px;
+    margin-bottom: 0;
+    line-height: 20px;
+}
+
+.tekst2 p {
+    margin: 0;
+}
+
+
 
 
 

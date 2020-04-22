@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="da">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Vores pakker</title>
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro|Sriracha&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="myIcons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="myIcons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="myIcons/favicon-16x16.png">
+    <link rel="manifest" href="myIcons/site.webmanifest">
+    <link rel="mask-icon" href="myIcons/safari-pinned-tab.svg" color="#35aaa8">
+    <link rel="shortcut icon" href="myIcons/favicon.ico">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="msapplication-config" content="myIcons/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
+
+    <style>
+        /* MENU */
+
+        nav {
+            text-align: center;
+        }
+
+
+        .filter img {
+            width: 50%;
+
+        }
+
+        .filter:hover {
+            color: grey;
+            cursor: pointer;
+        }
+
+        .valgt {
+            color: grey;
+        }
+
+
+
+
+
+        /* SITE */
+
+
+
+
+
+
+
+        .pakker_container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            margin: 0 3vw;
+            padding: 0 10vw;
+        }
+
+    </style>
+</head>
+
+
+
+
+
+<body>
+
+    <header>
+        <h1 class="h1_pakker">Vores pakker</h1>
+    </header>
+
+
+
+    <nav class="menu menu_pakker">
+        <img class="filter" data-kategori="family" src="img/family_model.png">
+        <img class="filter" data-kategori="large" src="img/large_model.png">
+        <img class="filter" data-kategori="grande" src="img/grande_model.png">
+    </nav>
+
+
+
+    <section class="liste_pakker"></section>
+
+    <template>
+        <article class="pakke">
+            <img src="" alt="">
+            <h2 class="main_overskrift"></h2>
+            <h3></h3>
+            <p class="tekst1"></p>
+            <h3 class="overskrift_forening"></h3>
+            <p class="tekst2"></p>
+            <h3 class="destinationer"></h3>
+            <p class="tekst3"></p>
+            <h3 class="overskrift2"></h3>
+            <p class="tekst4"></p>
+            <img class="model1" src="" alt"">
+        </article>
+    </template>
+
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", start);
+
+        const listeELM = document.querySelector(".liste_pakker");
+        const template = document.querySelector("template").content;
+
+        let filterPakke = "family";
+
+        //        HENT WORDPRESS
+        const url = "http://michelleyoung.dk/kea/09_cms/21-5_wp/wordpress/wp-json/wp/v2/vores_pakker";
+
+
+
+        async function start() {
+            const resspons = await fetch(url);
+            const json = await resspons.json();
+            vis(json);
+            addEventListenersToButtons();
+        }
+
+
+        function vis(pakker) {
+            listeELM.innerHTML = "";
+            pakker.forEach(pakke => {
+                if (filterPakke == "family" || filterPakke == pakke.kategorier) {
+                    console.log(pakke);
+                    const klon = template.cloneNode(true);
+                    klon.querySelector(".main_overskrift").textContent = pakke.main_overskrift;
+                    klon.querySelector(".tekst1").innerHTML = pakke.tekst_1;
+                    klon.querySelector(".overskrift_forening").innerHTML = pakke.overskrift_forening;
+                    klon.querySelector(".tekst2").innerHTML = pakke.tekst_2;
+                    klon.querySelector(".destinationer").innerHTML = pakke.destinationer;
+                    klon.querySelector(".tekst3").innerHTML = pakke.tekst_3;
+                    klon.querySelector(".overskrift2").innerHTML = pakke.overskrift_2;
+                    klon.querySelector(".tekst4").innerHTML = pakke.tekst_4;
+                    klon.querySelector(".model1").src = pakke.model_1.guid;
+
+
+                    listeELM.appendChild(klon);
+                }
+            })
+        }
+
+        function addEventListenersToButtons() {
+            document.querySelectorAll("nav button").forEach(elm => {
+                elm.addEventListener("click", filtrering);
+            })
+        }
+
+        function filtrering() {
+            filterPakke = this.dataset.pakke;
+            document.querySelector("h2").textContent = this.textContent;
+            start()
+        }
+
+
+
+
+
+
+        //        const endpoint = "http://michelleyoung.dk/kea/09_cms/21-5_wp/wordpress/wp-json/wp/v2/vores_pakker";
+        // let pakke = {}
+        // let filter = "alle";
+        // const container = document.querySelector(".pakker_container");
+        // const template = document.querySelector("template");
+        // const detalje = document.querySelector("#detalje");
+        //
+        //
+        // document.addEventListener("DOMContentLoaded", start);
+        //
+        //
+        // function start() {
+        // loadData();
+        // }
+        //
+        // async function loadData() {
+        // const response = await fetch(endpoint);
+        // mad = await response.json();
+        //
+        // visPakker();
+        // }
+        //
+        //
+        //
+        // function visPakker() {
+        // container.innerHTML = "";
+        // mad.feed.entry.forEach(mad => {
+        // if (filter == "alle" || filter == mad.gsx$kategori.$t) {
+        //
+        // //løb dyrene igennem og indsæt data i en template
+        // let klon = template.cloneNode(true).content;
+        // klon.querySelector("img").src = `imgs/small/${mad.gsx$billede.$t}-sm.jpg`;
+        // klon.querySelector("img").alt = "Portæt af" + mad.gsx$navn.$t;
+        // klon.querySelector("h2").textContent = mad.gsx$navn.$t;
+        // klon.querySelector(".kort").textContent = mad.gsx$kort.$t;
+        // klon.querySelector(".pris").textContent += mad.gsx$pris.$t + ",-";
+        // klon.querySelector(".mad").addEventListener("click", () => {
+        // visDetalje(mad)
+        // });
+        // container.appendChild(klon);
+        // addEventlistenersToButtons();
+        // }
+        // })
+        // }
+        //
+        //
+        //
+        //
+        // function addEventlistenersToButtons() {
+        // document.querySelectorAll(".filter").forEach(elm => {
+        // elm.addEventListener("click", filtrering);
+        // })
+        // }
+        //
+        //
+        //
+        //
+        //
+        // function filtrering() {
+        // console.log("filter");
+        // filter = this.dataset.kategori;
+        // document.querySelector("h2").textContent = this.textContent;
+        // document.querySelectorAll(".filter").forEach(elm => {
+        // elm.classList.remove("valgt");
+        // })
+        // this.classList.add("valgt");
+        // visMad();
+        // }
+        //
+        //
+        //
+        //
+        //
+        // function visDetalje(mad) {
+        // detalje.classList.remove("skjul");
+        // detalje.querySelector("button").addEventListener("click", () => detalje.classList.add("skjul"));
+        // console.log(mad.gsx$navn.$t);
+        // detalje.querySelector("img").src = `imgs/large/${mad.gsx$billede.$t}.jpg`;
+        // detalje.querySelector("img").alt = "Portæt af" + mad.gsx$navn.$t;
+        // detalje.querySelector("h2").textContent = mad.gsx$navn.$t;
+        // detalje.querySelector(".lang").textContent = mad.gsx$lang.$t;
+        // detalje.querySelector(".pris").textContent += mad.gsx$pris.$t + ",-";
+        // }
+
+    </script>
+
+
+
+
+
+</body>
+
+</html>
