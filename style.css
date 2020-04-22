@@ -1947,7 +1947,7 @@ h3 {
 .cta_splash {
     background-color: #8DC2DA;
     padding: 1rem;
-    padding: 0.5rem 3rem;
+    padding: 20px 30px;
 }
 
 
@@ -1959,6 +1959,7 @@ h3 {
     margin: 50px 0px 50px 0px;
     display: flex;
     flex-wrap: wrap;
+    width: 100vw;
 }
 
 .footer_wrap li {
