@@ -1048,8 +1048,8 @@ h3 {
     background-image: url()
 }
 
-h1,
-h2 {
+#text_container h1,
+#text_container h2 {
     margin-bottom: 0;
 }
 
@@ -1832,11 +1832,13 @@ h2 {
 
 
 @media only screen and (min-width: 768px) {
+    /*
     #forside .loes_mere h2 {
         max-width: 165px;
         margin-left: 22%;
         margin-top: 80px;
     }
+*/
 
     .hvid {
         width: 500px;
@@ -1848,10 +1850,12 @@ h2 {
 }
 
 @media only screen and (min-width: 1024px) {
+    /*
     #forside .loes_mere h2 {
         margin-top: 100px;
         max-width: 400px;
     }
+*/
 
 
     .hvid {
