@@ -153,6 +153,321 @@ h3 {
     }
 }
 
+.logoimg,
+.land_img {
+    width: 60px;
+}
+
+.user {
+    width: 20px;
+    margin-left: 5px;
+}
+
+/* generelt */
+li {
+    cursor: pointer;
+    color: #989898;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 300;
+    display: flex;
+    /*            align-self: center;*/
+}
+
+li:hover {
+    border-bottom: 1px solid black;
+    /*            color: rgba(216, 234, 240, 0.98);*/
+}
+
+ul {
+    padding: 0;
+
+}
+
+
+
+/* knapperne */
+.menuknap,
+.lukkeknap {
+    color: #989898;
+    font-size: 2.5rem;
+    cursor: pointer;
+    font-family: 'Open Sans', sans-serif;
+}
+
+button {
+    display: flex;
+    flex-direction: row;
+    border: none;
+    align-self: center;
+    cursor: pointer;
+}
+
+/* drop downmenu */
+.dropdown_container,
+.dropdown_container_om215,
+.dropdown_container_boliger,
+.dropdown_container_okonomi,
+.dropdown_container_praktiskinfo {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+    width: 47vw;
+    margin: 0 auto;
+    grid-gap: 17px;
+    cursor: pointer;
+    background-color: white;
+}
+
+/*
+        .dropdown_container_boliger {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            width: 47vw;
+            margin: 0 auto;
+            grid-gap: 17px;
+            cursor: pointer;
+            background-color: white;
+        }
+*/
+/*
+
+        .dropdown_container_okonomi {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            width: 47vw;
+            margin: 0 auto;
+            grid-gap: 17px;
+            cursor: pointer;
+            background-color: white;
+        }
+*/
+
+/* flagene */
+#alle_flag_container {
+    display: flex;
+    align-self: center;
+    justify-content: space-around;
+}
+
+.flag_container {
+    display: flex;
+}
+
+.flag_container img {
+    padding: 0.5rem;
+}
+
+#alle_flag_container img {
+    padding: 0.5rem;
+}
+
+/* resonsiv design */
+
+/* mobil */
+@media only screen and (min-width: 320px) {
+    li {
+        font-size: 1.3rem;
+        margin: 1rem;
+        border-bottom: 0.1px solid #989898;
+    }
+
+    input {
+        margin: 2rem;
+        padding: 1.2rem;
+    }
+
+    .ombyt {
+        flex-direction: column-reverse;
+    }
+
+    .mobil_nav_container {
+        padding: 1rem;
+    }
+
+    #menu_punkter_content {
+        flex-direction: row-reverse;
+        align-items: center;
+        justify-content: flex-end;
+
+    }
+
+    .dropdown_container,
+    .dropdown_container_om215,
+    .dropdown_container_praktiskinfo {
+        margin-left: 7vw;
+    }
+
+    .dropdown_container_boliger {
+        margin-left: 7vw;
+    }
+
+    .dropdown_container_okonomi {
+        margin-left: 7vw;
+    }
+
+    #menu_punkter_content img {
+        height: 13vw;
+    }
+}
+
+@media only screen and (min-width: 1020px) {
+    #menu_linje {
+        display: block;
+        opacity: 1;
+    }
+
+    .menuknap {
+        display: none;
+
+
+    }
+
+    .logo_mobil {
+        display: none;
+    }
+
+    #menu_punkter {
+        /*menupunkter container bare med id */
+        flex-direction: row;
+    }
+
+    li {
+        align-self: center;
+        font-size: 1rem;
+        border: none;
+    }
+
+    input {
+        margin: 1rem;
+        padding: 1rem;
+    }
+
+    .ombyt {
+        flex-direction: row;
+    }
+
+    .flag_container {
+        display: none;
+    }
+
+    .mobil_nav_container {
+        padding: 0rem;
+    }
+
+    /*dropdown */
+    .dropdown_container,
+    .dropdown_container_boliger,
+    .dropdown_container_okonomi,
+    .dropdown_container_om215,
+    .dropdown_container_praktiskinfo {
+        position: absolute;
+        left: 0;
+        top: 10vw;
+        width: auto;
+        margin: 0 auto;
+        right: 0;
+        margin-left: 3rem;
+    }
+
+    /*
+            .dropdown_container_boliger {
+                position: absolute;
+                left: 0;
+                top: 10vw;
+                width: auto;
+                margin: 0 auto;
+                right: 0;
+            }
+*/
+
+    /*
+            .dropdown_container_okonomi {
+                position: absolute;
+                left: 0;
+                top: 10vw;
+                width: auto;
+                margin: 0 auto;
+                right: 0;
+            }
+*/
+
+    /*
+            .dropdown_container_om215 {
+                position: absolute;
+                left: 0;
+                top: 10vw;
+                width: auto;
+                margin: 0 auto;
+                right: 0;
+            }
+*/
+
+    #menu_punkter_content img {
+        height: 5vw;
+    }
+
+
+
+}
+
+.hidden {
+    display: none;
+}
+
+/* webdesign */
+#menu_linje {}
+
+.menupunkter_container {
+    display: flex;
+    justify-content: space-around;
+    align-self: center;
+    list-style-type: none;
+
+    flex-direction: column;
+}
+
+/* mobil design */
+
+.mobil_nav_container {
+    display: flex;
+    justify-content: space-between;
+    align-self: center;
+
+}
+
+.ombyt {
+    display: flex;
+}
+
+/* grid med billederne og teskten */
+
+#menu_punkter_content {
+    display: flex;
+
+
+}
+
+#menu_punkter_content:hover {
+    opacity: 0.6;
+}
+
+#menu_punkter_content img {
+    width: 40%;
+    object-fit: cover;
+}
+
+
+#title {
+    color: #989898;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 300;
+    margin-left: 15px;
+
+}
+
+
+.atag {
+    display: flex;
+}
 
 
 
@@ -1239,6 +1554,25 @@ h2 {
 
 
 
+<<<<<<< HEAD
+=======
+/*
+#forside h2 {
+    font-family: 'Raleway', sans-serif;
+    font-size: 1.2rem;
+    line-height: 30px;
+    max-width: 180px;
+    background-color: rgba(233, 244, 248, 0.67);
+    position: absolute;
+    padding: 15px;
+
+    margin-top: -35vw;
+    margin-left: 40%;
+    color: black;
+    opacity: 1;
+}
+*/
+>>>>>>> origin/master
 
 
     @media only screen and (min-width: 768px) {
@@ -1277,7 +1611,18 @@ h2 {
         }
     }
 
+<<<<<<< HEAD
     /*VIIDEDO START*/
+=======
+    /*
+    #forside h2 {
+        margin-top: -25vw;
+        margin-left: 25%;
+        max-width: 150px;
+    }
+*/
+}
+>>>>>>> origin/master
 
     #forside .video_container {
         margin-top: 50px;
@@ -1285,6 +1630,51 @@ h2 {
         flex-wrap: wrap-reverse;
     }
 
+<<<<<<< HEAD
+=======
+    /*
+    #forside h2 {
+        margin-top: -20vw;
+        margin-left: 25%;
+        max-width: 180px;
+    }
+*/
+}
+
+/*VIIDEDO START*/
+
+#forside .video_container {
+    margin-top: 50px;
+    display: flex;
+    flex-wrap: wrap-reverse;
+}
+
+#forside .iframe_video {
+    flex-grow: 1;
+    flex-basis: 800px;
+}
+
+#forside .video_h1 {
+    flex-grow: 1;
+    flex-basis: 800px;
+    margin: 20px 50px 0px 50px;
+}
+
+#forside iframe {
+    margin: 20px 50px 10px 50px;
+    width: 500px;
+    height: 300px;
+}
+
+#forside .videobrod {
+    max-width: 400px;
+    margin: 10px 50px 10px 50px;
+    margin-left: 40vw;
+}
+
+
+@media only screen and (min-width: 768px) {
+>>>>>>> origin/master
     #forside .iframe_video {
         flex-grow: 1;
         flex-basis: 800px;
@@ -1453,7 +1843,18 @@ h2 {
             margin-left: 200px;
         }
 
+<<<<<<< HEAD
     }
+=======
+#forside .splashbillede {
+    background-image: url(img/splash.jpg);
+    height: 100vh;
+    width: 100vw;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+>>>>>>> origin/master
 
     @media only screen and (min-width: 1024px) {
         #forside .loes_mere h2 {
@@ -1462,6 +1863,7 @@ h2 {
         }
 
 
+<<<<<<< HEAD
         .hvid {
             width: 580px;
             height: 450px;
@@ -1469,8 +1871,62 @@ h2 {
             margin-left: 200px;
         }
 
+=======
+@media only screen and (min-width: 320px) {
+    .overlay_splash {
+        width: 100vw;
     }
 
+    .tekst_opdeler {
+        width: 100vw
+>>>>>>> origin/master
+    }
+}
+
+<<<<<<< HEAD
+=======
+@media only screen and (min-width: 768px) {
+    .overlay_splash {
+        width: 50vw;
+    }
+
+    .tekst_opdeler {
+        width: 50vw;
+    }
+}
+
+.overlay_splash {
+    background: rgba(00, 00, 00, 0.5);
+    height: 100vh;
+
+
+}
+
+.centerboks {
+    display: flex;
+    /* center vertically: */
+    align-items: center;
+    /* center horizontally: */
+    justify-content: center;
+    flex-direction: column;
+    height: 100vh;
+}
+
+
+
+.title_splash {
+    color: white;
+    text-align: center;
+    padding: 1.5rem;
+
+}
+
+.cta_splash {
+    background-color: #8DC2DA;
+    padding: 1rem;
+    padding: 0.5rem 3rem;
+}
+>>>>>>> origin/master
 
 
     /*splash*/
