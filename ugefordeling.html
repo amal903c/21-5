@@ -20,7 +20,7 @@
             }
 
             #image_container {
-                position: fixed;
+                position: sticky;
                 top: 0;
                 right: 0;
                 height: 100vh;
@@ -82,6 +82,11 @@
             display: none;
         }
 
+        .streg_h2 {
+            margin-left: -36px;
+            margin-top: -72px;
+            width: 34%;
+        }
     </style>
 </head>
 
@@ -208,12 +213,12 @@
 
         async function loadData() {
 
-            //                        let jsonData = await fetch(`http://michelleyoung.dk/kea/09_cms/21-5_wp/wordpress/wp-json/wp/v2/${id}`);
-            //                        console.log(jsonData)
+            let jsonData = await fetch(`http://michelleyoung.dk/kea/09_cms/21-5_wp/wordpress/wp-json/wp/v2/praktisk_info/${id}`);
+            console.log(jsonData)
 
-            const resspons = await fetch(endpoint)
+            //            const resspons = await fetch(endpoint)
 
-            theJSON = await resspons.json();
+            theJSON = await jsonData.json();
 
             visBasisSide();
         }
@@ -364,11 +369,8 @@
                 imageContainer.appendChild(klonImage);
             })
         }
-
     </script>
 
 
     <script src="script.js"></script>
-</body>
-
-</html>
+</body></html>
