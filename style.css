@@ -153,18 +153,18 @@ h3 {
     }
 }
 
-.logoimg,
+#navigation .logoimg,
 .land_img {
     width: 60px;
 }
 
-.user {
+#navigation .user {
     width: 20px;
     margin-left: 5px;
 }
 
 /* generelt */
-li {
+#navigation li {
     cursor: pointer;
     color: #989898;
     font-family: 'Raleway', sans-serif;
@@ -173,12 +173,12 @@ li {
     /*            align-self: center;*/
 }
 
-li:hover {
+#navigation li:hover {
     border-bottom: 1px solid black;
     /*            color: rgba(216, 234, 240, 0.98);*/
 }
 
-ul {
+#navigation ul {
     padding: 0;
 
 }
@@ -186,7 +186,7 @@ ul {
 
 
 /* knapperne */
-.menuknap,
+#navigation .menuknap,
 .lukkeknap {
     color: #989898;
     font-size: 2.5rem;
@@ -194,7 +194,7 @@ ul {
     font-family: 'Open Sans', sans-serif;
 }
 
-button {
+#navigation button {
     display: flex;
     flex-direction: row;
     border: none;
@@ -264,7 +264,7 @@ button {
 
 /* mobil */
 @media only screen and (min-width: 320px) {
-    li {
+    #menu_linje li {
         font-size: 1.3rem;
         margin: 1rem;
         border-bottom: 0.1px solid #989898;
@@ -315,13 +315,13 @@ button {
         opacity: 1;
     }
 
-    .menuknap {
+    #menu_linje .menuknap {
         display: none;
 
 
     }
 
-    .logo_mobil {
+    #menu_linje .logo_mobil {
         display: none;
     }
 
@@ -330,13 +330,13 @@ button {
         flex-direction: row;
     }
 
-    li {
+    #menu_linje li {
         align-self: center;
         font-size: 1rem;
         border: none;
     }
 
-    input {
+    #menu_linje input {
         margin: 1rem;
         padding: 1rem;
     }
@@ -349,7 +349,7 @@ button {
         display: none;
     }
 
-    .mobil_nav_container {
+    #menu_linje .mobil_nav_container {
         padding: 0rem;
     }
 
