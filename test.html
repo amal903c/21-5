@@ -150,15 +150,18 @@
         }
 
         function addEventListenersToButtons() {
-            document.querySelectorAll("nav img").forEach(elm => {
+            console.log("klik");
+            document.querySelectorAll(".filter").forEach(elm => {
                 elm.addEventListener("click", filtrering);
             })
         }
 
         function filtrering() {
+            console.log(filterPakke);
             filterPakke = this.dataset.pakke;
             //            document.querySelector("h2").textContent = this.textContent;
-            start()
+
+
         }
 
 

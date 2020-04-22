@@ -132,10 +132,6 @@
                 klon.querySelector("img").src = forening.billede.guid;
 
 
-                klon.querySelector("article").addEventListener("click", () => {
-                    location.href = `singleView.html?id=${forening.id}`;
-                })
-
                 listeELM.appendChild(klon);
             })
         }
