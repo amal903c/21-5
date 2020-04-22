@@ -61,7 +61,8 @@
         .dropdown_container,
         .dropdown_container_om215,
         .dropdown_container_boliger,
-        .dropdown_container_okonomi {
+        .dropdown_container_okonomi,
+        .dropdown_container_praktiskinfo {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
             width: 47vw;
@@ -145,7 +146,8 @@
             }
 
             .dropdown_container,
-            .dropdown_container_om215 {
+            .dropdown_container_om215,
+            .dropdown_container_praktiskinfo {
                 margin-left: 7vw;
             }
 
@@ -210,7 +212,8 @@
             .dropdown_container,
             .dropdown_container_boliger,
             .dropdown_container_okonomi,
-            .dropdown_container_om215 {
+            .dropdown_container_om215,
+            .dropdown_container_praktiskinfo {
                 position: absolute;
                 left: 0;
                 top: 10vw;
@@ -320,7 +323,6 @@
         .atag {
             display: flex;
         }
-
     </style>
 </head>
 
@@ -364,6 +366,9 @@
                 </div>
                 <li id="kob_af_andel">Køb af andel i 21-5</li>
                 <li id="praktisk_info">Praktisk info</li>
+                <div class="dropdown_container_praktiskinfo hidden">
+
+                </div>
                 <div class="ombyt">
                     <input type="text" placeholder="Søg...">
                     <button>Log in <img class="user" src="grafik/user.svg"> </button>
@@ -403,6 +408,11 @@
         const endpoint_om215_hvad = "http://michelleyoung.dk/kea/09_cms/21-5_wp/wordpress/wp-json/wp/v2/om215/684";
         const endpoint_om215_hvem = "http://michelleyoung.dk/kea/09_cms/21-5_wp/wordpress/wp-json/wp/v2/om215/680";
 
+        //praktisk info
+        const endpoint_praktiskinfo_uge = "http://michelleyoung.dk/kea/09_cms/21-5_wp/wordpress/wp-json/wp/v2/praktisk_info/649"
+        const endpoint_praktiskinfo_job = "http://michelleyoung.dk/kea/09_cms/21-5_wp/wordpress/wp-json/wp/v2/praktisk_info/648"
+        const endpoint_praktiskinfo_faq = "http://michelleyoung.dk/kea/09_cms/21-5_wp/wordpress/wp-json/wp/v2/praktisk_info/34"
+
         // der hvor json bliver puttet ind
         let theJSON = [];
         //om215
@@ -413,9 +423,14 @@
         let theJSON_boliger_byt = [];
         let theJSON_boliger_indretning = [];
         let theJSON_boliger_udvaelg = [];
-        //økonomi
 
+        //økonomi
         let theJSON_okonomi = [];
+
+        //praktisk info
+        let theJSON_uge = [];
+        let theJSON_job = [];
+        let theJSON_faq = [];
 
 
         // den template vi kloner ind i vores dropwdownmenu
@@ -433,8 +448,11 @@
         //container om 21-5
         const container_om215 = document.querySelector(".dropdown_container_om215");
 
+        //container praktisk info
+        const container_praktiskinfo = document.querySelector(".dropdown_container_praktiskinfo");
+
         function start() {
-            loadData();
+
 
             // gør så man kan klikke på menupunkterne
 
@@ -447,8 +465,14 @@
             //om 21-5
             document.querySelector("#om_215").addEventListener("click", clickOm215Frem);
 
+            //praktisk info
+            document.querySelector("#praktisk_info").addEventListener("click", clickPraktiskInfoFrem);
+
+            loadData();
 
             document.querySelector(".menuknap").addEventListener("click", clickMenu);
+
+
 
 
         }
@@ -471,6 +495,10 @@
             const resspons_om215_hvad = await fetch(endpoint_om215_hvad);
             const resspons_om215_hvem = await fetch(endpoint_om215_hvem);
 
+            //praktisk info
+            const resspons_praktiskinfo_uge = await fetch(endpoint_praktiskinfo_uge);
+            const resspons_praktiskinfo_job = await fetch(endpoint_praktiskinfo_job);
+            const resspons_praktiskinfo_faq = await fetch(endpoint_praktiskinfo_faq);
 
 
             theJSON = await resspons.json();
@@ -488,8 +516,12 @@
             theJSON_om215_hvad = await resspons_om215_hvad.json();
             theJSON_om215_hvem = await resspons_om215_hvem.json();
 
+            //praktisk info
+            theJSON_uge = await resspons_praktiskinfo_uge.json();
+            theJSON_job = await resspons_praktiskinfo_job.json();
+            theJSON_faq = await resspons_praktiskinfo_faq.json();
 
-
+            //kalder funktionerne
 
 
         }
@@ -723,6 +755,69 @@
 
             container_om215.appendChild(klon3);
 
+        }
+
+        function clickPraktiskInfoFrem() {
+            container_praktiskinfo.classList.remove("hidden")
+            visPraktiskInfo();
+            document.querySelector("#praktisk_info").removeEventListener("click", clickPraktiskInfoFrem);
+
+            //når man klikker på destinationer igen
+            document.querySelector("#praktisk_info").addEventListener("click", () => {
+                container.classList.add("hidden")
+                document.querySelector("#praktisk_info").addEventListener("click", clickPraktiskInfoFrem);
+
+            })
+
+        }
+
+        //vis data for 21-5
+        function visPraktiskInfo() {
+            container.innerHTML = "";
+            container_boliger.innerHTML = "";
+            container_okonomi.innerHTML = "";
+            container_om215.innerHTML = "";
+            container_praktiskinfo.innerHTML = "";
+
+            console.log(theJSON_uge);
+            console.log(theJSON_job);
+            console.log(theJSON_faq);
+
+            //kloner hvorfor uge
+            const klon = menuboksetemplate.cloneNode(true).content;
+            klon.querySelector("h3").textContent = theJSON_uge.title.rendered;
+            klon.querySelector("img").src = theJSON_uge.lillebillede.guid;
+            klon.querySelector("article").addEventListener("click", () => {
+
+                console.log("this.theJSON_uge.id")
+
+                location.href = `ugefordeling.html?id=${theJSON_uge.id}`;
+            })
+
+            container_praktiskinfo.appendChild(klon);
+
+            //kloner job ind
+            const klon2 = menuboksetemplate.cloneNode(true).content;
+            klon2.querySelector("h3").textContent = theJSON_job.title.rendered;
+            klon2.querySelector("img").src = theJSON_job.lillebillede.guid;
+            klon2.querySelector("article").addEventListener("click", () => {
+                console.log("this.theJSON_job.id")
+                location.href = `job.html?id=${theJSON_job.id}`;
+            })
+
+            container_praktiskinfo.appendChild(klon2);
+
+            //kloner faq
+            const klon3 = menuboksetemplate.cloneNode(true).content;
+            klon3.querySelector("h3").textContent = theJSON_faq.title.rendered;
+            klon3.querySelector("img").src = theJSON_faq.lillebillede.guid;
+            klon3.querySelector("article").addEventListener("click", () => {
+                console.log("this.theJSON_faq.id")
+                location.href = `FAQ.html?id=${theJSON_om215_hvem.id}`;
+            })
+
+            container_praktiskinfo.appendChild(klon3);
+
 
 
             //løb listen igennem og indsæt data i en template
@@ -770,9 +865,6 @@
 
 
         }
-
     </script>
 
-</body>
-
-</html>
+</body></html>

@@ -81,7 +81,6 @@
         .hide {
             display: none;
         }
-
     </style>
 </head>
 
@@ -110,19 +109,19 @@
 
 
 
-<div id="the_container">
-    <section id="basisside">
+    <div id="the_container">
+        <section id="basisside">
 
-        <div id="text_container">
+            <div id="text_container">
 
-        </div>
+            </div>
 
-        <div id="image_container">
+            <div id="image_container">
 
-        </div>
+            </div>
 
-    </section>
-</div>
+        </section>
+    </div>
 
     <!--/*footer start*/-->
     <section class="footer_wrap">
@@ -206,12 +205,12 @@
 
         async function loadData() {
 
-            //                        let jsonData = await fetch(`http://michelleyoung.dk/kea/09_cms/21-5_wp/wordpress/wp-json/wp/v2/${id}`);
-            //                        console.log(jsonData)
+            let jsonData = await fetch(`http://michelleyoung.dk/kea/09_cms/21-5_wp/wordpress/wp-json/wp/v2/praktisk_info/${id}`);
+            console.log(jsonData)
 
-            const resspons = await fetch(endpoint)
+            //            const resspons = await fetch(endpoint)
 
-            theJSON = await resspons.json();
+            theJSON = await jsonData.json();
 
             visBasisSide();
         }
@@ -355,11 +354,8 @@
                 imageContainer.appendChild(klonImage);
             })
         }
-
     </script>
 
 
     <script src="script.js"></script>
-</body>
-
-</html>
+</body></html>
