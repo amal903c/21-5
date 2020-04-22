@@ -117,13 +117,16 @@
 
     <!--       POPUP-->
     <section id="familier_detalje" class="skjul">
-        <button class="luk_familier">X</button>
         <article id="article_familier">
             <div class="col_familier">
+                <button class="luk_familier">X</button>
+                <img src="" alt="">
+            </div>
+            <div class="col_familier col_text_fam">
                 <h2 class="navn_popup"></h2>
                 <p class="by_popup"></p>
                 <p class="text_popup"></p>
-                <a class="link_popup" href=""></a>
+                <a class="link_popup" href="">Læs interview</a>
             </div>
         </article>
     </section>
@@ -256,6 +259,9 @@
             console.log(familie.navn);
             //            familier_detalje.querySelector(".navn_popup").textContent = familie.navn;
             // familier_detalje.querySelector(".by_popup").textContent = familie.by;
+            familier_detalje.querySelector("img").src = familie.billede.guid;
+            familier_detalje.querySelector(".navn_popup").innerHTML = familie.navn;
+            familier_detalje.querySelector(".by_popup").innerHTML = familie.by;
             familier_detalje.querySelector(".text_popup").innerHTML = familie.tekst;
             familier_detalje.querySelector(".link_popup").innerHTML = familie.interview_link;
         }

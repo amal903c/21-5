@@ -81,18 +81,22 @@
 
 
 
-    <section class="liste_pakker"></section>
+    <section class="liste_pakker">
+        <div id="col_1"></div>
+        <div id="col_2"></div>
+    </section>
+
 
     <template>
         <article class="pakke">
             <img src="" alt="">
             <h2 class="main_overskrift"></h2>
-            <h3></h3>
             <p class="tekst1"></p>
             <h3 class="overskrift_forening"></h3>
             <p class="tekst2"></p>
             <h3 class="destinationer"></h3>
             <p class="tekst3"></p>
+            <p class="pris"></p>
             <h3 class="overskrift2"></h3>
             <p class="tekst4"></p>
             <img class="model1" src="" alt"">
@@ -134,6 +138,7 @@
                     klon.querySelector(".tekst2").innerHTML = pakke.tekst_2;
                     klon.querySelector(".destinationer").innerHTML = pakke.destinationer;
                     klon.querySelector(".tekst3").innerHTML = pakke.tekst_3;
+                    klon.querySelector(".pris").innerHTML = pakke.pris;
                     klon.querySelector(".overskrift2").innerHTML = pakke.overskrift_2;
                     klon.querySelector(".tekst4").innerHTML = pakke.tekst_4;
                     klon.querySelector(".model1").src = pakke.model_1.guid;
@@ -145,14 +150,14 @@
         }
 
         function addEventListenersToButtons() {
-            document.querySelectorAll("nav button").forEach(elm => {
+            document.querySelectorAll("nav img").forEach(elm => {
                 elm.addEventListener("click", filtrering);
             })
         }
 
         function filtrering() {
             filterPakke = this.dataset.pakke;
-            document.querySelector("h2").textContent = this.textContent;
+            //            document.querySelector("h2").textContent = this.textContent;
             start()
         }
 
