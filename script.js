@@ -1,68 +1,68 @@
-//document.addEventListener("DOMContentLoaded", start);
+document.addEventListener("DOMContentLoaded", startHeader);
 
 //destinationer url
-//const endpoint_destinationer = "http://michelleyoung.dk/kea/09_cms/21-5_wp/wordpress/wp-json/wp/v2/destinationer";
+var endpoint_destinationer = "http://michelleyoung.dk/kea/09_cms/21-5_wp/wordpress/wp-json/wp/v2/destinationer";
 
 //Boliger url
-const endpoint_boliger_byt = "http://michelleyoung.dk/kea/09_cms/21-5_wp/wordpress/wp-json/wp/v2/boliger/644";
-const endpoint_boliger_indretning = "http://michelleyoung.dk/kea/09_cms/21-5_wp/wordpress/wp-json/wp/v2/boliger/641";
-const endpoint_boliger_udvaelg = "http://michelleyoung.dk/kea/09_cms/21-5_wp/wordpress/wp-json/wp/v2/boliger/640";
+var endpoint_boliger_byt = "http://michelleyoung.dk/kea/09_cms/21-5_wp/wordpress/wp-json/wp/v2/boliger/644";
+var endpoint_boliger_indretning = "http://michelleyoung.dk/kea/09_cms/21-5_wp/wordpress/wp-json/wp/v2/boliger/641";
+var endpoint_boliger_udvaelg = "http://michelleyoung.dk/kea/09_cms/21-5_wp/wordpress/wp-json/wp/v2/boliger/640";
 
 //Økonomi url
-const endpoint_okonomi = "http://michelleyoung.dk/kea/09_cms/21-5_wp/wordpress/wp-json/wp/v2/okonomi";
+var endpoint_okonomi = "http://michelleyoung.dk/kea/09_cms/21-5_wp/wordpress/wp-json/wp/v2/okonomi";
 
 //om215 url
 // hvorfor vælge 21-5
-const endpoint_om215_hvorfor = "http://michelleyoung.dk/kea/09_cms/21-5_wp/wordpress/wp-json/wp/v2/om215/688";
-const endpoint_om215_hvad = "http://michelleyoung.dk/kea/09_cms/21-5_wp/wordpress/wp-json/wp/v2/om215/684";
-const endpoint_om215_hvem = "http://michelleyoung.dk/kea/09_cms/21-5_wp/wordpress/wp-json/wp/v2/om215/680";
+var endpoint_om215_hvorfor = "http://michelleyoung.dk/kea/09_cms/21-5_wp/wordpress/wp-json/wp/v2/om215/688";
+var endpoint_om215_hvad = "http://michelleyoung.dk/kea/09_cms/21-5_wp/wordpress/wp-json/wp/v2/om215/684";
+var endpoint_om215_hvem = "http://michelleyoung.dk/kea/09_cms/21-5_wp/wordpress/wp-json/wp/v2/om215/680";
 
 //praktisk info
-const endpoint_praktiskinfo_uge = "http://michelleyoung.dk/kea/09_cms/21-5_wp/wordpress/wp-json/wp/v2/praktisk_info/649"
-const endpoint_praktiskinfo_job = "http://michelleyoung.dk/kea/09_cms/21-5_wp/wordpress/wp-json/wp/v2/praktisk_info/648"
-const endpoint_praktiskinfo_faq = "http://michelleyoung.dk/kea/09_cms/21-5_wp/wordpress/wp-json/wp/v2/praktisk_info/34"
+var endpoint_praktiskinfo_uge = "http://michelleyoung.dk/kea/09_cms/21-5_wp/wordpress/wp-json/wp/v2/praktisk_info/649"
+var endpoint_praktiskinfo_job = "http://michelleyoung.dk/kea/09_cms/21-5_wp/wordpress/wp-json/wp/v2/praktisk_info/648"
+var endpoint_praktiskinfo_faq = "http://michelleyoung.dk/kea/09_cms/21-5_wp/wordpress/wp-json/wp/v2/praktisk_info/34"
 
 // der hvor json bliver puttet ind
-let theJSON_destinationer = [];
+var theJSON_destinationer = [];
 //om215
-let theJSON_om215_hvorfor = [];
-let theJSON_om215_hvad = [];
-let theJSON_om215_hvem = [];
+var theJSON_om215_hvorfor = [];
+var theJSON_om215_hvad = [];
+var theJSON_om215_hvem = [];
 //Boliger
-let theJSON_boliger_byt = [];
-let theJSON_boliger_indretning = [];
-let theJSON_boliger_udvaelg = [];
+var theJSON_boliger_byt = [];
+var theJSON_boliger_indretning = [];
+var theJSON_boliger_udvaelg = [];
 
 //økonomi
-let theJSON_okonomi = [];
+var theJSON_okonomi = [];
 
 //praktisk info
-let theJSON_uge = [];
-let theJSON_job = [];
-let theJSON_faq = [];
+var theJSON_uge = [];
+var theJSON_job = [];
+var theJSON_faq = [];
 
 
 // den template vi kloner ind i vores dropwdownmenu
-let menuboksetemplate = document.querySelector("#menutemplate");
+var menuboksetemplate = document.querySelector("#menutemplate");
 
 //container for destinationer dropdown
-const container_destinationer = document.querySelector(".dropdown_container");
+var container_destinationer = document.querySelector(".dropdown_container");
 
 //Container boliger:
-const container_boliger = document.querySelector(".dropdown_container_boliger");
+var container_boliger = document.querySelector(".dropdown_container_boliger");
 
 //Container økonomi
-const container_okonomi = document.querySelector(".dropdown_container_okonomi");
+var container_okonomi = document.querySelector(".dropdown_container_okonomi");
 
 //container om 21-5
-const container_om215 = document.querySelector(".dropdown_container_om215");
+var container_om215 = document.querySelector(".dropdown_container_om215");
 
 //container praktisk info
-const container_praktiskinfo = document.querySelector(".dropdown_container_praktiskinfo");
+var container_praktiskinfo = document.querySelector(".dropdown_container_praktiskinfo");
 
-function start() {
+function startHeader() {
 
-
+    console.log("jeg er ved start")
     // gør så man kan klikke på menupunkterne
 
     //destinationer
@@ -77,7 +77,7 @@ function start() {
     //praktisk info
     document.querySelector("#praktisk_info").addEventListener("click", clickPraktiskInfoFrem);
 
-    loadData();
+    loadDataHeader();
 
     document.querySelector(".menuknap").addEventListener("click", clickMenu);
 
@@ -87,8 +87,9 @@ function start() {
 }
 
 // henter json
-async function loadData() {
+async function loadDataHeader() {
 
+    //    const resspons_destinationer = await fetch(`http://michelleyoung.dk/kea/09_cms/21-5_wp/wordpress/wp-json/wp/v2/destinationer`);
     const resspons_destinationer = await fetch(endpoint_destinationer);
 
     //boliger
@@ -159,12 +160,12 @@ function visDestinationer() {
     container_om215.innerHTML = "";
     container_praktiskinfo.innerHTML = "";
 
-    console.log(theJSON);
+    console.log(theJSON_destinationer);
 
 
     //løb listen igennem og indsæt data i en template
 
-    theJSON.forEach(destination => {
+    theJSON_destinationer.forEach(destination => {
 
         console.log(destination);
 
@@ -179,7 +180,7 @@ function visDestinationer() {
             location.href = `basis_galleri.html?id=${destination.id}`;
         })
 
-        container.appendChild(klon);
+        container_destinationer.appendChild(klon);
 
 
     })

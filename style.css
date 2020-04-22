@@ -1597,6 +1597,7 @@ h2 {
 }
 
 
+/*
 #forside h2 {
     font-family: 'Raleway', sans-serif;
     font-size: 1.2rem;
@@ -1611,6 +1612,7 @@ h2 {
     color: black;
     opacity: 1;
 }
+*/
 
 
 
@@ -1634,11 +1636,13 @@ h2 {
         margin: 80px 0px 20px 40px;
     }
 
+    /*
     #forside h2 {
         margin-top: -25vw;
         margin-left: 25%;
         max-width: 150px;
     }
+*/
 }
 
 @media only screen and (min-width: 1024px) {
@@ -1646,11 +1650,13 @@ h2 {
         margin-top: 50px;
     }
 
+    /*
     #forside h2 {
         margin-top: -20vw;
         margin-left: 25%;
         max-width: 180px;
     }
+*/
 }
 
 /*VIIDEDO START*/
@@ -1852,7 +1858,7 @@ h2 {
 /*splash*/
 
 #forside .splashbillede {
-    background-image: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url(img/Le%20Tignet-114.jpg);
+    background-image: url(img/splash.jpg);
     height: 100vh;
     width: 100vw;
     background-position: center;
@@ -1876,17 +1882,56 @@ h2 {
     line-height: 120px;
 }
 
-
-@media only screen and (max-width: 768px) {
-    #forside .splash_tekst_1 {
-        line-height: 70px;
-        top: 22%;
+@media only screen and (min-width: 320px) {
+    .overlay_splash {
+        width: 100vw;
     }
 
-    #forside .splash_tekst_2 {
-        top: 45%;
-        line-height: 70px;
+    .tekst_opdeler {
+        width: 100vw
     }
+}
+
+@media only screen and (min-width: 768px) {
+    .overlay_splash {
+        width: 50vw;
+    }
+
+    .tekst_opdeler {
+        width: 50vw;
+    }
+}
+
+.overlay_splash {
+    background: rgba(00, 00, 00, 0.5);
+    height: 100vh;
+
+
+}
+
+.centerboks {
+    display: flex;
+    /* center vertically: */
+    align-items: center;
+    /* center horizontally: */
+    justify-content: center;
+    flex-direction: column;
+    height: 100vh;
+}
+
+
+
+.title_splash {
+    color: white;
+    text-align: center;
+    padding: 1.5rem;
+
+}
+
+.cta_splash {
+    background-color: #8DC2DA;
+    padding: 1rem;
+    padding: 0.5rem 3rem;
 }
 
 
