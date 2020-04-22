@@ -148,7 +148,7 @@ h3 {
 }
 
 /* generelt */
-li {
+#navigation li {
     cursor: pointer;
     color: #989898;
     font-family: 'Raleway', sans-serif;
@@ -157,12 +157,12 @@ li {
     /*            align-self: center;*/
 }
 
-li:hover {
+#navigation li:hover {
     border-bottom: 1px solid black;
     /*            color: rgba(216, 234, 240, 0.98);*/
 }
 
-ul {
+#navigation ul {
     padding: 0;
 
 }
@@ -178,7 +178,7 @@ ul {
     font-family: 'Open Sans', sans-serif;
 }
 
-button {
+#navigation button {
     display: flex;
     flex-direction: row;
     border: none;
@@ -248,13 +248,13 @@ button {
 
 /* mobil */
 @media only screen and (min-width: 320px) {
-    li {
+    #navigation li {
         font-size: 1.3rem;
         margin: 1rem;
         border-bottom: 0.1px solid #989898;
     }
 
-    input {
+    #navigation input {
         margin: 2rem;
         padding: 1.2rem;
     }
@@ -301,8 +301,16 @@ button {
 
     .menuknap {
         display: none;
+    }
 
+    #menu_punkter_content_nav {
+        display: flex;
 
+    }
+
+    #menu_punkter_content_nav img {
+        width: auto;
+        width: 7vw;
     }
 
     .logo_mobil {
@@ -314,13 +322,13 @@ button {
         flex-direction: row;
     }
 
-    li {
+    #navigation li {
         align-self: center;
         font-size: 1rem;
         border: none;
     }
 
-    input {
+    #navigation input {
         margin: 1rem;
         padding: 1rem;
     }
@@ -428,6 +436,10 @@ button {
 
 .atag {
     display: flex;
+}
+
+#menu_punkter_content_nav img {
+    object-fit: cover;
 }
 
 
