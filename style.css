@@ -136,7 +136,22 @@ h3 {
 /*                       KAT START                      */
 
 
+.zoom_in {
+    animation-name: zoom_in_kf;
+    animation-duration: 200s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
 
+@keyframes zoom_in_kf {
+    0% {
+        background-size: 100%;
+    }
+
+    100% {
+        background-size: 200%;
+    }
+}
 
 
 
