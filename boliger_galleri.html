@@ -13,6 +13,13 @@
             margin-top: 20px;
         }
 
+        /* streg */
+        .streg {
+            margin-left: -36px;
+            margin-top: -86px;
+            width: 50%;
+        }
+
 
 
 
@@ -30,7 +37,6 @@
             scroll-snap-align: start;
             min-width: 100%;
         }
-
     </style>
 
     <link rel="apple-touch-icon" sizes="180x180" href="myIcons/apple-touch-icon.png">
@@ -59,7 +65,7 @@
             <h1 id="overskrift" class="hide"></h1>
             <img class="streg hide" src="">
             <h2 class="rubrik hide"></h2>
-            <img class="streg_h2 hide" src="">
+
             <p class="tekst hide"></p>
             <img class="bo_tikken" src="">
         </article>
@@ -219,8 +225,8 @@
                 klonText.querySelector("h2").textContent = theJSON.overskrift_1;
 
 
-                klonText.querySelector(".streg_h2").classList.remove("hide");
-                klonText.querySelector(".streg_h2").src = `grafik/streg.svg`;
+                //                klonText.querySelector(".streg_h2").classList.remove("hide");
+                //                klonText.querySelector(".streg_h2").src = `grafik/streg.svg`;
                 textContainer.appendChild(klonText);
 
             }
@@ -247,8 +253,8 @@
                 klonText.querySelector("h2").classList.remove("hide");
                 klonText.querySelector("h2").innerHTML = theJSON.overskrift_2;
 
-                klonText.querySelector(".streg_h2").classList.remove("hide");
-                klonText.querySelector(".streg_h2").src = `grafik/streg.svg`;
+                //                klonText.querySelector(".streg_h2").classList.remove("hide");
+                //                klonText.querySelector(".streg_h2").src = `grafik/streg.svg`;
                 textContainer.appendChild(klonText);
 
             }
@@ -275,8 +281,8 @@
                 klonText.querySelector("h2").classList.remove("hide");
                 klonText.querySelector("h2").textContent = theJSON.overskrift_3;
 
-                klonText.querySelector(".streg_h2").classList.remove("hide");
-                klonText.querySelector(".streg_h2").src = `grafik/streg.svg`;
+                //                klonText.querySelector(".streg_h2").classList.remove("hide");
+                //                klonText.querySelector(".streg_h2").src = `grafik/streg.svg`;
                 textContainer.appendChild(klonText);
 
             }
@@ -299,8 +305,8 @@
                 klonText.querySelector("h2").classList.remove("hide");
                 klonText.querySelector("h2").textContent = theJSON.overskrift_4;
 
-                klonText.querySelector(".streg_h2").classList.remove("hide");
-                klonText.querySelector(".streg_h2").src = `grafik/streg.svg`;
+                //                klonText.querySelector(".streg_h2").classList.remove("hide");
+                // klonText.querySelector(".streg_h2").src = `grafik/streg.svg`;
                 textContainer.appendChild(klonText);
             }
 
@@ -331,11 +337,8 @@
                 imageContainer.appendChild(klonImage);
             })
         }
-
     </script>
 
 
     <script src="script.js"></script>
-</body>
-
-</html>
+</body></html>
