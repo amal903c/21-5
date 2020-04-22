@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Velkommen til 21-5</title>
     <link rel="stylesheet" href="style.css">
+
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&family=Raleway:wght@300&display=swap" rel="stylesheet">
     <link rel="apple-touch-icon" sizes="180x180" href="myIcons/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="myIcons/favicon-32x32.png">
@@ -19,27 +20,68 @@
 </head>
 
 <body>
-
+    <template id="menutemplate">
+        <article id="menu_punkter_content_nav">
+            <h3 id="title"></h3>
+            <img src="">
+        </article>
+    </template>
     <!--MIDLERTIDIG HEADER-->
-    <header>
-        <nav>
-            <div id="midlertidig_topnav">
+    <nav id="navigation">
 
-                <a href="header.html">Headeren</a>
-                <a href="basisside.html">Basisside</a>
-                <a href="basisside_contentmenu.html">Basisside med contentmenu</a>
-                <a href="familiernes_oplevelser.html">Familierne</a>
-                <a href="foreninger.html">Foreningerne</a>
-                <a href="teamet.html">Teamet</a>
-                <a href="FAQ.html">FAQ</a>
-                <a href="moed-os.html">Mød os</a>
-            </div>
-        </nav>
-    </header>
+        <div class="mobil_nav_container">
+            <a class="logo_mobil logoimg" href="index.html"><img class="logoimg" src="img/logo.svg"></a>
+            <div class="menuknap">☰</div>
+            <div class="lukkeknap hidden">X</div>
+        </div>
+
+        <div id="menu_linje" class="hidden">
+            <ul id="menu_punkter" class="menupunkter_container">
+                <a class="atag" href="index.html"><img class="logoimg logoweb" src="img/logo.svg"></a>
+                <li id="destinationer">Destinationer</li>
+                <div class="dropdown_container hidden">
+
+                </div>
+                <li id="boliger">Boliger</li>
+                <div class="dropdown_container_boliger hidden">
+
+                </div>
+                <li id="om_215">Om 21-5</li>
+                <div class="dropdown_container_om215 hidden">
+
+                </div>
+                <li id="økonomi_jura_skat">Økonomi, Jura og Skat</li>
+                <div class="dropdown_container_okonomi hidden">
+
+                </div>
+                <li id="kob_af_andel">Køb af andel i 21-5</li>
+                <li id="praktisk_info">Praktisk info</li>
+                <div class="dropdown_container_praktiskinfo hidden">
+
+                </div>
+                <div class="ombyt">
+                    <input type="text" placeholder="Søg...">
+                    <button>Log in <img class="user" src="grafik/user.svg"> </button>
+                </div>
+                <div id="alle_flag_container">
+                    <img class="land_img" src="img/danmark.svg">
+                    <div class="flag_container">
+                        <img class="land_img" src="img/danmark.svg">
+                        <img class="land_img" src="img/danmark.svg">
+                        <img class="land_img" src="img/danmark.svg">
+                        <img class="land_img" src="img/danmark.svg">
+                    </div>
+                </div>
+            </ul>
+        </div>
+
+
+    </nav>
+
 
 
     <!--   TEMPLATE TIL BILLEDKARRUSEL-->
-    <template>
+    <template id="template_karusel">
         <section>
             <img class="karrusel_imgs" src="" alt="">
         </section>
@@ -187,7 +229,7 @@
 
             <!--    </main>-->
 
-
+            <script src="script.js"></script>
             <script>
                 //use strict gør, at den ikke finder sig i at fx en variabel ikek er defineret ordentliigt. Den finder sig ikke i fejl.
                 "use strict";
@@ -224,7 +266,7 @@
                     //For each ud fra vorers array af husbilelderne:
                     theJSON.billedgalleri.forEach((billede, index) => {
                         //vi skal have for både det store billede - theclone, og så de små legend billeder - secondclone:
-                        const theClone = document.querySelector("template").cloneNode(true).content;
+                        const theClone = document.querySelector("#template_karusel").cloneNode(true).content;
                         //billederne sættes ind
                         theClone.querySelector("img").src = billede.guid;
                         //vi skal appende vores kloner til dokumentet:
@@ -306,8 +348,5 @@
 
                     }
                 }
-
             </script>
-</body>
-
-</html>
+</body></html>

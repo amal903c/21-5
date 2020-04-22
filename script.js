@@ -65,17 +65,7 @@ function startHeader() {
     console.log("jeg er ved start")
     // gør så man kan klikke på menupunkterne
 
-    //destinationer
-    document.querySelector("#destinationer").addEventListener("click", clickDestinationerFrem);
-    //boliger
-    document.querySelector("#boliger").addEventListener("click", clickBoligerFrem);
-    //økonomi jura og skat
-    document.querySelector("#økonomi_jura_skat").addEventListener("click", clickOkonomiFrem);
-    //om 21-5
-    document.querySelector("#om_215").addEventListener("click", clickOm215Frem);
 
-    //praktisk info
-    document.querySelector("#praktisk_info").addEventListener("click", clickPraktiskInfoFrem);
 
     loadDataHeader();
 
@@ -132,8 +122,22 @@ async function loadDataHeader() {
     theJSON_faq = await resspons_praktiskinfo_faq.json();
 
     //kalder funktionerne
+    clickAll();
 
+}
 
+function clickAll() {
+    //destinationer
+    document.querySelector("#destinationer").addEventListener("click", clickDestinationerFrem);
+    //boliger
+    document.querySelector("#boliger").addEventListener("click", clickBoligerFrem);
+    //økonomi jura og skat
+    document.querySelector("#økonomi_jura_skat").addEventListener("click", clickOkonomiFrem);
+    //om 21-5
+    document.querySelector("#om_215").addEventListener("click", clickOm215Frem);
+
+    //praktisk info
+    document.querySelector("#praktisk_info").addEventListener("click", clickPraktiskInfoFrem);
 }
 
 //hvad der sker når man kilkker på destinationer
@@ -309,12 +313,12 @@ function visOkonomi() {
 function clickOm215Frem() {
     container_om215.classList.remove("hidden")
     visOm215();
-    document.querySelector("#om_215").removeEventListener("click", clickDestinationerFrem);
+    document.querySelector("#om_215").removeEventListener("click", clickOm215Frem);
 
     //når man klikker på destinationer igen
     document.querySelector("#om_215").addEventListener("click", () => {
         container_om215.classList.add("hidden")
-        document.querySelector("#om_215").addEventListener("click", clickDestinationerFrem);
+        document.querySelector("#om_215").addEventListener("click", clickOm215Frem);
 
     })
 

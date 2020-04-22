@@ -136,35 +136,19 @@ h3 {
 /*                       KAT START                      */
 
 
-.zoom_in {
-    animation-name: zoom_in_kf;
-    animation-duration: 200s;
-    animation-iteration-count: infinite;
-    animation-timing-function: linear;
-}
-
-@keyframes zoom_in_kf {
-    0% {
-        background-size: 100%;
-    }
-
-    100% {
-        background-size: 200%;
-    }
-}
-
-#navigation .logoimg,
+/* billeder og logo */
+.logoimg,
 .land_img {
     width: 60px;
 }
 
-#navigation .user {
+.user {
     width: 20px;
     margin-left: 5px;
 }
 
 /* generelt */
-#navigation li {
+li {
     cursor: pointer;
     color: #989898;
     font-family: 'Raleway', sans-serif;
@@ -173,12 +157,12 @@ h3 {
     /*            align-self: center;*/
 }
 
-#navigation li:hover {
+li:hover {
     border-bottom: 1px solid black;
     /*            color: rgba(216, 234, 240, 0.98);*/
 }
 
-#navigation ul {
+ul {
     padding: 0;
 
 }
@@ -186,7 +170,7 @@ h3 {
 
 
 /* knapperne */
-#navigation .menuknap,
+.menuknap,
 .lukkeknap {
     color: #989898;
     font-size: 2.5rem;
@@ -194,7 +178,7 @@ h3 {
     font-family: 'Open Sans', sans-serif;
 }
 
-#navigation button {
+button {
     display: flex;
     flex-direction: row;
     border: none;
@@ -264,7 +248,7 @@ h3 {
 
 /* mobil */
 @media only screen and (min-width: 320px) {
-    #menu_linje li {
+    li {
         font-size: 1.3rem;
         margin: 1rem;
         border-bottom: 0.1px solid #989898;
@@ -283,7 +267,7 @@ h3 {
         padding: 1rem;
     }
 
-    #menu_punkter_content {
+    #menu_punkter_content_nav {
         flex-direction: row-reverse;
         align-items: center;
         justify-content: flex-end;
@@ -304,7 +288,7 @@ h3 {
         margin-left: 7vw;
     }
 
-    #menu_punkter_content img {
+    #menu_punkter_content_nav img {
         height: 13vw;
     }
 }
@@ -315,13 +299,13 @@ h3 {
         opacity: 1;
     }
 
-    #menu_linje .menuknap {
+    .menuknap {
         display: none;
 
 
     }
 
-    #menu_linje .logo_mobil {
+    .logo_mobil {
         display: none;
     }
 
@@ -330,13 +314,13 @@ h3 {
         flex-direction: row;
     }
 
-    #menu_linje li {
+    li {
         align-self: center;
         font-size: 1rem;
         border: none;
     }
 
-    #menu_linje input {
+    input {
         margin: 1rem;
         padding: 1rem;
     }
@@ -349,7 +333,7 @@ h3 {
         display: none;
     }
 
-    #menu_linje .mobil_nav_container {
+    .mobil_nav_container {
         padding: 0rem;
     }
 
@@ -361,49 +345,25 @@ h3 {
     .dropdown_container_praktiskinfo {
         position: absolute;
         left: 0;
-        top: 10vw;
+        top: 8vw;
         width: auto;
         margin: 0 auto;
         right: 0;
-        margin-left: 3rem;
+
+
+
     }
 
-    /*
-            .dropdown_container_boliger {
-                position: absolute;
-                left: 0;
-                top: 10vw;
-                width: auto;
-                margin: 0 auto;
-                right: 0;
-            }
-*/
-
-    /*
-            .dropdown_container_okonomi {
-                position: absolute;
-                left: 0;
-                top: 10vw;
-                width: auto;
-                margin: 0 auto;
-                right: 0;
-            }
-*/
-
-    /*
-            .dropdown_container_om215 {
-                position: absolute;
-                left: 0;
-                top: 10vw;
-                width: auto;
-                margin: 0 auto;
-                right: 0;
-            }
-*/
-
-    #menu_punkter_content img {
+    #menu_punkter_content_nav img {
         height: 5vw;
     }
+
+    #menu_punkter_content_nav img {
+        margin-left: 30px;
+
+    }
+
+    #menu_punkter_content {}
 
 
 
@@ -453,6 +413,7 @@ h3 {
 #menu_punkter_content img {
     width: 40%;
     object-fit: cover;
+
 }
 
 
@@ -468,8 +429,6 @@ h3 {
 .atag {
     display: flex;
 }
-
-
 
 
 
