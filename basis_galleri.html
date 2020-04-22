@@ -23,6 +23,17 @@
             margin-top: -86px;
             width: 50%;
         }
+
+        .hide {
+            display: none;
+        }
+
+        .overskrift {
+            font-family: 'Raleway', sans-serif;
+            font-size: 1rem;
+            line-height: 50px;
+            text-align: center;
+        }
     </style>
 </head>
 
@@ -65,8 +76,8 @@
             <div id="galleri_container">
 
                 <!--KARUSSEL FAMILY-->
-                <main class="main_galleri">
-                    <div class="overskrift_family"></div>
+                <main class="main_galleri hide family_galleri">
+                    <div class="overskrift_family overskrift"></div>
                     <div class="karussel_galleri">
                         <div class="inner_galleri">
                             <div class="tilbage_galleri">
@@ -81,8 +92,8 @@
                 </main>
 
                 <!--KARUSSEL LARGE-->
-                <main class="main_galleri">
-                    <div class="overskrift_galleri"></div>
+                <main class="main_galleri large_galleri hide">
+                    <div class="overskrift_large overskrift"></div>
                     <div class="karussel_galleri">
                         <div class="inner_galleri">
                             <div class="tilbage_galleri">
@@ -97,8 +108,8 @@
                 </main>
 
                 <!--KARUSSEL GRANDE-->
-                <main class="main_galleri">
-                    <div class="overskrift_galleri"></div>
+                <main class="main_galleri hide grande_galleri">
+                    <div class="overskrift_grande overskrift"></div>
                     <div class="karussel_galleri">
                         <div class="inner_galleri">
                             <div class="tilbage_galleri">
@@ -228,24 +239,58 @@
             visKarusselLarge();
             visKarusselGrande();
             visOverskriftFamily();
+            visOverskriftLarge();
+            visOverskriftGrande();
 
         }
 
         function visOverskriftFamily() {
-            console.log(theJSON);
+            console.log(theJSON)
 
-            if (theJSON.overskrift_galleri) {
+            if (theJSON.overskrift_family) {
 
-                console.log(theJSON.overskrift.galleri)
-
-
-                const klonText = imageTemplate.cloneNode(true).content;
-
-                klonText.querySelector("overskrift_galleri").classList.remove("hide");
-                klonText.querySelector("overskrift_galleri").textContent = theJSON.overskrift_family;
+                console.log(theJSON.overskrift_family)
 
 
-                overskriftContainer.appendChild(klonText);
+                //                const klonText = imageTemplate.cloneNode(true).content;
+
+                document.querySelector(".overskrift_family").classList.remove("hide");
+                document.querySelector(".overskrift_family").textContent = theJSON.overskrift_family;
+
+
+                //                overskriftContainer.appendChild(klonText);
+            }
+
+        }
+
+        function visOverskriftLarge() {
+            console.log(theJSON)
+
+            if (theJSON.overskrift_large) {
+
+                console.log(theJSON.overskrift_large)
+
+
+                //                const klonText = imageTemplate.cloneNode(true).content;
+
+                document.querySelector(".overskrift_large").classList.remove("hide");
+                document.querySelector(".overskrift_large").textContent = theJSON.overskrift_large;
+
+
+                //                overskriftContainer.appendChild(klonText);
+            }
+
+        }
+
+        function visOverskriftGrande() {
+            console.log(theJSON)
+
+            if (theJSON.overskrift_grande) {
+
+                console.log(theJSON.overskrift_grande)
+                document.querySelector(".overskrift_grande").classList.remove("hide");
+                document.querySelector(".overskrift_grande").textContent = theJSON.overskrift_grande;
+
             }
 
         }
@@ -257,42 +302,56 @@
 
         // BILLEDE KARUSSEL FAMILY
         function visKarusselFamily() {
-            numberOfPics = theJSON.billede_family.lenght;
-            theJSON.billede_family.forEach((billede, index) => {
-                const theClone = document.querySelector(".template_image").cloneNode(true).content;
-                theClone.querySelector("img").src = billede.guid;
-                document.querySelector(".container_family").appendChild(theClone);
-            })
 
-            document.querySelector(".container_family").addEventListener("scroll", scrollFunction)
+            if (theJSON.billede_family) {
+
+                document.querySelector(".family_galleri").classList.remove("hide");
+
+                numberOfPics = theJSON.billede_family.lenght;
+                theJSON.billede_family.forEach((billede, index) => {
+                    const theClone = document.querySelector(".template_image").cloneNode(true).content;
+                    theClone.querySelector("img").src = billede.guid;
+                    document.querySelector(".container_family").appendChild(theClone);
+                })
+
+                document.querySelector(".container_family").addEventListener("scroll", scrollFunction)
+            }
         }
 
 
 
         // BILLEDE KARUSSEL LARGE
         function visKarusselLarge() {
-            numberOfPics = theJSON.billede_large.lenght;
-            theJSON.billede_large.forEach((billede, index) => {
-                const theSecondClone = document.querySelector(".template_image").cloneNode(true).content;
-                theSecondClone.querySelector("img").src = billede.guid;
-                document.querySelector(".container_large").appendChild(theSecondClone);
-            })
 
-            document.querySelector(".container_large").addEventListener("scroll", scrollFunction)
+            if (theJSON.billede_large) {
+                document.querySelector(".large_galleri").classList.remove("hide");
+                numberOfPics = theJSON.billede_large.lenght;
+                theJSON.billede_large.forEach((billede, index) => {
+                    const theSecondClone = document.querySelector(".template_image").cloneNode(true).content;
+                    theSecondClone.querySelector("img").src = billede.guid;
+                    document.querySelector(".container_large").appendChild(theSecondClone);
+                })
+
+                document.querySelector(".container_large").addEventListener("scroll", scrollFunction)
+            }
         }
 
 
 
         // BILLEDE KARUSSEL GRANDE
         function visKarusselGrande() {
-            numberOfPics = theJSON.billede_grande.lenght;
-            theJSON.billede_grande.forEach((billede, index) => {
-                const theThirdClone = document.querySelector(".template_image").cloneNode(true).content;
-                theThirdClone.querySelector("img").src = billede.guid;
-                document.querySelector(".container_grande").appendChild(theThirdClone);
-            })
 
-            document.querySelector(".container_grande").addEventListener("scroll", scrollFunction)
+            if (theJSON.billede_grande) {
+                document.querySelector(".grande_galleri").classList.remove("hide");
+                numberOfPics = theJSON.billede_grande.lenght;
+                theJSON.billede_grande.forEach((billede, index) => {
+                    const theThirdClone = document.querySelector(".template_image").cloneNode(true).content;
+                    theThirdClone.querySelector("img").src = billede.guid;
+                    document.querySelector(".container_grande").appendChild(theThirdClone);
+                })
+
+                document.querySelector(".container_grande").addEventListener("scroll", scrollFunction)
+            }
         }
 
 
@@ -384,7 +443,7 @@
 
             // tekst 2
             if (theJSON.tekst_2) {
-                console.log(theJSON.overskrift_2)
+                console.log(theJSON.tekst_2)
 
                 const klonText = TextTemplate.cloneNode(true).content;
 
