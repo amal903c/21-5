@@ -295,6 +295,18 @@ h3 {
     }
 }
 
+@media only screen and (min-width: 1500px) {
+
+    .dropdown_container,
+    .dropdown_container_boliger,
+    .dropdown_container_okonomi,
+    .dropdown_container_om215,
+    .dropdown_container_praktiskinfo,
+    .dropdown_container_kobafandel {
+        grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+    }
+}
+
 @media only screen and (min-width: 1020px) {
     #menu_linje {
         display: block;
@@ -360,6 +372,7 @@ h3 {
         width: auto;
         margin: 0 auto;
         right: 0;
+        z-index: 1;
 
 
 
@@ -822,21 +835,30 @@ h3 {
 
 /* FAMILIERNS OPLEVELSER POPUP */
 
-#familier_detalje {
-    width: 340px;
-    height: 500px;
-    position: fixed;
-    z-index: 10;
-    overflow: auto;
-    left: 0;
-    right: 0;
-    background-color: rgb(242, 242, 242);
+#article_familier {
+    display: flex;
+    flex-wrap: wrap;
 
-    margin: auto;
+    margin-top: 100px;
+    background-color: white;
 }
 
 .col_familier {
-    padding: 0 35px;
+    flex-grow: 1;
+    flex-basis: 500px;
+
+    padding: 50px;
+}
+
+#familier_detalje {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
 }
 
 .by_popup {
@@ -866,10 +888,10 @@ h3 {
     color: black;
     cursor: pointer;
     margin: 0;
-    float: right;
+    float: left;
     border: none;
-    font-size: 1.5rem;
-    background-color: rgb(242, 242, 242);
+    font-size: 1.8rem;
+    background-color: white;
 }
 
 
