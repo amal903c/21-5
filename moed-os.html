@@ -140,6 +140,71 @@
 </head>
 
 <body>
+
+    <template id="menutemplate">
+        <article id="menu_punkter_content_nav">
+            <h3 id="title"></h3>
+            <img src="">
+        </article>
+    </template>
+    <!--MIDLERTIDIG HEADER-->
+    <nav id="navigation">
+
+        <div class="mobil_nav_container">
+            <a class="logo_mobil logoimg" href="index.html"><img class="logoimg" src="img/logo.svg"></a>
+            <div class="menuknap">☰</div>
+            <div class="lukkeknap hidden">X</div>
+        </div>
+
+        <div id="menu_linje" class="hidden">
+            <ul id="menu_punkter" class="menupunkter_container">
+                <a class="atag" href="index.html"><img class="logoimg logoweb" src="img/logo.svg"></a>
+                <li id="destinationer">Destinationer</li>
+                <div class="dropdown_container hidden">
+
+                </div>
+                <li id="boliger">Boliger</li>
+                <div class="dropdown_container_boliger hidden">
+
+                </div>
+                <li id="om_215">Om 21-5</li>
+                <div class="dropdown_container_om215 hidden">
+
+                </div>
+                <li id="økonomi_jura_skat">Økonomi, Jura og Skat</li>
+                <div class="dropdown_container_okonomi hidden">
+
+                </div>
+                <li id="kob_af_andel">Køb af andel i 21-5</li>
+                <div class="dropdown_container_kobafandel hidden">
+
+                </div>
+
+                <li id="praktisk_info">Praktisk info</li>
+                <div class="dropdown_container_praktiskinfo hidden">
+
+                </div>
+                <div class="ombyt">
+                    <input type="text" placeholder="Søg...">
+                    <button>Log in <img class="user" src="grafik/user.svg"> </button>
+                </div>
+                <div id="alle_flag_container">
+                    <img class="land_img" src="img/danmark.svg">
+                    <div class="flag_container">
+                        <img class="land_img" src="img/danmark.svg">
+                        <img class="land_img" src="img/danmark.svg">
+                        <img class="land_img" src="img/danmark.svg">
+                        <img class="land_img" src="img/danmark.svg">
+                    </div>
+                </div>
+            </ul>
+        </div>
+
+
+    </nav>
+
+
+
     <div class="overskrift">
     </div>
     <main id="the_container">
@@ -347,6 +412,7 @@
         }
 
     </script>
+    <script src="script.js"></script>
 </body>
 
 </html>
