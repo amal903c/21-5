@@ -191,7 +191,8 @@ h3 {
 .dropdown_container_om215,
 .dropdown_container_boliger,
 .dropdown_container_okonomi,
-.dropdown_container_praktiskinfo {
+.dropdown_container_praktiskinfo,
+.dropdown_container_kobafandel {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
     width: 47vw;
@@ -276,7 +277,8 @@ h3 {
 
     .dropdown_container,
     .dropdown_container_om215,
-    .dropdown_container_praktiskinfo {
+    .dropdown_container_praktiskinfo,
+    .dropdown_container_kobafandel {
         margin-left: 7vw;
     }
 
@@ -350,7 +352,8 @@ h3 {
     .dropdown_container_boliger,
     .dropdown_container_okonomi,
     .dropdown_container_om215,
-    .dropdown_container_praktiskinfo {
+    .dropdown_container_praktiskinfo,
+    .dropdown_container_kobafandel {
         position: absolute;
         left: 0;
         top: 8vw;

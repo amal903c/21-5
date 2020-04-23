@@ -11,6 +11,13 @@ var endpoint_boliger_udvaelg = "http://michelleyoung.dk/kea/09_cms/21-5_wp/wordp
 //Økonomi url
 var endpoint_okonomi = "http://michelleyoung.dk/kea/09_cms/21-5_wp/wordpress/wp-json/wp/v2/okonomi";
 
+
+//Køb af andel
+var endpoint_kobafandel_ledigandel = "http://michelleyoung.dk/kea/09_cms/21-5_wp/wordpress/wp-json/wp/v2/ledig_andel/837";
+var endpoint_kobafandel_foreninger = "http://michelleyoung.dk/kea/09_cms/21-5_wp/wordpress/wp-json/wp/v2/stiftede_foreninger";
+var endpoint_kobafandel_pakker = "http://michelleyoung.dk/kea/09_cms/21-5_wp/wordpress/wp-json/wp/v2/vores_pakker";
+var endpoint_kobafandel_moedos = "http://michelleyoung.dk/kea/09_cms/21-5_wp/wordpress/wp-json/wp/v2/kontakt/200";
+
 //om215 url
 // hvorfor vælge 21-5
 var endpoint_om215_hvorfor = "http://michelleyoung.dk/kea/09_cms/21-5_wp/wordpress/wp-json/wp/v2/om215/688";
@@ -41,6 +48,11 @@ var theJSON_uge = [];
 var theJSON_job = [];
 var theJSON_faq = [];
 
+//køb af andel
+var theJSON_kobafandel_ledigandel = [];
+var theJSON_kobafandel_foreninger = [];
+var theJSON_kobafandel_pakker = [];
+var theJSON_kobafandel_moedos = [];
 
 // den template vi kloner ind i vores dropwdownmenu
 var menuboksetemplate = document.querySelector("#menutemplate");
@@ -53,6 +65,9 @@ var container_boliger = document.querySelector(".dropdown_container_boliger");
 
 //Container økonomi
 var container_okonomi = document.querySelector(".dropdown_container_okonomi");
+
+//var container køb af andel
+var container_kobafandel = document.querySelector(".dropdown_container_kobafandel");
 
 //container om 21-5
 var container_om215 = document.querySelector(".dropdown_container_om215");
@@ -95,6 +110,12 @@ async function loadDataHeader() {
     const resspons_om215_hvad = await fetch(endpoint_om215_hvad);
     const resspons_om215_hvem = await fetch(endpoint_om215_hvem);
 
+    //køb af andel
+    const resspons_kobafandel_ledigandel = await fetch(endpoint_kobafandel_ledigandel);
+    const resspons_kobafandel_foreninger = await fetch(endpoint_kobafandel_foreninger);
+    const resspons_kobafandel_pakker = await fetch(endpoint_kobafandel_pakker);
+    const resspons_kobafandel_moedos = await fetch(endpoint_kobafandel_moedos);
+
     //praktisk info
     const resspons_praktiskinfo_uge = await fetch(endpoint_praktiskinfo_uge);
     const resspons_praktiskinfo_job = await fetch(endpoint_praktiskinfo_job);
@@ -116,6 +137,15 @@ async function loadDataHeader() {
     theJSON_om215_hvad = await resspons_om215_hvad.json();
     theJSON_om215_hvem = await resspons_om215_hvem.json();
 
+    //kob af andel
+    theJSON_kobafandel_ledigandel = await resspons_kobafandel_ledigandel.json();
+
+    theJSON_kobafandel_foreninger = await resspons_kobafandel_foreninger.json();
+
+    theJSON_kobafandel_pakker = await resspons_kobafandel_pakker.json();
+
+    theJSON_kobafandel_moedos = await resspons_kobafandel_moedos.json();
+
     //praktisk info
     theJSON_uge = await resspons_praktiskinfo_uge.json();
     theJSON_job = await resspons_praktiskinfo_job.json();
@@ -135,6 +165,8 @@ function clickAll() {
     document.querySelector("#økonomi_jura_skat").addEventListener("click", clickOkonomiFrem);
     //om 21-5
     document.querySelector("#om_215").addEventListener("click", clickOm215Frem);
+
+    document.querySelector("#kob_af_andel").addEventListener("click", clickAndelFrem);
 
     //praktisk info
     document.querySelector("#praktisk_info").addEventListener("click", clickPraktiskInfoFrem);
@@ -161,6 +193,7 @@ function visDestinationer() {
     container_destinationer.innerHTML = "";
     container_boliger.innerHTML = "";
     container_okonomi.innerHTML = "";
+    container_kobafandel.innerHTML = "";
     container_om215.innerHTML = "";
     container_praktiskinfo.innerHTML = "";
 
@@ -213,6 +246,7 @@ function visBoliger() {
     container_boliger.innerHTML = "";
     container_okonomi.innerHTML = "";
     container_om215.innerHTML = "";
+    container_kobafandel.innerHTML = "";
     container_praktiskinfo.innerHTML = "";
     console.log(theJSON_boliger_byt);
     console.log(theJSON_boliger_indretning);
@@ -281,6 +315,7 @@ function visOkonomi() {
     container_destinationer.innerHTML = "";
     container_boliger.innerHTML = "";
     container_okonomi.innerHTML = "";
+    container_kobafandel.innerHTML = "";
     container_om215.innerHTML = "";
     container_praktiskinfo.innerHTML = "";
     console.log(theJSON_okonomi);
@@ -329,6 +364,7 @@ function visOm215() {
     container_destinationer.innerHTML = "";
     container_boliger.innerHTML = "";
     container_okonomi.innerHTML = "";
+    container_kobafandel.innerHTML = "";
     container_om215.innerHTML = "";
     container_praktiskinfo.innerHTML = "";
     console.log(theJSON_om215_hvorfor);
@@ -395,6 +431,7 @@ function visPraktiskInfo() {
     container_boliger.innerHTML = "";
     container_okonomi.innerHTML = "";
     container_om215.innerHTML = "";
+    container_kobafandel.innerHTML = "";
     container_praktiskinfo.innerHTML = "";
 
     console.log(theJSON_uge);
@@ -438,25 +475,119 @@ function visPraktiskInfo() {
 
 
 
-    //løb listen igennem og indsæt data i en template
-
-    //            theJSON_om215.forEach(side => {
-    //
-    //                console.log(side);
-    //
-    //                const klon = menuboksetemplate.cloneNode(true).content;
-    //                klon.querySelector("h3").textContent = side.title.rendered;
-    //                klon.querySelector("img").src = side.lillebillede.guid;
-    //                klon.querySelector("article").addEventListener("click", () => {
-    //
-    //                    location.href = `basis_galleri.html?id=${destination.id}`;
-    //                })
-    //
-    //                container.appendChild(klon);
-    //
-    //
-    //            })
 }
+
+//Når man klikker på køb af andel:
+function clickAndelFrem() {
+    container_kobafandel.classList.remove("hidden")
+    visAndel();
+    document.querySelector("#kob_af_andel").removeEventListener("click", clickAndelFrem);
+
+    //når man klikker på destinationer igen
+    document.querySelector("#kob_af_andel").addEventListener("click", () => {
+        container_kobafandel.classList.add("hidden")
+        document.querySelector("#kob_af_andel").addEventListener("click", clickAndelFrem);
+
+    })
+
+
+}
+
+// viser alt data
+function visAndel() {
+
+    container_destinationer.innerHTML = "";
+    container_boliger.innerHTML = "";
+    container_okonomi.innerHTML = "";
+    container_om215.innerHTML = "";
+    container_kobafandel.innerHTML = "";
+    container_praktiskinfo.innerHTML = "";
+    console.log(theJSON_kobafandel_ledigandel);
+    console.log(theJSON_kobafandel_foreninger);
+    console.log(theJSON_kobafandel_pakker);
+
+    console.log(theJSON_kobafandel_moedos);
+
+    //kloninger
+    const klon = menuboksetemplate.cloneNode(true).content;
+
+    klon.querySelector("h3").textContent = theJSON_kobafandel_ledigandel.title.rendered;
+
+    klon.querySelector("img").src = theJSON_kobafandel_ledigandel.lillebillede.guid;
+
+    klon.querySelector("article").addEventListener("click", () => {
+
+        location.href = `ledig_andel.html?id=${theJSON_kobafandel_ledigandel.id}`;
+    })
+    container_kobafandel.appendChild(klon);
+
+    //klon2
+    const klon2 = menuboksetemplate.cloneNode(true).content;
+
+    klon2.querySelector("h3").textContent = theJSON_kobafandel_foreninger.title.rendered;
+
+    klon2.querySelector("img").src = theJSON_kobafandel_foreninger.lillebillede.guid;
+
+    klon2.querySelector("article").addEventListener("click", () => {
+
+        location.href = `foreninger_basis.html?id=${theJSON_kobafandel_foreninger.id}`;
+    })
+    container_kobafandel.appendChild(klon2);
+
+    //klon3
+    const klon3 = menuboksetemplate.cloneNode(true).content;
+
+    klon3.querySelector("h3").textContent = theJSON_kobafandel_pakker.title.rendered;
+
+    klon3.querySelector("img").src = theJSON_kobafandel_pakker.lillebillede.guid;
+
+    klon3.querySelector("article").addEventListener("click", () => {
+
+        location.href = `test1.html?id=${theJSON_kobafandel_pakker.id}`;
+    })
+    container_kobafandel.appendChild(klon3);
+
+    //klon4
+    const klon4 = menuboksetemplate.cloneNode(true).content;
+
+    klon3.querySelector("h3").textContent = theJSON_kobafandel_moedos.title.rendered;
+
+    klon3.querySelector("img").src = theJSON_kobafandel_moedos.lillebillede.guid;
+
+    klon3.querySelector("article").addEventListener("click", () => {
+
+        location.href = `moed-os.html?id=${theJSON_kobafandel_moedos.id}`;
+    })
+    container_kobafandel.appendChild(klon4);
+}
+
+
+
+
+
+
+
+
+
+//løb listen igennem og indsæt data i en template
+
+//            theJSON_om215.forEach(side => {
+//
+//                console.log(side);
+//
+//                const klon = menuboksetemplate.cloneNode(true).content;
+//                klon.querySelector("h3").textContent = side.title.rendered;
+//                klon.querySelector("img").src = side.lillebillede.guid;
+//                klon.querySelector("article").addEventListener("click", () => {
+//
+//                    location.href = `basis_galleri.html?id=${destination.id}`;
+//                })
+//
+//                container.appendChild(klon);
+//
+//
+//            })
+
 
 
 

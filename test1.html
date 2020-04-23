@@ -25,12 +25,13 @@
         }
 
 
-        .menu img {
-            width: 10%;
-
+        .menu_pakker img {
+            width: 50%;
+            margin: auto;
+            padding: 30px 0;
         }
 
-        .menu img:hover {
+        .menu_pakker img:hover {
             opacity: 0.5;
             cursor: pointer;
         }
@@ -39,24 +40,68 @@
             opacity: 0.5;
         }
 
+        .menu_pakker {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        }
+
+        @media only screen and (min-width: 800px) {
+            .menu_pakker {
+                display: grid;
+                grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+            }
+        }
+
+
+        .pris {
+            border: solid black 1px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+
+
+
+
+
 
 
 
 
         /* SITE */
-
-
-
-
-
-
-
-        .pakker_container {
+        .liste_pakker {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            margin: 0 3vw;
-            padding: 0 10vw;
+            grid-template-columns: 50vw 50vw;
+            margin: 0;
+            padding: 0 40px;
         }
+
+
+
+
+        /*
+        @media only screen and (min-width: 750px) {
+            .liste_pakker {
+                display: grid;
+                grid-template-columns: 50vw 50wv;
+            }
+        }
+*/
+
+
+        /*
+        .liste_pakker p {
+            padding: 0 20px;
+        }
+
+        .liste_pakker h2 {
+            padding: 0 20px;
+        }
+
+        .liste_pakker h3 {
+            padding: 0 20px;
+        }
+*/
 
     </style>
 </head>
@@ -82,8 +127,8 @@
 
 
     <section class="liste_pakker">
-        <div id="col_1"></div>
-        <div id="col_2"></div>
+        <div id="col_1_pakker"></div>
+        <div id="col_2_pakker"></div>
     </section>
 
 
@@ -155,8 +200,8 @@
                 if (pakke.kategorier == filter || filter == "") {
                     console.log(pakke);
                     let klon = template.cloneNode(true);
-                    klon.querySelector(".main_overskrift").textContent = pakke.main_overskrift;
-                    klon.querySelector(".tekst1").innerHTML = pakke.tekst_1;
+                    //                    klon.querySelector(".main_overskrift").textContent = pakke.main_overskrift;
+                    // klon.querySelector(".tekst1").innerHTML = pakke.tekst_1;
                     klon.querySelector(".overskrift_forening").innerHTML = pakke.overskrift_forening;
                     klon.querySelector(".tekst2").innerHTML = pakke.tekst_2;
                     klon.querySelector(".destinationer").innerHTML = pakke.destinationer;
