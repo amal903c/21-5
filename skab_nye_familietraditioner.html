@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title></title>
+    <title>21-5</title>
     <link rel="stylesheet" href="style.css">
     <link rel="apple-touch-icon" sizes="180x180" href="myIcons/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="myIcons/favicon-32x32.png">
@@ -71,11 +71,7 @@
 
         /* stregen */
 
-        .streg {
-            margin-left: -36px;
-            margin-top: -66px;
-            width: 34%;
-        }
+
 
         .afsnit_text_container {
             margin-bottom: 40px;
@@ -223,7 +219,7 @@
         <article class="afsnit_text_container">
             <h1 id="overskrift" class="hide"></h1>
 
-            <img class="streg hide" src="">
+
 
             <h2 class="rubrik hide"></h2>
 
@@ -392,8 +388,7 @@
                 klonText.querySelector("h1").classList.remove("hide");
                 klonText.querySelector("h1").textContent = theJSON.main_overskrift;
                 //
-                klonText.querySelector(".streg").classList.remove("hide");
-                klonText.querySelector(".streg").src = `grafik/streg.svg`;
+
                 textContainer.appendChild(klonText);
 
             }
