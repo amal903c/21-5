@@ -295,6 +295,17 @@ h3 {
     }
 }
 
+@media only screen and (min-width: 1500px) {
+
+    .dropdown_container,
+    .dropdown_container_boliger,
+    .dropdown_container_okonomi,
+    .dropdown_container_om215,
+    .dropdown_container_praktiskinfo,
+    .dropdown_container_kobafandel {
+        grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+    }
+}
 @media only screen and (min-width: 1020px) {
     #menu_linje {
         display: block;
@@ -360,6 +371,7 @@ h3 {
         width: auto;
         margin: 0 auto;
         right: 0;
+        z-index: 1;
 
 
 
