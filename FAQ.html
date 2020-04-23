@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Document</title>
+    <title>FAQ</title>
     <link rel="stylesheet" href="style.css">
     <link rel="apple-touch-icon" sizes="180x180" href="myIcons/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="myIcons/favicon-32x32.png">
@@ -15,7 +15,7 @@
     <meta name="msapplication-config" content="myIcons/browserconfig.xml">
     <meta name="theme-color" content="#ffffff">
     <style>
-        .accordion {
+        .faq_accordion {
             background-color: rgba(233, 244, 248, 0.31);
             color: #585858;
             cursor: pointer;
@@ -31,11 +31,11 @@
         }
 
         .active,
-        .accordion:hover {
+        .faq_accordion:hover {
             background-color: #E9F4F8;
         }
 
-        .panel {
+        .faq_panel {
             padding: 0 18px;
             background-color: white;
             max-height: 0;
@@ -43,18 +43,18 @@
             transition: max-height 0.2s ease-out;
         }
 
-        details:hover {
+        .faq details:hover {
             background: rgba(233, 244, 248, 0.31);
         }
 
-        details {
+        .faq details {
             border: 1px solid #aaa;
             border-radius: 4px;
             padding: .5em .5em 0;
             margin: 10px 0;
         }
 
-        summary {
+        .faq summary {
             font-weight: 500;
             margin: -.5em -.5em 0;
             padding: .5em;
@@ -65,22 +65,22 @@
             font-family: 'Montserrat', sans-serif;
         }
 
-        details[open] {
+        .faq details[open] {
             padding: .5em;
         }
 
-        details[open] summary {
+        .faq details[open] summary {
             border-bottom: 1px solid #aaa;
             margin-bottom: .5em;
         }
 
-        details summary::-webkit-details-marker {
+        .faq details summary::-webkit-details-marker {
             display: none;
         }
 
 
 
-        .container {
+        .faq_container {
             display: flex;
             justify-content: center;
             align-items: center;
@@ -92,7 +92,7 @@
             padding-top: 0;
         }
 
-        .overrubrik {
+        .faq_overrubrik {
             padding: 40px;
             flex-direction: column;
             display: flex;
@@ -173,14 +173,14 @@
     </nav>
 
 
-    <section class="overrubrik">
+    <section class="faq_overrubrik">
         <h1>Ofte stillede spørgsmål</h1>
         <p>I dette afsnit kan I finde svar på mange af de gængse spørgsmål, som vi oplever at få i hverdagen.
 
             Hvis I ikke finder svar på jeres spørgsmål, så tøv endelig ikke med at tage fat i os.</p>
     </section>
 
-    <div class="container">
+    <div class="faq_container">
         <div class="faq">
             <details>
                 <summary>21-5 Generelle spørgsmål</summary>
@@ -211,9 +211,9 @@
 
 
 
-            <template>
-                <button class="accordion"></button>
-                <div class="panel">
+            <template id="faq_template">
+                <button class="faq_accordion"></button>
+                <div class="faq_panel">
                     <p></p>
                 </div>
             </template>
@@ -276,12 +276,9 @@
     <script>
         "use strict";
 
-        let theJSON;
+        let theFAQ;
 
-        const container = document.querySelector("#faq");
-        const TextTemplate = document.querySelector("template");
-
-        const ImageTemplate = document.querySelector(".template_image");
+        const faq_TextTemplate = document.querySelector("#faq_template");
 
         const endpoint = "http://michelleyoung.dk/kea/09_cms/21-5_wp/wordpress/wp-json/wp/v2/faq?per_page=100";
 
@@ -303,18 +300,18 @@
 
             const resspons = await fetch(endpoint)
 
-            theJSON = await resspons.json();
+            theFAQ = await resspons.json();
 
             visFAQ();
         }
 
 
         function visFAQ() {
-            console.log(theJSON)
-            theJSON.forEach(question => {
-                const klonText = TextTemplate.cloneNode(true).content;
-                klonText.querySelector(".accordion").textContent = question.question;
-                klonText.querySelector(".panel p").textContent = question.svar;
+            console.log(theFAQ)
+            theFAQ.forEach(question => {
+                const klonText = faq_TextTemplate.cloneNode(true).content;
+                klonText.querySelector(".faq_accordion").textContent = question.question;
+                klonText.querySelector(".faq_panel p").textContent = question.svar;
 
                 if (question.kategori[0] == "21-5 generelle spørgsmål") {
                     document.querySelector("#generel").appendChild(klonText);
@@ -334,7 +331,7 @@
 
 
             })
-            accordion();
+            faq_accordion();
 
         }
 
@@ -342,18 +339,18 @@
 
 
 
-        function accordion() {
-            var acc = document.getElementsByClassName("accordion");
+        function faq_accordion() {
+            var acc = document.getElementsByClassName("faq_accordion");
             var i;
 
             for (i = 0; i < acc.length; i++) {
                 acc[i].addEventListener("click", function() {
                     this.classList.toggle("active");
-                    var panel = this.nextElementSibling;
-                    if (panel.style.maxHeight) {
-                        panel.style.maxHeight = null;
+                    var faq_panel = this.nextElementSibling;
+                    if (faq_panel.style.maxHeight) {
+                        faq_panel.style.maxHeight = null;
                     } else {
-                        panel.style.maxHeight = panel.scrollHeight + "px";
+                        faq_panel.style.maxHeight = faq_panel.scrollHeight + "px";
                     }
                 });
             }
