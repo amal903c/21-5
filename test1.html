@@ -26,9 +26,10 @@
 
 
         .menu_pakker img {
-            width: 50%;
-            margin: auto;
-            padding: 30px 0;
+            width: 26vw;
+            margin: 1rem;
+
+
         }
 
         .menu_pakker img:hover {
@@ -41,17 +42,11 @@
         }
 
         .menu_pakker {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            display: flex;
+            justify-content: space-around;
+            margin: 0 auto;
+            max-width: 50vw
         }
-
-        @media only screen and (min-width: 800px) {
-            .menu_pakker {
-                display: grid;
-                grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
-            }
-        }
-
 
         .pris {
             border: solid black 1px;
@@ -59,24 +54,29 @@
             text-align: center;
         }
 
-
-
-
-
-
-
-
+        /* overskrift */
+        .h1_pakker {
+            text-align: center;
+        }
 
 
         /* SITE */
         .liste_pakker {
-            display: grid;
-            grid-template-columns: 50vw 50vw;
             margin: 0;
-            padding: 0 40px;
+            margin: 2.5rem;
+
         }
 
 
+        @media only screen and (min-width: 768px) {
+            .liste_pakker {
+                column-count: 2;
+            }
+
+            .menu_pakker img {
+                width: 17vw;
+            }
+        }
 
 
         /*
@@ -102,7 +102,6 @@
             padding: 0 20px;
         }
 */
-
     </style>
 </head>
 
@@ -176,7 +175,7 @@
 
 
     <header>
-        <h1 class="h1_pakker">Vores pakker</h1>
+        <h1 class="h1_pakker">Vores foreninger</h1>
     </header>
 
 
@@ -424,13 +423,10 @@
         // detalje.querySelector(".lang").textContent = mad.gsx$lang.$t;
         // detalje.querySelector(".pris").textContent += mad.gsx$pris.$t + ",-";
         // }
-
     </script>
     <script src="script.js"></script>
 
 
 
 
-</body>
-
-</html>
+</body></html>
