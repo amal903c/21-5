@@ -20,7 +20,7 @@
             object-fit: cover;
         }
 
-        #the_container {
+        #moed_the_container {
             display: grid;
             overflow: hidden;
         }
@@ -102,12 +102,6 @@
             top: 1px;
         }
 
-        /*
-        .overskrift,
-        .kontakt h1 {
-        text-align: center;
-        }*/
-
         .clicked {
             color: black;
             background: #E9F4F8;
@@ -118,7 +112,7 @@
         }
 
         @media only screen and (min-width: 1024px) {
-            #the_container {
+            #moed_the_container {
                 display: grid;
                 grid-template-columns: 60vw 40vw;
                 overflow: hidden;
@@ -205,28 +199,27 @@
 
 
 
-    <div class="overskrift">
+    <div class="moed_overskrift">
     </div>
-    <main id="the_container">
-        <section id="kontakt">
-            <div class="text_container">
+    <main id="moed_the_container">
+        <section id="moed_kontakt">
+            <div class="moed_text_container">
 
-                <template class="template_text">
+                <template class="moed_template_text">
                     <article class="kontakt">
                         <h1>Mød os</h1>
-                        <img class="streg hide" src="">
-                        <h2 class="overskrift_rubrik1"></h2>
-                        <p class="tekst1"></p>
-                        <h2 class="overskrift_rubrik2"></h2>
-                        <p class="tekst2"></p>
+                        <h2 class="moed_overskrift_rubrik1"></h2>
+                        <p class="moed_tekst1"></p>
+                        <h2 class="moed_overskrift_rubrik2"></h2>
+                        <p class="moed_tekst2"></p>
                     </article>
                 </template>
 
             </div>
 
-            <div class="image_container">
+            <div class="moed_image_container">
 
-                <template class="template_image">
+                <template class="moed_template_image">
                     <article class="kontakt_image_container">
                         <img src="" alt="">
                     </article>
@@ -335,12 +328,11 @@
     <script>
         "use strict";
 
-        let theJSON;
-        const detalje = document.querySelector("#kontakt");
-        const container = document.querySelector("#the_container");
-        const TextTemplate = document.querySelector(".template_text");
+        let theKontakt;
+        const moed_container = document.querySelector("#moed_the_container");
+        const moed_TextTemplate = document.querySelector(".moed_template_text");
 
-        const ImageTemplate = document.querySelector(".template_image");
+        const moed_ImageTemplate = document.querySelector(".moed_template_image");
 
         const endpoint = "http://michelleyoung.dk/kea/09_cms/21-5_wp/wordpress/wp-json/wp/v2/kontakt/200";
 
@@ -353,46 +345,37 @@
 
         function start() {
             loadData();
-            /*            document.querySelectorAll(".buttons").forEach(knap => {
-                            knap.addEventListener("click", buttonClicked);
-                        });*/
         }
-
-        /*        function buttonClicked() {
-                    document.querySelector(".buttons").classList.remove("clicked"); // fjern klassen valgt fra aktuel knap
-                    this.classList.add("clicked") // marker den nyvalgte knap
-                }*/
         async function loadData() {
 
 
             const resspons = await fetch(endpoint)
 
-            theJSON = await resspons.json();
+            theKontakt = await resspons.json();
 
             visKontakt();
         }
 
 
         function visKontakt() {
-            container.innerHTML = "";
-            console.log(theJSON)
+            moed_container.innerHTML = "";
+            console.log(theKontakt)
+            document.title = theKontakt.title.rendered;
 
 
-            const klonText = TextTemplate.cloneNode(true).content;
-            klonText.querySelector(".overskrift_rubrik1").textContent = theJSON.overskrift_rubrik1;
-            klonText.querySelector(".tekst1").textContent = theJSON.tekst1;
-            klonText.querySelector(".overskrift_rubrik2").textContent = theJSON.overskrift_rubrik2;
-            klonText.querySelector(".tekst2").textContent = theJSON.tekst2;
+            const klonText = moed_TextTemplate.cloneNode(true).content;
+            klonText.querySelector(".moed_overskrift_rubrik1").textContent = theKontakt.overskrift_rubrik1;
+            klonText.querySelector(".moed_tekst1").textContent = theKontakt.tekst1;
+            klonText.querySelector(".moed_overskrift_rubrik2").textContent = theKontakt.overskrift_rubrik2;
+            klonText.querySelector(".moed_tekst2").textContent = theKontakt.tekst2;
 
-            klonText.querySelector(".streg").classList.remove("hide");
-            klonText.querySelector(".streg").src = `grafik/streg.svg`;
-            container.appendChild(klonText);
+            moed_container.appendChild(klonText);
 
-            const klonImage = ImageTemplate.cloneNode(true).content;
+            const klonImage = moed_ImageTemplate.cloneNode(true).content;
 
-            klonImage.querySelector("img").src = theJSON.img1.guid;
+            klonImage.querySelector("img").src = theKontakt.img1.guid;
 
-            container.appendChild(klonImage);
+            moed_container.appendChild(klonImage);
 
 
 
