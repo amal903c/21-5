@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title></title>
+    <title>Boliger</title>
     <link rel="stylesheet" href="style.css">
 
     <link rel="apple-touch-icon" sizes="180x180" href="myIcons/apple-touch-icon.png">
@@ -123,6 +123,8 @@
             <h2 class="rubrik hide"></h2>
             <p class="tekst hide"></p>
             <img class="bo_tikken" src="">
+            <h2 class="jazz_overskrift"></h2>
+            <p class="jazz_tekst"></p>
         </article>
     </template>
 
@@ -162,7 +164,17 @@
                         </div>
                     </div>
                 </main>
+                <div id="jazz_container">
+                    <main class="main_jazz_container">
+                        <div class="jazz_overskrift_container">
+                            <h2 class="jazz_overskrift"></h2>
+                        </div>
+                        <div class="jazz_tekst_container">
+                            <p class="jazz_tekst"></p>
+                        </div>
 
+                    </main>
+                </div>
 
             </div>
 
@@ -410,9 +422,6 @@
 
                 klonText.querySelector("h1").classList.remove("hide");
                 klonText.querySelector("h1").textContent = theJSON.main_overskrift;
-                //
-                klonText.querySelector(".streg").classList.remove("hide");
-                klonText.querySelector(".streg").src = `grafik/streg.svg`;
                 textContainer.appendChild(klonText);
             }
 
@@ -485,6 +494,29 @@
                 const klonText = TextTemplate.cloneNode(true).content;
                 klonText.querySelector(".bo_tikken").classList.remove("hide");
                 klonText.querySelector(".bo_tikken").src = theJSON.bo_tikken_logo.guid;
+                textContainer.appendChild(klonText);
+            }
+
+
+            // Jazz overskrift
+            if (theJSON.jazz_overskrift) {
+                console.log(theJSON.jazz_overskrift)
+
+                const klonText = TextTemplate.cloneNode(true).content;
+                klonText.querySelector(".jazz_overskrift").classList.remove("hide");
+                klonText.querySelector(".jazz_overskrift").textContent = theJSON.jazz_overskrift;
+                textContainer.appendChild(klonText);
+            }
+
+
+
+            // Jazz tekst
+            if (theJSON.jazz_tekst) {
+                console.log(theJSON.jazz_tekst)
+
+                const klonText = TextTemplate.cloneNode(true).content;
+                klonText.querySelector(".jazz_tekst").classList.remove("hide");
+                klonText.querySelector(".jazz_tekst").innerHTML = theJSON.jazz_tekst;
                 textContainer.appendChild(klonText);
             }
 
