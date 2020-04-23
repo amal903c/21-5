@@ -1788,6 +1788,11 @@ h3 {
     background-color: rgba(233, 244, 248, 0.98);
 }
 
+.cta_splash:hover {
+    background-color: rgba(233, 244, 248, 0.98);
+    filter: grayscale(0.5);
+}
+
 #forside .loes_mere h2:hover {
     color: black;
     background-color: rgba(233, 244, 248, 0.88);
