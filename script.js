@@ -14,8 +14,8 @@ var endpoint_okonomi = "http://michelleyoung.dk/kea/09_cms/21-5_wp/wordpress/wp-
 
 //Køb af andel
 var endpoint_kobafandel_ledigandel = "http://michelleyoung.dk/kea/09_cms/21-5_wp/wordpress/wp-json/wp/v2/ledig_andel/837";
-var endpoint_kobafandel_foreninger = "http://michelleyoung.dk/kea/09_cms/21-5_wp/wordpress/wp-json/wp/v2/stiftede_foreninger";
-var endpoint_kobafandel_pakker = "http://michelleyoung.dk/kea/09_cms/21-5_wp/wordpress/wp-json/wp/v2/vores_pakker";
+var endpoint_kobafandel_foreninger = "http://michelleyoung.dk/kea/09_cms/21-5_wp/wordpress/wp-json/wp/v2/stiftede_foreninger/387";
+var endpoint_kobafandel_pakker = "http://michelleyoung.dk/kea/09_cms/21-5_wp/wordpress/wp-json/wp/v2/vores_pakker/656";
 var endpoint_kobafandel_moedos = "http://michelleyoung.dk/kea/09_cms/21-5_wp/wordpress/wp-json/wp/v2/kontakt/200";
 
 //om215 url
@@ -524,20 +524,20 @@ function visAndel() {
     //klon2
     const klon2 = menuboksetemplate.cloneNode(true).content;
 
-    klon2.querySelector("h3").textContent = theJSON_kobafandel_foreninger.title.rendered;
+    klon2.querySelector("h3").textContent = "Stiftede foreninger"
 
     klon2.querySelector("img").src = theJSON_kobafandel_foreninger.lillebillede.guid;
 
     klon2.querySelector("article").addEventListener("click", () => {
 
-        location.href = `foreninger_basis.html?id=${theJSON_kobafandel_foreninger.id}`;
+        location.href = `foreninger.html?id=${theJSON_kobafandel_foreninger.id}`;
     })
     container_kobafandel.appendChild(klon2);
 
     //klon3
     const klon3 = menuboksetemplate.cloneNode(true).content;
 
-    klon3.querySelector("h3").textContent = theJSON_kobafandel_pakker.title.rendered;
+    klon3.querySelector("h3").textContent = "Vores Pakker";
 
     klon3.querySelector("img").src = theJSON_kobafandel_pakker.lillebillede.guid;
 
@@ -550,11 +550,11 @@ function visAndel() {
     //klon4
     const klon4 = menuboksetemplate.cloneNode(true).content;
 
-    klon3.querySelector("h3").textContent = theJSON_kobafandel_moedos.title.rendered;
+    klon4.querySelector("h3").textContent = theJSON_kobafandel_moedos.title.rendered;
 
-    klon3.querySelector("img").src = theJSON_kobafandel_moedos.lillebillede.guid;
+    klon4.querySelector("img").src = theJSON_kobafandel_moedos.lillebillede.guid;
 
-    klon3.querySelector("article").addEventListener("click", () => {
+    klon4.querySelector("article").addEventListener("click", () => {
 
         location.href = `moed-os.html?id=${theJSON_kobafandel_moedos.id}`;
     })
