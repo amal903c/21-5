@@ -368,7 +368,7 @@
 
                 document.querySelector(".family_galleri").classList.remove("hide");
 
-                numberOfPics = theJSON.billede_family.lenght;
+                numberOfPics = theJSON.billede_family.length;
                 theJSON.billede_family.forEach((billede, index) => {
                     const theClone = document.querySelector(".template_image").cloneNode(true).content;
                     theClone.querySelector("img").src = billede.guid;
@@ -386,7 +386,7 @@
 
             if (theJSON.billede_large) {
                 document.querySelector(".large_galleri").classList.remove("hide");
-                numberOfPics = theJSON.billede_large.lenght;
+                numberOfPics = theJSON.billede_large.length;
                 theJSON.billede_large.forEach((billede, index) => {
                     const theSecondClone = document.querySelector(".template_image").cloneNode(true).content;
                     theSecondClone.querySelector("img").src = billede.guid;
@@ -404,7 +404,7 @@
 
             if (theJSON.billede_grande) {
                 document.querySelector(".grande_galleri").classList.remove("hide");
-                numberOfPics = theJSON.billede_grande.lenght;
+                numberOfPics = theJSON.billede_grande.length;
                 theJSON.billede_grande.forEach((billede, index) => {
                     const theThirdClone = document.querySelector(".template_image").cloneNode(true).content;
                     theThirdClone.querySelector("img").src = billede.guid;
@@ -426,15 +426,15 @@
 
         function frem_galleri1() {
             caroCurrentNum++;
-            navigate()
+            navigate1()
         }
 
         function tilbage_galleri1() {
             caroCurrentNum--;
-            navigate()
+            navigate1()
         }
 
-        function navigate() {
+        function navigate1() {
             document.querySelector(".container_family").scrollTo({
                 left: caroCurrentNum * document.querySelector(".karussel_images").width,
                 behavior: "smooth"
@@ -452,15 +452,15 @@
 
         function frem_galleri2() {
             caroCurrentNum++;
-            navigate()
+            navigate2()
         }
 
         function tilbage_galleri2() {
             caroCurrentNum--;
-            navigate()
+            navigate2()
         }
 
-        function navigate() {
+        function navigate2() {
             document.querySelector(".container_large").scrollTo({
                 left: caroCurrentNum * document.querySelector(".karussel_images").width,
                 behavior: "smooth"
@@ -478,15 +478,15 @@
 
         function frem_galleri3() {
             caroCurrentNum++;
-            navigate()
+            navigate3()
         }
 
         function tilbage_galleri3() {
             caroCurrentNum--;
-            navigate()
+            navigate3()
         }
 
-        function navigate() {
+        function navigate3() {
             document.querySelector(".container_grande").scrollTo({
                 left: caroCurrentNum * document.querySelector(".karussel_images").width,
                 behavior: "smooth"
