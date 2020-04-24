@@ -98,65 +98,65 @@ async function loadDataHeader() {
     const resspons_destinationer = await fetch(endpoint_destinationer);
 
     //boliger
-    const resspons_boliger_byt = await fetch(endpoint_boliger_byt);
-    const resspons_boliger_indretning = await fetch(endpoint_boliger_indretning);
-    const resspons_boliger_udvaelg = await fetch(endpoint_boliger_udvaelg);
+    //    const resspons_boliger_byt = await fetch(endpoint_boliger_byt);
+    //    const resspons_boliger_indretning = await fetch(endpoint_boliger_indretning);
+    //    const resspons_boliger_udvaelg = await fetch(endpoint_boliger_udvaelg);
 
     //økonomi
-    const resspons_okonomi = await fetch(endpoint_okonomi);
+    //    const resspons_okonomi = await fetch(endpoint_okonomi);
 
     //om215
-    const resspons_om215_hvorfor = await fetch(endpoint_om215_hvorfor);
-    const resspons_om215_hvad = await fetch(endpoint_om215_hvad);
-    const resspons_om215_hvem = await fetch(endpoint_om215_hvem);
+    //    const resspons_om215_hvorfor = await fetch(endpoint_om215_hvorfor);
+    //    const resspons_om215_hvad = await fetch(endpoint_om215_hvad);
+    //    const resspons_om215_hvem = await fetch(endpoint_om215_hvem);
 
     //køb af andel
-    const resspons_kobafandel_ledigandel = await fetch(endpoint_kobafandel_ledigandel);
-    const resspons_kobafandel_foreninger = await fetch(endpoint_kobafandel_foreninger);
-    const resspons_kobafandel_pakker = await fetch(endpoint_kobafandel_pakker);
-    const resspons_kobafandel_moedos = await fetch(endpoint_kobafandel_moedos);
+    //    const resspons_kobafandel_ledigandel = await fetch(endpoint_kobafandel_ledigandel);
+    //    const resspons_kobafandel_foreninger = await fetch(endpoint_kobafandel_foreninger);
+    //    const resspons_kobafandel_pakker = await fetch(endpoint_kobafandel_pakker);
+    //    const resspons_kobafandel_moedos = await fetch(endpoint_kobafandel_moedos);
 
     //praktisk info
-    const resspons_praktiskinfo_uge = await fetch(endpoint_praktiskinfo_uge);
-    const resspons_praktiskinfo_job = await fetch(endpoint_praktiskinfo_job);
-    const resspons_praktiskinfo_faq = await fetch(endpoint_praktiskinfo_faq);
+    //    const resspons_praktiskinfo_uge = await fetch(endpoint_praktiskinfo_uge);
+    //    const resspons_praktiskinfo_job = await fetch(endpoint_praktiskinfo_job);
+    //    const resspons_praktiskinfo_faq = await fetch(endpoint_praktiskinfo_faq);
 
 
     theJSON_destinationer = await resspons_destinationer.json();
 
     //boliger
-    theJSON_boliger_byt = await resspons_boliger_byt.json();
-    theJSON_boliger_indretning = await resspons_boliger_indretning.json();
-    theJSON_boliger_udvaelg = await resspons_boliger_udvaelg.json();
+    //    theJSON_boliger_byt = await resspons_boliger_byt.json();
+    //    theJSON_boliger_indretning = await resspons_boliger_indretning.json();
+    //    theJSON_boliger_udvaelg = await resspons_boliger_udvaelg.json();
 
     //
-    theJSON_okonomi = await resspons_okonomi.json();
+    //    theJSON_okonomi = await resspons_okonomi.json();
 
     //om215
-    theJSON_om215_hvorfor = await resspons_om215_hvorfor.json();
-    theJSON_om215_hvad = await resspons_om215_hvad.json();
-    theJSON_om215_hvem = await resspons_om215_hvem.json();
+    //    theJSON_om215_hvorfor = await resspons_om215_hvorfor.json();
+    //    theJSON_om215_hvad = await resspons_om215_hvad.json();
+    //    theJSON_om215_hvem = await resspons_om215_hvem.json();
 
     //kob af andel
-    theJSON_kobafandel_ledigandel = await resspons_kobafandel_ledigandel.json();
-
-    theJSON_kobafandel_foreninger = await resspons_kobafandel_foreninger.json();
-
-    theJSON_kobafandel_pakker = await resspons_kobafandel_pakker.json();
-
-    theJSON_kobafandel_moedos = await resspons_kobafandel_moedos.json();
+    //    theJSON_kobafandel_ledigandel = await resspons_kobafandel_ledigandel.json();
+    //
+    //    theJSON_kobafandel_foreninger = await resspons_kobafandel_foreninger.json();
+    //
+    //    theJSON_kobafandel_pakker = await resspons_kobafandel_pakker.json();
+    //
+    //    theJSON_kobafandel_moedos = await resspons_kobafandel_moedos.json();
 
     //praktisk info
-    theJSON_uge = await resspons_praktiskinfo_uge.json();
-    theJSON_job = await resspons_praktiskinfo_job.json();
-    theJSON_faq = await resspons_praktiskinfo_faq.json();
-
+    //    theJSON_uge = await resspons_praktiskinfo_uge.json();
+    //    theJSON_job = await resspons_praktiskinfo_job.json();
+    //    theJSON_faq = await resspons_praktiskinfo_faq.json();
     //kalder funktionerne
     clickAll();
 
 }
 
 function clickAll() {
+    console.log("jeg er ved clickall")
     //destinationer
     document.querySelector("#destinationer").addEventListener("click", clickDestinationerFrem);
     //boliger
@@ -174,16 +174,15 @@ function clickAll() {
 
 //hvad der sker når man kilkker på destinationer
 function clickDestinationerFrem() {
-    container_destinationer.classList.remove("hidden")
+    container_destinationer.classList.toggle("hidden")
     visDestinationer();
-    document.querySelector("#destinationer").removeEventListener("click", clickDestinationerFrem);
-
-    //når man klikker på destinationer igen
-    document.querySelector("#destinationer").addEventListener("click", () => {
-        container_destinationer.classList.add("hidden")
-        document.querySelector("#destinationer").addEventListener("click", clickDestinationerFrem);
-
-    })
+    //    document.querySelector("#destinationer").removeEventListener("click", clickDestinationerFrem);
+    //
+    //    //når man klikker på destinationer igen
+    //    document.querySelector("#destinationer").addEventListener("click", () => {
+    //        container_destinationer.classList.add("hidden")
+    //        document.querySelector("#destinationer").addEventListener("click", clickDestinationerFrem);
+    //})
 
 
 }
