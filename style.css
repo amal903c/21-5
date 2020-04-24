@@ -1009,25 +1009,63 @@ h3 {
     display: flex;
 }
 
-.tilbage_galleri,
-.frem_galleri {
+.main_galleri .overskrift {
+    margin-top: 30px;
+}
+
+.galleri_container {
+    padding: 40px;
+}
+
+/* FREM, TILBAGE FAMILY */
+.tilbage_galleri1,
+.frem_galleri1 {
     display: flex;
     align-items: center;
     cursor: pointer;
 }
 
-.tilbage_galleri p,
-.frem_galleri p {
+.tilbage_galleri1 p,
+.frem_galleri1 p {
     z-index: 10;
     font-size: 1.5rem;
     margin: 10px;
-    /*    position: absolute;*/
 }
 
-/*
-.frem_galleri p {
-    margin-left: -15px;
-}*/
+
+
+/* FREM TILBAGE LARGE */
+.tilbage_galleri2,
+.frem_galleri2 {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.tilbage_galleri2 p,
+.frem_galleri2 p {
+    z-index: 10;
+    font-size: 1.5rem;
+    margin: 10px;
+}
+
+
+/* FREM TILBAGE GRANDE */
+.tilbage_galleri3,
+.frem_galleri3 {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.tilbage_galleri3 p,
+.frem_galleri3 p {
+    z-index: 10;
+    font-size: 1.5rem;
+    margin: 10px;
+}
+
+
 
 
 
