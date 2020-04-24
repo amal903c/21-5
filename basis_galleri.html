@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title></title>
+    <title>21-5</title>
     <link rel="stylesheet" href="style.css">
 
     <link rel="apple-touch-icon" sizes="180x180" href="myIcons/apple-touch-icon.png">
@@ -18,12 +18,6 @@
     <meta name="theme-color" content="#ffffff">
 
     <style>
-        .streg {
-            margin-left: -36px;
-            margin-top: -86px;
-            width: 50%;
-        }
-
         .hide {
             display: none;
         }
@@ -114,7 +108,6 @@
     <template class="template_text">
         <article class="article_text">
             <h1 id="overskrift" class="hide"></h1>
-            <img class="streg hide" src="">
             <h2 class="rubrik hide"></h2>
             <p class="tekst hide"></p>
         </article>
@@ -144,11 +137,11 @@
                     <div class="overskrift_family overskrift"></div>
                     <div class="karussel_galleri">
                         <div class="inner_galleri">
-                            <div class="tilbage_galleri">
+                            <div class="tilbage_galleri1">
                                 <p>⭅</p>
                             </div>
                             <div class="container_galleri container_family"></div>
-                            <div class="frem_galleri">
+                            <div class="frem_galleri1">
                                 <p>⭆</p>
                             </div>
                         </div>
@@ -160,11 +153,11 @@
                     <div class="overskrift_large overskrift"></div>
                     <div class="karussel_galleri">
                         <div class="inner_galleri">
-                            <div class="tilbage_galleri">
+                            <div class="tilbage_galleri2">
                                 <p>⭅</p>
                             </div>
                             <div class="container_galleri container_large"></div>
-                            <div class="frem_galleri">
+                            <div class="frem_galleri2">
                                 <p>⭆</p>
                             </div>
                         </div>
@@ -176,11 +169,11 @@
                     <div class="overskrift_grande overskrift"></div>
                     <div class="karussel_galleri">
                         <div class="inner_galleri">
-                            <div class="tilbage_galleri">
+                            <div class="tilbage_galleri3">
                                 <p>⭅</p>
                             </div>
                             <div class="container_galleri container_grande"></div>
-                            <div class="frem_galleri">
+                            <div class="frem_galleri3">
                                 <p>⭆</p>
                             </div>
                         </div>
@@ -288,8 +281,12 @@
 
 
         function start() {
-            document.querySelector(".frem_galleri").addEventListener("click", frem_galleri);
-            document.querySelector(".tilbage_galleri").addEventListener("click", tilbage_galleri);
+            document.querySelector(".frem_galleri1").addEventListener("click", frem_galleri1);
+            document.querySelector(".tilbage_galleri1").addEventListener("click", tilbage_galleri1);
+            document.querySelector(".frem_galleri2").addEventListener("click", frem_galleri2);
+            document.querySelector(".tilbage_galleri2").addEventListener("click", tilbage_galleri2);
+            document.querySelector(".frem_galleri3").addEventListener("click", frem_galleri3);
+            document.querySelector(".tilbage_galleri3").addEventListener("click", tilbage_galleri3);
             loadData();
         }
 
@@ -421,24 +418,24 @@
 
 
 
-        // SCROLL EFFEKT GALLERI
+        // SCROLL EFFEKT GALLERI FAMILY
         function scrollFunction() {
-            caroCurrentNum = Math.round(document.querySelector(".container_galleri").scrollLeft / document.querySelector(".karussel_images").width);
+            caroCurrentNum = Math.round(document.querySelector(".container_family").scrollLeft / document.querySelector(".karussel_images").width);
             console.log(caroCurrentNum);
         }
 
-        function frem_galleri() {
+        function frem_galleri1() {
             caroCurrentNum++;
             navigate()
         }
 
-        function tilbage_galleri() {
+        function tilbage_galleri1() {
             caroCurrentNum--;
             navigate()
         }
 
         function navigate() {
-            document.querySelector(".container_galleri").scrollTo({
+            document.querySelector(".container_family").scrollTo({
                 left: caroCurrentNum * document.querySelector(".karussel_images").width,
                 behavior: "smooth"
             })
@@ -446,6 +443,55 @@
 
 
 
+
+        // SCROLL EFFEKT GALLERI LARGE
+        function scrollFunction() {
+            caroCurrentNum = Math.round(document.querySelector(".container_large").scrollLeft / document.querySelector(".karussel_images").width);
+            console.log(caroCurrentNum);
+        }
+
+        function frem_galleri2() {
+            caroCurrentNum++;
+            navigate()
+        }
+
+        function tilbage_galleri2() {
+            caroCurrentNum--;
+            navigate()
+        }
+
+        function navigate() {
+            document.querySelector(".container_large").scrollTo({
+                left: caroCurrentNum * document.querySelector(".karussel_images").width,
+                behavior: "smooth"
+            })
+        }
+
+
+
+
+        // SCROLL EFFEKT GALLERI GRANDE
+        function scrollFunction() {
+            caroCurrentNum = Math.round(document.querySelector(".container_grande").scrollLeft / document.querySelector(".karussel_images").width);
+            console.log(caroCurrentNum);
+        }
+
+        function frem_galleri3() {
+            caroCurrentNum++;
+            navigate()
+        }
+
+        function tilbage_galleri3() {
+            caroCurrentNum--;
+            navigate()
+        }
+
+        function navigate() {
+            document.querySelector(".container_grande").scrollTo({
+                left: caroCurrentNum * document.querySelector(".karussel_images").width,
+                behavior: "smooth"
+            })
+        }
 
 
 
@@ -470,8 +516,7 @@
                 klonText.querySelector("h1").classList.remove("hide");
                 klonText.querySelector("h1").textContent = theJSON.main_overskrift;
                 //
-                klonText.querySelector(".streg").classList.remove("hide");
-                klonText.querySelector(".streg").src = `grafik/streg.svg`;
+
                 textContainer.appendChild(klonText);
             }
 
