@@ -274,7 +274,14 @@
         let ret;
 
         let numberOfPics;
-        let caroCurrentNum = 0;
+        let numberOfPics1;
+        let numberOfPics2;
+        let numberOfPics3;
+
+
+        let caroCurrentNum1 = 0;
+        let caroCurrentNum2 = 0;
+        let caroCurrentNum3 = 0;
 
 
         document.addEventListener("DOMContentLoaded", start);
@@ -418,25 +425,28 @@
 
 
 
+
         // SCROLL EFFEKT GALLERI FAMILY
         function scrollFunction() {
-            caroCurrentNum = Math.round(document.querySelector(".container_family").scrollLeft / document.querySelector(".karussel_images").width);
-            console.log(caroCurrentNum);
+            caroCurrentNum1 = Math.round(document.querySelector(".container_family").scrollLeft / document.querySelector(".karussel_images").width);
+            console.log(caroCurrentNum1);
         }
 
         function frem_galleri1() {
-            caroCurrentNum++;
+            caroCurrentNum1++;
             navigate1()
         }
 
+
         function tilbage_galleri1() {
-            caroCurrentNum--;
+            caroCurrentNum1--;
             navigate1()
         }
+
 
         function navigate1() {
             document.querySelector(".container_family").scrollTo({
-                left: caroCurrentNum * document.querySelector(".karussel_images").width,
+                left: caroCurrentNum1 * document.querySelector(".karussel_images").width,
                 behavior: "smooth"
             })
         }
@@ -446,53 +456,54 @@
 
         // SCROLL EFFEKT GALLERI LARGE
         function scrollFunction() {
-            caroCurrentNum = Math.round(document.querySelector(".container_large").scrollLeft / document.querySelector(".karussel_images").width);
-            console.log(caroCurrentNum);
+            caroCurrentNum2 = Math.round(document.querySelector(".container_large").scrollLeft / document.querySelector(".karussel_images").width);
+            console.log(caroCurrentNum2);
         }
 
         function frem_galleri2() {
-            caroCurrentNum++;
+            caroCurrentNum2++;
             navigate2()
         }
 
         function tilbage_galleri2() {
-            caroCurrentNum--;
+            caroCurrentNum2--;
             navigate2()
         }
 
         function navigate2() {
             document.querySelector(".container_large").scrollTo({
-                left: caroCurrentNum * document.querySelector(".karussel_images").width,
+                left: caroCurrentNum2 * document.querySelector(".karussel_images").width,
                 behavior: "smooth"
             })
         }
+
 
 
 
 
         // SCROLL EFFEKT GALLERI GRANDE
         function scrollFunction() {
-            caroCurrentNum = Math.round(document.querySelector(".container_grande").scrollLeft / document.querySelector(".karussel_images").width);
-            console.log(caroCurrentNum);
+            caroCurrentNum3 = Math.round(document.querySelector(".container_grande").scrollLeft / document.querySelector(".karussel_images").width);
+            console.log(caroCurrentNum3);
         }
 
         function frem_galleri3() {
-            caroCurrentNum++;
+            caroCurrentNum3++;
             navigate3()
         }
 
         function tilbage_galleri3() {
-            caroCurrentNum--;
+            caroCurrentNum3--;
             navigate3()
         }
 
+
         function navigate3() {
             document.querySelector(".container_grande").scrollTo({
-                left: caroCurrentNum * document.querySelector(".karussel_images").width,
+                left: caroCurrentNum3 * document.querySelector(".karussel_images").width,
                 behavior: "smooth"
             })
         }
-
 
 
 
