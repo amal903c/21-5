@@ -1009,6 +1009,14 @@ h3 {
     display: flex;
 }
 
+.main_galleri .overskrift {
+    margin-top: 30px;
+}
+
+.galleri_container {
+    padding: 40px;
+}
+
 /* FREM, TILBAGE FAMILY */
 .tilbage_galleri1,
 .frem_galleri1 {
