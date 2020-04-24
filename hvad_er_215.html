@@ -4,122 +4,118 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title></title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="apple-touch-icon" sizes="180x180" href="myIcons/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="myIcons/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="myIcons/favicon-16x16.png">
-    <link rel="manifest" href="myIcons/site.webmanifest">
-    <link rel="mask-icon" href="myIcons/safari-pinned-tab.svg" color="#35aaa8">
-    <link rel="shortcut icon" href="myIcons/favicon.ico">
-    <meta name="msapplication-TileColor" content="#da532c">
-    <meta name="msapplication-config" content="myIcons/browserconfig.xml">
-    <meta name="theme-color" content="#ffffff">
+    <title21-5>
+        </title>
+        <link rel="stylesheet" href="style.css">
+        <link rel="apple-touch-icon" sizes="180x180" href="myIcons/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="myIcons/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="myIcons/favicon-16x16.png">
+        <link rel="manifest" href="myIcons/site.webmanifest">
+        <link rel="mask-icon" href="myIcons/safari-pinned-tab.svg" color="#35aaa8">
+        <link rel="shortcut icon" href="myIcons/favicon.ico">
+        <meta name="msapplication-TileColor" content="#da532c">
+        <meta name="msapplication-config" content="myIcons/browserconfig.xml">
+        <meta name="theme-color" content="#ffffff">
 
-    <style>
-        #basisside {
-            display: grid;
-            grid-template-rows: auto auto;
-        }
-
-        @media only screen and (min-width: 768px) {
+        <style>
             #basisside {
                 display: grid;
-                grid-template-columns: 60vw 40vw;
+                grid-template-rows: auto auto;
             }
 
-            #image_container {
-                position: sticky;
-                top: 0;
-                right: 0;
+            @media only screen and (min-width: 768px) {
+                #basisside {
+                    display: grid;
+                    grid-template-columns: 60vw 40vw;
+                }
+
+                #image_container {
+                    position: sticky;
+                    top: 0;
+                    right: 0;
+                    height: 100vh;
+                    width: 40vw;
+                }
+            }
+
+            h1,
+            h2 {
+                margin-bottom: 0;
+            }
+
+
+
+            /* billederne */
+            .afsnit_image_container {
                 height: 100vh;
-                width: 40vw;
             }
-        }
 
-        h1,
-        h2 {
-            margin-bottom: 0;
-        }
+            .afsnit_image_container img {
+                height: 100vh;
+                object-fit: cover;
+            }
 
+            .afsnit_image_container:nth-child(2) {
+                display: none;
+            }
 
+            .afsnit_image_container:nth-child(3) {
+                display: none;
+            }
 
-        /* billederne */
-        .afsnit_image_container {
-            height: 100vh;
-        }
+            /* teksten */
 
-        .afsnit_image_container img {
-            height: 100vh;
-            object-fit: cover;
-        }
+            #text_container {
+                padding: 5vw;
+                background-image: url()
+            }
 
-        .afsnit_image_container:nth-child(2) {
-            display: none;
-        }
-
-        .afsnit_image_container:nth-child(3) {
-            display: none;
-        }
-
-        /* teksten */
-
-        #text_container {
-            padding: 5vw;
-            background-image: url()
-        }
-
-        /* stregen */
-
-        .streg {
-            margin-left: -36px;
-            margin-top: -66px;
-            width: 34%;
-            z-index: -1;
-        }
-
-        .afsnit_text_container {
-            margin-bottom: 40px;
-            margin-top: 40px;
-        }
+            /* stregen */
 
 
 
-        /* clases */
+            .afsnit_text_container {
+                margin-bottom: 40px;
+                margin-top: 40px;
+            }
 
-        .hide {
-            display: none;
-        }
 
-        /*content menu */
 
-        .underside {
-            border-bottom: 0.5px solid black;
-            width: 200px;
-            cursor: pointer;
-            text-align: center;
-        }
+            /* clases */
 
-        .contentmenu_container {
-            display: flex;
-            /* center vertically: */
-            align-items: center;
-            /* center horizontally: */
-            justify-content: center;
-            flex-direction: column;
-            background-image: url(img/_GS30472.jpg);
-            background-size: cover;
+            .hide {
+                display: none;
+            }
 
-        }
+            /*content menu */
 
-        .contentmenu_inner {
-            background-color: white;
-            margin: 10px;
-            padding-left: 70px;
-            padding-right: 70px;
-        }
+            .underside {
+                border-bottom: 0.5px solid black;
+                width: 200px;
+                cursor: pointer;
+                text-align: center;
+            }
 
-    </style>
+            .contentmenu_container {
+                display: flex;
+                /* center vertically: */
+                align-items: center;
+                /* center horizontally: */
+                justify-content: center;
+                flex-direction: column;
+                background-image: url(img/_GS30472.jpg);
+                background-size: cover;
+
+            }
+
+            .contentmenu_inner {
+                background-color: white;
+                margin: 10px;
+                padding-left: 70px;
+                padding-right: 70px;
+            }
+
+        </style>
 </head>
 
 <body>
@@ -198,7 +194,7 @@
         <article class="afsnit_text_container">
             <h1 id="overskrift" class="hide"></h1>
 
-            <img class="streg hide" src="">
+
 
             <h2 class="rubrik hide"></h2>
 
@@ -338,8 +334,7 @@
                 klonText.querySelector("h1").classList.remove("hide");
                 klonText.querySelector("h1").textContent = theJSON.main_overskrift;
                 //
-                klonText.querySelector(".streg").classList.remove("hide");
-                klonText.querySelector(".streg").src = `grafik/streg.svg`;
+
                 textContainer.appendChild(klonText);
 
             }
