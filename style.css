@@ -1,5 +1,9 @@
 /*                  Generelt                     */
 
+#menu_punkter_content_nav img {
+    object-fit: cover;
+    margin-left: 30px;
+}
 
 * {
     box-sizing: border-box;
@@ -202,29 +206,6 @@ h3 {
     border-bottom: 2px solid rgb(242, 249, 252);
 }
 
-/*
-        .dropdown_container_boliger {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            width: 47vw;
-            margin: 0 auto;
-            grid-gap: 17px;
-            cursor: pointer;
-            background-color: white;
-        }
-*/
-/*
-
-        .dropdown_container_okonomi {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            width: 47vw;
-            margin: 0 auto;
-            grid-gap: 17px;
-            cursor: pointer;
-            background-color: white;
-        }
-*/
 
 /* flagene */
 #alle_flag_container {
@@ -244,6 +225,8 @@ h3 {
 #alle_flag_container img {
     padding: 0.5rem;
 }
+
+
 
 /* resonsiv design */
 
@@ -292,6 +275,7 @@ h3 {
 
     #menu_punkter_content_nav img {
         height: 13vw;
+        object-fit: cover;
     }
 }
 
@@ -325,6 +309,7 @@ h3 {
     #menu_punkter_content_nav img {
         width: auto;
         width: 7vw;
+        object-fit: cover;
     }
 
     .logo_mobil {
@@ -380,18 +365,16 @@ h3 {
 
     #menu_punkter_content_nav img {
         height: 5vw;
-    }
-
-    #menu_punkter_content_nav img {
-        margin-left: 30px;
+        object-fit: cover;
 
     }
 
-    #menu_punkter_content {}
 
 
 
 }
+
+
 
 .hidden {
     display: none;
@@ -454,9 +437,7 @@ h3 {
     display: flex;
 }
 
-#menu_punkter_content_nav img {
-    object-fit: cover;
-}
+
 
 
 
@@ -1984,7 +1965,7 @@ h3 {
 /*splash*/
 
 #forside .splashbillede {
-    background-image: url(img/splash.jpg);
+    background-image: url(img/splash_800.jpg);
     height: 100vh;
     width: 100vw;
     background-position: center;

@@ -166,204 +166,205 @@
                 </a>
 
             </div>
+        </div>
+
+        <!--        SEKTION2 SLUT-->
+
+        <!--        MØD BENTE OG JESPER START-->
 
 
-            <!--        SEKTION2 SLUT-->
+        <div class="bente_containere">
+            <!--     <div class="hvid"></div>-->
+            <div class="bente_billede">
+                <img class="bente_billedess" src="" alt="bente og jesper">
 
-            <!--        MØD BENTE OG JESPER START-->
+                <a href="familiernes_oplevelser.html">
+                    <h2 class="hover_h2 ">HVAD SIGER VORES ANDRE FAMILIER?</h2>
+                </a>
 
-
-            <div class="bente_containere">
-                <!--     <div class="hvid"></div>-->
-                <div class="bente_billede">
-                    <img class="bente_billedess" src="" alt="bente og jesper">
-
-                    <a href="familiernes_oplevelser.html">
-                        <h2 class="hover_h2 ">HVAD SIGER VORES ANDRE FAMILIER?</h2>
-                    </a>
-
-                </div>
-                <div class="bente_tekst">
-                    <h1 class="bente_h1"></h1>
-                    <p class="bente_brod"></p>
-                </div>
             </div>
+            <div class="bente_tekst">
+                <h1 class="bente_h1"></h1>
+                <p class="bente_brod"></p>
+            </div>
+        </div>
+    </main>
 
-            <!--MØD BENTE OG JESPER SLUT-->
+    <!--MØD BENTE OG JESPER SLUT-->
 
-            <!--/*footer start*/-->
-            <section class="footer_wrap">
-                <div class="nyhedsbrev_container">
-                    <ul>
-                        <li>
-                            <h3>Nyhedsbrev</h3>
-                        </li>
-                        <li>
-                            <div id="nyhedsbrev_input"><input type="tekst" placeholder="e-mail"></div>
-                        </li>
-                        <li><button class="nyhedsbrev_knap">Tilmeld</button></li>
-                    </ul>
-                </div>
-                <div class="kontakt_container">
-                    <ul>
-                        <li>
-                            <h3>Kontakt os</h3>
-                        </li>
-                        <li>21-5 A/S</li>
-                        <li>Rungstedvej 41</li>
-                        <li>2970 Hørsholm</li>
-                        <br>
-                        <li>Telefon: 70 26 11 55</li>
-                        <li>E-mail: info@21-5.dk</li>
-                        <li>Åbent mellem 9-17</li>
-                    </ul>
-                </div>
-                <div class="andet_container">
-                    <ul>
-                        <li>
-                            <h3>Andet</h3>
-                        </li>
-                        <li><a href="">Nyheder</a></li>
-                        <li><a href="">Presse</a></li>
-                        <li><a href="">Cookie- og privatlivspolitik</a></li>
-                        <li><a href="FAQ.html">Ofte stillede spørgsmål</a></li>
-                    </ul>
-                </div>
-                <div class="some">
-                    <ul>
-                        <li>
-                            <h3>Følg med</h3>
-                        </li>
-                        <li><a href="https://www.facebook.com/enogtyvefem/">Facebook</a></li>
-                        <li><a href="https://www.instagram.com/215moments/">Instagram</a></li>
-                    </ul>
-                </div>
-            </section>
-
-
-            <!--    </main>-->
-
-            <script src="script.js"></script>
-            <script>
-                //use strict gør, at den ikke finder sig i at fx en variabel ikek er defineret ordentliigt. Den finder sig ikke i fejl.
-                "use strict";
-                // I URL INDSÆTTER DU LINK TIL DET ID I JSON, SOM HAR ARRAYET MED BILLEDER
-                const url = "http://michelleyoung.dk/kea/09_cms/21-5_wp/wordpress/wp-json/wp/v2/forside/166";
-                let theJSON;
-                //Variabel for, at finde ud af hvor mange billeder der er.
-                let numberOfPicsInKarrrusel;
-                let karruselCurrentNumber = 0;
-
-                document.addEventListener("DOMContentLoaded", start);
+    <!--/*footer start*/-->
+    <section class="footer_wrap">
+        <div class="nyhedsbrev_container">
+            <ul>
+                <li>
+                    <h3>Nyhedsbrev</h3>
+                </li>
+                <li>
+                    <div id="nyhedsbrev_input"><input type="tekst" placeholder="e-mail"></div>
+                </li>
+                <li><button class="nyhedsbrev_knap">Tilmeld</button></li>
+            </ul>
+        </div>
+        <div class="kontakt_container">
+            <ul>
+                <li>
+                    <h3>Kontakt os</h3>
+                </li>
+                <li>21-5 A/S</li>
+                <li>Rungstedvej 41</li>
+                <li>2970 Hørsholm</li>
+                <br>
+                <li>Telefon: 70 26 11 55</li>
+                <li>E-mail: info@21-5.dk</li>
+                <li>Åbent mellem 9-17</li>
+            </ul>
+        </div>
+        <div class="andet_container">
+            <ul>
+                <li>
+                    <h3>Andet</h3>
+                </li>
+                <li><a href="">Nyheder</a></li>
+                <li><a href="">Presse</a></li>
+                <li><a href="">Cookie- og privatlivspolitik</a></li>
+                <li><a href="FAQ.html">Ofte stillede spørgsmål</a></li>
+            </ul>
+        </div>
+        <div class="some">
+            <ul>
+                <li>
+                    <h3>Følg med</h3>
+                </li>
+                <li><a href="https://www.facebook.com/enogtyvefem/">Facebook</a></li>
+                <li><a href="https://www.instagram.com/215moments/">Instagram</a></li>
+            </ul>
+        </div>
+    </section>
 
 
-                function start() {
-                    hentJSON();
-                    document.querySelector(".foran").addEventListener("click", foran);
-                    document.querySelector(".tilbage").addEventListener("click", tilbage);
-                }
+    <!--    </main>-->
+
+    <script src="script.js"></script>
+    <script>
+        //use strict gør, at den ikke finder sig i at fx en variabel ikek er defineret ordentliigt. Den finder sig ikke i fejl.
+        "use strict";
+        // I URL INDSÆTTER DU LINK TIL DET ID I JSON, SOM HAR ARRAYET MED BILLEDER
+        const url = "http://michelleyoung.dk/kea/09_cms/21-5_wp/wordpress/wp-json/wp/v2/forside/166";
+        let theJSON;
+        //Variabel for, at finde ud af hvor mange billeder der er.
+        let numberOfPicsInKarrrusel;
+        let karruselCurrentNumber = 0;
+
+        document.addEventListener("DOMContentLoaded", start);
 
 
-
-                async function hentJSON() {
-                    const response = await fetch(url);
-                    theJSON = await response.json();
-                    buildKarrusel();
-                    setBtns()
-                }
-
-
-                function buildKarrusel() {
-                    //Antallet af bilelder finder vi, fordi det svarer til det antal elementer i arrayet som indeholder billederne.
-                    numberOfPicsInKarrrusel = theJSON.billedgalleri.length;
-
-                    //For each ud fra vorers array af husbilelderne:
-                    theJSON.billedgalleri.forEach((billede, index) => {
-                        //vi skal have for både det store billede - theclone, og så de små legend billeder - secondclone:
-                        const theClone = document.querySelector("#template_karusel").cloneNode(true).content;
-                        //billederne sættes ind
-                        theClone.querySelector("img").src = billede.guid;
-                        //vi skal appende vores kloner til dokumentet:
-                        document.querySelector(".the_container").appendChild(theClone);
-                    })
-                    document.querySelector(".the_container").addEventListener("scroll", scrollFunction);
-
-                    //SPLASH
-                    //document.querySelector(".splashbillede").src = theJSON.splash.guid;
-
-                    //TEKST SOM FLEXER MED KARRUSEL
-                    document.querySelector(".karrusel_h1").textContent = theJSON.overskrift1;
-                    document.querySelector(".karrusel_brod").textContent = theJSON.tekst1;
-
-                    //Sektion 2
-                    document.querySelector(".sektion_2_h1").textContent = theJSON.overskrift2;
-                    document.querySelector(".sektion_2_brod").textContent = theJSON.tekst2;
-                    document.querySelector(".sektion_2_billedet").src = theJSON.billede2.guid;
+        function start() {
+            hentJSON();
+            document.querySelector(".foran").addEventListener("click", foran);
+            document.querySelector(".tilbage").addEventListener("click", tilbage);
+        }
 
 
 
+        async function hentJSON() {
+            const response = await fetch(url);
+            theJSON = await response.json();
+            buildKarrusel();
+            setBtns()
+        }
 
 
-                    //Video  sektion
-                    document.querySelector(".iframe_video").src = theJSON.video;
-                    document.querySelector(".videoh1").textContent = theJSON.video_overskrift;
-                    document.querySelector(".videobrod").textContent = theJSON.video_brdtekst;
+        function buildKarrusel() {
+            //Antallet af bilelder finder vi, fordi det svarer til det antal elementer i arrayet som indeholder billederne.
+            numberOfPicsInKarrrusel = theJSON.billedgalleri.length;
 
-                    //Bente og Jesper
-                    document.querySelector(".bente_billedess").src = theJSON.billede7.guid;
-                    document.querySelector(".bente_h1").textContent = theJSON.overskrift3;
-                    document.querySelector(".bente_brod").textContent = theJSON.tekst3;
-                }
+            //For each ud fra vorers array af husbilelderne:
+            theJSON.billedgalleri.forEach((billede, index) => {
+                //vi skal have for både det store billede - theclone, og så de små legend billeder - secondclone:
+                const theClone = document.querySelector("#template_karusel").cloneNode(true).content;
+                //billederne sættes ind
+                theClone.querySelector("img").src = billede.guid;
+                //vi skal appende vores kloner til dokumentet:
+                document.querySelector(".the_container").appendChild(theClone);
+            })
+            document.querySelector(".the_container").addEventListener("scroll", scrollFunction);
 
-                function scrollFunction() {
-                    karruselCurrentNumber = Math.round(document.querySelector(".the_container").scrollLeft / document.querySelector(".karrusel_imgs").width);
-                    console.log(karruselCurrentNumber);
-                    setBtns();
-                }
+            //SPLASH
+            //document.querySelector(".splashbillede").src = theJSON.splash.guid;
 
-                function foran() {
-                    if (karruselCurrentNumber < numberOfPicsInKarrrusel - 1) {
+            //TEKST SOM FLEXER MED KARRUSEL
+            document.querySelector(".karrusel_h1").textContent = theJSON.overskrift1;
+            document.querySelector(".karrusel_brod").textContent = theJSON.tekst1;
 
-                        karruselCurrentNumber++;
-                        navigate();
-                    }
-                }
+            //Sektion 2
+            document.querySelector(".sektion_2_h1").textContent = theJSON.overskrift2;
+            document.querySelector(".sektion_2_brod").textContent = theJSON.tekst2;
+            document.querySelector(".sektion_2_billedet").src = theJSON.billede2.guid;
 
-                function tilbage() {
-                    if (karruselCurrentNumber > 0) {
-                        karruselCurrentNumber--;
-                        navigate();
-                    }
-                }
 
-                function navigate() {
-                    document.querySelector(".the_container").scrollTo({
-                        left: karruselCurrentNumber * document.querySelector(".karrusel_imgs").width,
-                        behavior: "smooth"
-                    })
-                    setBtns();
-                }
 
-                function setBtns() {
-                    if (karruselCurrentNumber < numberOfPicsInKarrrusel - 1) {
-                        document.querySelector(".foran").style.opacity = 1;
-                        document.querySelector(".foran").style.cursor = "pointer";
-                    } else {
-                        document.querySelector(".foran").style.opacity = 0.2;
-                        document.querySelector(".foran").style.cursor = "default";
 
-                    }
-                    if (karruselCurrentNumber > 0) {
-                        document.querySelector(".tilbage").style.opacity = 1;
-                        document.querySelector(".tilbage").style.cursor = "pointer";
-                    } else {
-                        document.querySelector(".tilbage").style.opacity = 0.2;
-                        document.querySelector(".tilbage").style.cursor = "default";
 
-                    }
-                }
+            //Video  sektion
+            document.querySelector(".iframe_video").src = theJSON.video;
+            document.querySelector(".videoh1").textContent = theJSON.video_overskrift;
+            document.querySelector(".videobrod").textContent = theJSON.video_brdtekst;
 
-            </script>
+            //Bente og Jesper
+            document.querySelector(".bente_billedess").src = theJSON.billede7.guid;
+            document.querySelector(".bente_h1").textContent = theJSON.overskrift3;
+            document.querySelector(".bente_brod").textContent = theJSON.tekst3;
+        }
+
+        function scrollFunction() {
+            karruselCurrentNumber = Math.round(document.querySelector(".the_container").scrollLeft / document.querySelector(".karrusel_imgs").width);
+            console.log(karruselCurrentNumber);
+            setBtns();
+        }
+
+        function foran() {
+            if (karruselCurrentNumber < numberOfPicsInKarrrusel - 1) {
+
+                karruselCurrentNumber++;
+                navigate();
+            }
+        }
+
+        function tilbage() {
+            if (karruselCurrentNumber > 0) {
+                karruselCurrentNumber--;
+                navigate();
+            }
+        }
+
+        function navigate() {
+            document.querySelector(".the_container").scrollTo({
+                left: karruselCurrentNumber * document.querySelector(".karrusel_imgs").width,
+                behavior: "smooth"
+            })
+            setBtns();
+        }
+
+        function setBtns() {
+            if (karruselCurrentNumber < numberOfPicsInKarrrusel - 1) {
+                document.querySelector(".foran").style.opacity = 1;
+                document.querySelector(".foran").style.cursor = "pointer";
+            } else {
+                document.querySelector(".foran").style.opacity = 0.2;
+                document.querySelector(".foran").style.cursor = "default";
+
+            }
+            if (karruselCurrentNumber > 0) {
+                document.querySelector(".tilbage").style.opacity = 1;
+                document.querySelector(".tilbage").style.cursor = "pointer";
+            } else {
+                document.querySelector(".tilbage").style.opacity = 0.2;
+                document.querySelector(".tilbage").style.cursor = "default";
+
+            }
+        }
+
+    </script>
 
 </body>
 

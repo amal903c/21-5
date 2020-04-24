@@ -80,8 +80,6 @@ function startHeader() {
     console.log("jeg er ved start")
     // gør så man kan klikke på menupunkterne
 
-
-
     loadDataHeader();
 
     document.querySelector(".menuknap").addEventListener("click", clickMenu);
@@ -103,7 +101,7 @@ async function loadDataHeader() {
     //    const resspons_boliger_udvaelg = await fetch(endpoint_boliger_udvaelg);
 
     //økonomi
-    //    const resspons_okonomi = await fetch(endpoint_okonomi);
+    const resspons_okonomi = await fetch(endpoint_okonomi);
 
     //om215
     //    const resspons_om215_hvorfor = await fetch(endpoint_om215_hvorfor);
@@ -130,7 +128,7 @@ async function loadDataHeader() {
     //    theJSON_boliger_udvaelg = await resspons_boliger_udvaelg.json();
 
     //
-    //    theJSON_okonomi = await resspons_okonomi.json();
+    theJSON_okonomi = await resspons_okonomi.json();
 
     //om215
     //    theJSON_om215_hvorfor = await resspons_om215_hvorfor.json();
@@ -158,7 +156,11 @@ async function loadDataHeader() {
 function clickAll() {
     console.log("jeg er ved clickall")
     //destinationer
-    document.querySelector("#destinationer").addEventListener("click", clickDestinationerFrem);
+    document.querySelector("#destinationer").addEventListener("click", () => {
+        container_destinationer.classList.toggle("hidden")
+        visDestinationer();
+        console.log("jeg er ved clickDestinationerFrem ")
+    });
     //boliger
     document.querySelector("#boliger").addEventListener("click", clickBoligerFrem);
     //økonomi jura og skat
@@ -173,22 +175,15 @@ function clickAll() {
 }
 
 //hvad der sker når man kilkker på destinationer
-function clickDestinationerFrem() {
-    container_destinationer.classList.toggle("hidden")
-    visDestinationer();
-    //    document.querySelector("#destinationer").removeEventListener("click", clickDestinationerFrem);
-    //
-    //    //når man klikker på destinationer igen
-    //    document.querySelector("#destinationer").addEventListener("click", () => {
-    //        container_destinationer.classList.add("hidden")
-    //        document.querySelector("#destinationer").addEventListener("click", clickDestinationerFrem);
-    //})
-
-
-}
+//function clickDestinationerFrem() {
+//    container_destinationer.classList.toggle("hidden")
+//    visDestinationer();
+//    console.log("jeg er ved clickDestinationerFrem ")
+//}
 
 // viser alt data
 function visDestinationer() {
+    console.log("jeg er ved visDestinationer ")
     container_destinationer.innerHTML = "";
     container_boliger.innerHTML = "";
     container_okonomi.innerHTML = "";
@@ -210,6 +205,7 @@ function visDestinationer() {
         klon.querySelector("h3").textContent = destination.title.rendered;
 
         klon.querySelector("img").src = destination.lillebillede.guid;
+        console.log("billedet")
 
         klon.querySelector("article").addEventListener("click", () => {
 
@@ -224,17 +220,8 @@ function visDestinationer() {
 
 //Når man klikker på boliger:
 function clickBoligerFrem() {
-    container_boliger.classList.remove("hidden")
+    container_boliger.classList.toggle("hidden")
     visBoliger();
-    document.querySelector("#boliger").removeEventListener("click", clickBoligerFrem);
-
-    //når man klikker på destinationer igen
-    document.querySelector("#boliger").addEventListener("click", () => {
-        container_boliger.classList.add("hidden")
-        document.querySelector("#boliger").addEventListener("click", clickBoligerFrem);
-
-    })
-
 
 }
 
@@ -254,39 +241,39 @@ function visBoliger() {
     //kloninger
     const klon = menuboksetemplate.cloneNode(true).content;
 
-    klon.querySelector("h3").textContent = theJSON_boliger_byt.title.rendered;
+    klon.querySelector("h3").textContent = "Byt din bolig"
 
-    klon.querySelector("img").src = theJSON_boliger_byt.lillebillede.guid;
+    klon.querySelector("img").src = `img/byt_din_bolig_800.jpg`;
 
     klon.querySelector("article").addEventListener("click", () => {
 
-        location.href = `boliger_basis.html?id=${theJSON_boliger_byt.id}`;
+        location.href = `boliger_basis.html?id=644`;
     })
     container_boliger.appendChild(klon);
 
     //klon2
     const klon2 = menuboksetemplate.cloneNode(true).content;
 
-    klon2.querySelector("h3").textContent = theJSON_boliger_udvaelg.title.rendered;
+    klon2.querySelector("h3").textContent = "Udvægelse af bolig";
 
-    klon2.querySelector("img").src = theJSON_boliger_udvaelg.lillebillede.guid;
+    klon2.querySelector("img").src = `img/udvoelelse_af_bolig_800.jpg`;
 
     klon2.querySelector("article").addEventListener("click", () => {
 
-        location.href = `boliger_basis.html?id=${theJSON_boliger_udvaelg.id}`;
+        location.href = `boliger_basis.html?id=640`;
     })
     container_boliger.appendChild(klon2);
 
     //klon3
     const klon3 = menuboksetemplate.cloneNode(true).content;
 
-    klon3.querySelector("h3").textContent = theJSON_boliger_indretning.title.rendered;
+    klon3.querySelector("h3").textContent = "Bolig indretning";
 
-    klon3.querySelector("img").src = theJSON_boliger_indretning.lillebillede.guid;
+    klon3.querySelector("img").src = `img/bolig_indrettelse_800.jpg`;
 
     klon3.querySelector("article").addEventListener("click", () => {
 
-        location.href = `boliger_galleri.html?id=${theJSON_boliger_indretning.id}`;
+        location.href = `boliger_galleri.html?id=641`;
     })
     container_boliger.appendChild(klon3);
 }
@@ -295,18 +282,8 @@ function visBoliger() {
 
 // Når man klikker på økonomii
 function clickOkonomiFrem() {
-    container_okonomi.classList.remove("hidden")
+    container_okonomi.classList.toggle("hidden")
     visOkonomi();
-    document.querySelector("#økonomi_jura_skat").removeEventListener("click", clickOkonomiFrem);
-
-    //når man klikker på destinationer igen
-    document.querySelector("#økonomi_jura_skat").addEventListener("click", () => {
-        container_okonomi.classList.add("hidden")
-        document.querySelector("#økonomi_jura_skat").addEventListener("click", clickOkonomiFrem);
-
-    })
-
-
 }
 
 // viser alt data
@@ -339,22 +316,13 @@ function visOkonomi() {
 
         container_okonomi.appendChild(klon);
 
-
     })
 }
 
 //når man klikker på om 21-5
 function clickOm215Frem() {
-    container_om215.classList.remove("hidden")
+    container_om215.classList.toggle("hidden")
     visOm215();
-    document.querySelector("#om_215").removeEventListener("click", clickOm215Frem);
-
-    //når man klikker på destinationer igen
-    document.querySelector("#om_215").addEventListener("click", () => {
-        container_om215.classList.add("hidden")
-        document.querySelector("#om_215").addEventListener("click", clickOm215Frem);
-
-    })
 
 }
 
@@ -366,44 +334,37 @@ function visOm215() {
     container_kobafandel.innerHTML = "";
     container_om215.innerHTML = "";
     container_praktiskinfo.innerHTML = "";
-    console.log(theJSON_om215_hvorfor);
-    console.log(theJSON_om215_hvorfor.id);
-    console.log(theJSON_om215_hvad);
-    console.log(theJSON_om215_hvad.id);
-    console.log(theJSON_om215_hvem);
-    console.log(theJSON_om215_hvem.id);
+
 
     //kloner hvorfor ind
     const klon = menuboksetemplate.cloneNode(true).content;
-    klon.querySelector("h3").textContent = theJSON_om215_hvorfor.title.rendered;
-    klon.querySelector("img").src = theJSON_om215_hvorfor.lillebillede.guid;
+    klon.querySelector("h3").textContent = "Hvorfor vælge 21-5";
+    klon.querySelector("img").src = `img/hvorfor_800.jpg`;
     klon.querySelector("article").addEventListener("click", () => {
-
         console.log("this.theJSON_om215_hvorfor.id")
-
-        location.href = `hvorfor_voelge_215.html?id=${theJSON_om215_hvorfor.id}`;
+        location.href = `hvorfor_voelge_215.html?id=688`;
     })
 
     container_om215.appendChild(klon);
 
     //kloner hvad ind
     const klon2 = menuboksetemplate.cloneNode(true).content;
-    klon2.querySelector("h3").textContent = theJSON_om215_hvad.title.rendered;
-    klon2.querySelector("img").src = theJSON_om215_hvad.lillebillede.guid;
+    klon2.querySelector("h3").textContent = "Hvad er 21-5";
+    klon2.querySelector("img").src = `img/hvad_800.jpg`;
     klon2.querySelector("article").addEventListener("click", () => {
         console.log("this.theJSON_om215_hvad.id")
-        location.href = `hvad_er_215.html?id=${theJSON_om215_hvad.id}`;
+        location.href = `hvad_er_215.html?id=684`;
     })
 
     container_om215.appendChild(klon2);
 
     //kloner hvem ind
     const klon3 = menuboksetemplate.cloneNode(true).content;
-    klon3.querySelector("h3").textContent = theJSON_om215_hvem.title.rendered;
-    klon3.querySelector("img").src = theJSON_om215_hvem.lillebillede.guid;
+    klon3.querySelector("h3").textContent = "Hvem er 21-5";
+    klon3.querySelector("img").src = `img/hvem_800.jpg`;
     klon3.querySelector("article").addEventListener("click", () => {
         console.log("this.theJSON_om215_hvem.id")
-        location.href = `hvem_er_215.html?id=${theJSON_om215_hvem.id}`;
+        location.href = `hvem_er_215.html?id=680`;
     })
 
     container_om215.appendChild(klon3);
@@ -411,16 +372,9 @@ function visOm215() {
 }
 
 function clickPraktiskInfoFrem() {
-    container_praktiskinfo.classList.remove("hidden")
+    container_praktiskinfo.classList.toggle("hidden")
     visPraktiskInfo();
-    document.querySelector("#praktisk_info").removeEventListener("click", clickPraktiskInfoFrem);
 
-    //når man klikker på destinationer igen
-    document.querySelector("#praktisk_info").addEventListener("click", () => {
-        container_praktiskinfo.classList.add("hidden")
-        document.querySelector("#praktisk_info").addEventListener("click", clickPraktiskInfoFrem);
-
-    })
 
 }
 
@@ -439,160 +393,97 @@ function visPraktiskInfo() {
 
     //kloner hvorfor uge
     const klon = menuboksetemplate.cloneNode(true).content;
-    klon.querySelector("h3").textContent = theJSON_uge.title.rendered;
-    klon.querySelector("img").src = theJSON_uge.lillebillede.guid;
+    klon.querySelector("h3").textContent = "Ugefordeling af boligerne";
+    klon.querySelector("img").src = `img/uge.jpg`;
     klon.querySelector("article").addEventListener("click", () => {
-
         console.log("this.theJSON_uge.id")
-
-        location.href = `ugefordeling.html?id=${theJSON_uge.id}`;
+        location.href = `ugefordeling.html?id=649`;
     })
-
     container_praktiskinfo.appendChild(klon);
 
     //kloner job ind
     const klon2 = menuboksetemplate.cloneNode(true).content;
-    klon2.querySelector("h3").textContent = theJSON_job.title.rendered;
-    klon2.querySelector("img").src = theJSON_job.lillebillede.guid;
+    klon2.querySelector("h3").textContent = "Job";
+    klon2.querySelector("img").src = `img/job_800.jpg`;
     klon2.querySelector("article").addEventListener("click", () => {
         console.log("this.theJSON_job.id")
-        location.href = `job.html?id=${theJSON_job.id}`;
+        location.href = `job.html?id=648`;
     })
 
     container_praktiskinfo.appendChild(klon2);
 
     //kloner faq
+
+    //MANGLER MANGLER MANGLER MANGLER MANGLER MANGLER MANGLER
     const klon3 = menuboksetemplate.cloneNode(true).content;
-    klon3.querySelector("h3").textContent = theJSON_faq.title.rendered;
-    klon3.querySelector("img").src = theJSON_faq.lillebillede.guid;
+    klon3.querySelector("h3").textContent = "Ofte stillede spørgsmål";
+    klon3.querySelector("img").src = `img/faq.jpg`;
     klon3.querySelector("article").addEventListener("click", () => {
         console.log("this.theJSON_faq.id")
-        location.href = `FAQ.html?id=${theJSON_om215_hvem.id}`;
+        location.href = `FAQ.html?id=34`;
     })
 
     container_praktiskinfo.appendChild(klon3);
-
-
-
 }
 
 //Når man klikker på køb af andel:
 function clickAndelFrem() {
-    container_kobafandel.classList.remove("hidden")
+    container_kobafandel.classList.toggle("hidden")
     visAndel();
-    document.querySelector("#kob_af_andel").removeEventListener("click", clickAndelFrem);
-
-    //når man klikker på destinationer igen
-    document.querySelector("#kob_af_andel").addEventListener("click", () => {
-        container_kobafandel.classList.add("hidden")
-        document.querySelector("#kob_af_andel").addEventListener("click", clickAndelFrem);
-
-    })
-
-
 }
 
 // viser alt data
 function visAndel() {
 
+    console.log("visAndel")
     container_destinationer.innerHTML = "";
     container_boliger.innerHTML = "";
     container_okonomi.innerHTML = "";
     container_om215.innerHTML = "";
     container_kobafandel.innerHTML = "";
     container_praktiskinfo.innerHTML = "";
-    console.log(theJSON_kobafandel_ledigandel);
-    console.log(theJSON_kobafandel_foreninger);
-    console.log(theJSON_kobafandel_pakker);
 
-    console.log(theJSON_kobafandel_moedos);
 
     //kloninger
     const klon = menuboksetemplate.cloneNode(true).content;
-
-    klon.querySelector("h3").textContent = theJSON_kobafandel_ledigandel.title.rendered;
-
-    klon.querySelector("img").src = theJSON_kobafandel_ledigandel.lillebillede.guid;
-
+    klon.querySelector("h3").textContent = "Ledig andel i ejerforening";
+    klon.querySelector("img").src = `img/ledig_800.jpg`;
     klon.querySelector("article").addEventListener("click", () => {
 
-        location.href = `ledig_andel.html?id=${theJSON_kobafandel_ledigandel.id}`;
+        location.href = `ledig_andel.html?id=837`;
     })
     container_kobafandel.appendChild(klon);
 
     //klon2
     const klon2 = menuboksetemplate.cloneNode(true).content;
-
     klon2.querySelector("h3").textContent = "Stiftede foreninger"
-
-    klon2.querySelector("img").src = theJSON_kobafandel_foreninger.lillebillede.guid;
-
+    klon2.querySelector("img").src = `img/stiftede_800.jpg`;
     klon2.querySelector("article").addEventListener("click", () => {
 
-        location.href = `foreninger.html?id=${theJSON_kobafandel_foreninger.id}`;
+        location.href = `foreninger.html?id=387`;
     })
     container_kobafandel.appendChild(klon2);
 
     //klon3
     const klon3 = menuboksetemplate.cloneNode(true).content;
-
     klon3.querySelector("h3").textContent = "Vores foreninger";
-
-    klon3.querySelector("img").src = theJSON_kobafandel_pakker.lillebillede.guid;
-
+    klon3.querySelector("img").src = `img/vores_800.jpg`;
     klon3.querySelector("article").addEventListener("click", () => {
-
-        location.href = `test1.html?id=${theJSON_kobafandel_pakker.id}`;
+        location.href = `test1.html?id=656`;
     })
     container_kobafandel.appendChild(klon3);
 
     //klon4
     const klon4 = menuboksetemplate.cloneNode(true).content;
 
-    klon4.querySelector("h3").textContent = theJSON_kobafandel_moedos.title.rendered;
-
-    klon4.querySelector("img").src = theJSON_kobafandel_moedos.lillebillede.guid;
-
+    klon4.querySelector("h3").textContent = "Mød os";
+    klon4.querySelector("img").src = `img/mod_os_800.jpg`;
     klon4.querySelector("article").addEventListener("click", () => {
 
-        location.href = `moed-os.html?id=${theJSON_kobafandel_moedos.id}`;
+        location.href = `moed-os.html?id=200`;
     })
     container_kobafandel.appendChild(klon4);
 }
-
-
-
-
-
-
-
-
-
-//løb listen igennem og indsæt data i en template
-
-//            theJSON_om215.forEach(side => {
-//
-//                console.log(side);
-//
-//                const klon = menuboksetemplate.cloneNode(true).content;
-//                klon.querySelector("h3").textContent = side.title.rendered;
-//                klon.querySelector("img").src = side.lillebillede.guid;
-//                klon.querySelector("article").addEventListener("click", () => {
-//
-//                    location.href = `basis_galleri.html?id=${destination.id}`;
-//                })
-//
-//                container.appendChild(klon);
-//
-//
-//            })
-
-
-
-
-
-
-
 
 function clickMenu() {
     console.log("jeg har klikket på menukanp")
