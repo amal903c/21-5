@@ -537,7 +537,7 @@ function visAndel() {
     //klon3
     const klon3 = menuboksetemplate.cloneNode(true).content;
 
-    klon3.querySelector("h3").textContent = "Vores Pakker";
+    klon3.querySelector("h3").textContent = "Vores foreninger";
 
     klon3.querySelector("img").src = theJSON_kobafandel_pakker.lillebillede.guid;
 
