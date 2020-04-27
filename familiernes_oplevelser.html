@@ -34,9 +34,7 @@
             min-width: 17vw;
         }
 
-        .underside:hover {
-            border-bottom: 0.5px solid black;
-        }
+
 
         .contentmenu_container {
             display: flex;
@@ -72,13 +70,10 @@
             color: black;
         }
 
-        .valgt_underside {
 
-            border-bottom: 0.5px solid black;
-        }
 
         .plads {
-            margin-top: 2rem;
+            margin: 2rem 2rem 2rem 70px;
         }
 
     </style>
@@ -155,15 +150,20 @@
     </nav>
 
     <div class="plads">
-        <div class="contentmenu_container">
-            <div class="contentmenu_inner">
-                <a class="underside " id="tilbageknap">Hvorfor vælge 21-5</a>
-                <a class="underside " href="skab_nye_familietraditioner.html">Skab nye familietraditioner</a>
-                <a class="underside" href="215fordele.html">21-5 fordele</a>
-                <a class="underside valgt_underside" href="familiernes_oplevelser.html">Familiernes oplevelser</a>
-            </div>
+        <div class="details_container">
+            <details>
+                <summary>Læs mere om hvorfor vælge 21-5</summary>
+                <div class="inner_details">
 
+                    <a class="underside valgt_underside" id="tilbageknap">Hvorfor vælge 21-5</a>
+                    <a class="underside" href="skab_nye_familietraditioner.html">Skab nye familietraditioner</a>
+                    <a class="underside" href="215fordele.html">21-5 fordele</a>
+                    <a class="underside" href="familiernes_oplevelser.html">Familiernes oplevelser</a>
+                </div>
+
+            </details>
         </div>
+
     </div>
 
     <h1>Familiernes oplevelser </h1>

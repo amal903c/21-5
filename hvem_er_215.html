@@ -99,9 +99,6 @@
             min-width: 17vw;
         }
 
-        .underside:hover {
-            border-bottom: 0.5px solid black;
-        }
 
         .contentmenu_container {
             display: flex;
@@ -135,11 +132,6 @@
             letter-spacing: 1px;
             line-height: 25px;
             color: black;
-        }
-
-        .valgt_underside {
-
-            border-bottom: 0.5px solid black;
         }
 
     </style>
@@ -236,14 +228,18 @@
         <section id="basisside">
 
             <div id="text_container">
-                <div class="contentmenu_container">
-                    <div class="contentmenu_inner">
-                        <a class="underside valgt_underside" id="tilbageknap">Hvem er 21-5</a>
-                        <a class="underside" href="teamet.html">Teamet</a>
-                        <a class="underside" href="foellesskab.html">Fællesskab i forening</a>
-                        <a class="underside" href="21-5s_historie.html">21-5's historie</a>
-                    </div>
+                <div class="details_container">
+                    <details>
+                        <summary>Læs mere om hvem 21-5 er</summary>
+                        <div class="inner_details">
 
+                            <a class="underside valgt_underside" id="tilbageknap">Hvem er 21-5</a>
+                            <a class="underside" href="teamet.html">Teamet</a>
+                            <a class="underside" href="foellesskab.html">Fællesskab i forening</a>
+                            <a class="underside" href="21-5s_historie.html">21-5's historie</a>
+                        </div>
+
+                    </details>
                 </div>
 
             </div>
