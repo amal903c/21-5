@@ -99,9 +99,7 @@
             min-width: 17vw;
         }
 
-        .underside:hover {
-            border-bottom: 0.5px solid black;
-        }
+
 
         .contentmenu_container {
             display: flex;
@@ -137,9 +135,42 @@
             color: black;
         }
 
-        .valgt_underside {
 
-            border-bottom: 0.5px solid black;
+
+        /* alt til content den nye */
+        summary {
+            border: 5px solid #E8F3EF;
+            padding: 1rem;
+
+            font-family: 'Raleway', sans-serif;
+            font-size: 1.3rem;
+            line-height: 50px;
+            width: fit-content;
+            text-align: center;
+
+
+        }
+
+
+        .inner_details {
+            display: flex;
+            flex-direction: column;
+
+            align-items: center;
+            width: 30vw;
+
+            border: 5px solid #E8F3EF;
+            margin-top: 10px;
+
+
+        }
+
+        .valgt_underside {
+            font-weight: bold;
+        }
+
+        .underside:hover {
+            font-weight: bold;
         }
 
     </style>
@@ -238,6 +269,23 @@
         <section id="basisside">
 
             <div id="text_container">
+
+                <details>
+                    <summary>Læs mere om hvorfor vælge 21-5</summary>
+                    <div class="inner_details">
+
+                        <a class="underside valgt_underside" id="tilbageknap">Hvorfor vælge 21-5</a>
+                        <a class="underside" href="skab_nye_familietraditioner.html">Skab nye familietraditioner</a>
+                        <a class="underside" href="215fordele.html">21-5 fordele</a>
+                        <a class="underside" href="21-5s_historie.html">Familiernes oplevelser</a>
+                    </div>
+
+                </details>
+
+
+
+
+                <!--
                 <div class="contentmenu_container">
                     <div class="contentmenu_inner">
                         <a class="underside valgt_underside" id="tilbageknap">Hvorfor vælge 21-5</a>
@@ -247,6 +295,7 @@
                     </div>
 
                 </div>
+-->
 
             </div>
 
