@@ -4,37 +4,37 @@ document.addEventListener("DOMContentLoaded", startHeader);
 var endpoint_destinationer = "http://michelleyoung.dk/kea/09_cms/21-5_wp/wordpress/wp-json/wp/v2/destinationer";
 
 //Boliger url
-var endpoint_boliger_byt = "http://michelleyoung.dk/kea/09_cms/21-5_wp/wordpress/wp-json/wp/v2/boliger/644";
-var endpoint_boliger_indretning = "http://michelleyoung.dk/kea/09_cms/21-5_wp/wordpress/wp-json/wp/v2/boliger/641";
-var endpoint_boliger_udvaelg = "http://michelleyoung.dk/kea/09_cms/21-5_wp/wordpress/wp-json/wp/v2/boliger/640";
+//var endpoint_boliger_byt = "http://michelleyoung.dk/kea/09_cms/21-5_wp/wordpress/wp-json/wp/v2/boliger/644";
+//var endpoint_boliger_indretning = "http://michelleyoung.dk/kea/09_cms/21-5_wp/wordpress/wp-json/wp/v2/boliger/641";
+//var endpoint_boliger_udvaelg = "http://michelleyoung.dk/kea/09_cms/21-5_wp/wordpress/wp-json/wp/v2/boliger/640";
 
 //Økonomi url
 var endpoint_okonomi = "http://michelleyoung.dk/kea/09_cms/21-5_wp/wordpress/wp-json/wp/v2/okonomi";
 
 
 //Køb af andel
-var endpoint_kobafandel_ledigandel = "http://michelleyoung.dk/kea/09_cms/21-5_wp/wordpress/wp-json/wp/v2/ledig_andel/837";
-var endpoint_kobafandel_foreninger = "http://michelleyoung.dk/kea/09_cms/21-5_wp/wordpress/wp-json/wp/v2/stiftede_foreninger/387";
-var endpoint_kobafandel_pakker = "http://michelleyoung.dk/kea/09_cms/21-5_wp/wordpress/wp-json/wp/v2/vores_pakker/656";
-var endpoint_kobafandel_moedos = "http://michelleyoung.dk/kea/09_cms/21-5_wp/wordpress/wp-json/wp/v2/kontakt/200";
+//var endpoint_kobafandel_ledigandel = "http://michelleyoung.dk/kea/09_cms/21-5_wp/wordpress/wp-json/wp/v2/ledig_andel/837";
+//var endpoint_kobafandel_foreninger = "http://michelleyoung.dk/kea/09_cms/21-5_wp/wordpress/wp-json/wp/v2/stiftede_foreninger/387";
+//var endpoint_kobafandel_pakker = "http://michelleyoung.dk/kea/09_cms/21-5_wp/wordpress/wp-json/wp/v2/vores_pakker/656";
+//var endpoint_kobafandel_moedos = "http://michelleyoung.dk/kea/09_cms/21-5_wp/wordpress/wp-json/wp/v2/kontakt/200";
 
 //om215 url
 // hvorfor vælge 21-5
-var endpoint_om215_hvorfor = "http://michelleyoung.dk/kea/09_cms/21-5_wp/wordpress/wp-json/wp/v2/om215/688";
-var endpoint_om215_hvad = "http://michelleyoung.dk/kea/09_cms/21-5_wp/wordpress/wp-json/wp/v2/om215/684";
-var endpoint_om215_hvem = "http://michelleyoung.dk/kea/09_cms/21-5_wp/wordpress/wp-json/wp/v2/om215/680";
+//var endpoint_om215_hvorfor = "http://michelleyoung.dk/kea/09_cms/21-5_wp/wordpress/wp-json/wp/v2/om215/688";
+//var endpoint_om215_hvad = "http://michelleyoung.dk/kea/09_cms/21-5_wp/wordpress/wp-json/wp/v2/om215/684";
+//var endpoint_om215_hvem = "http://michelleyoung.dk/kea/09_cms/21-5_wp/wordpress/wp-json/wp/v2/om215/680";
 
 //praktisk info
-var endpoint_praktiskinfo_uge = "http://michelleyoung.dk/kea/09_cms/21-5_wp/wordpress/wp-json/wp/v2/praktisk_info/649"
-var endpoint_praktiskinfo_job = "http://michelleyoung.dk/kea/09_cms/21-5_wp/wordpress/wp-json/wp/v2/praktisk_info/648"
-var endpoint_praktiskinfo_faq = "http://michelleyoung.dk/kea/09_cms/21-5_wp/wordpress/wp-json/wp/v2/praktisk_info/34"
+//var endpoint_praktiskinfo_uge = "http://michelleyoung.dk/kea/09_cms/21-5_wp/wordpress/wp-json/wp/v2/praktisk_info/649"
+//var endpoint_praktiskinfo_job = "http://michelleyoung.dk/kea/09_cms/21-5_wp/wordpress/wp-json/wp/v2/praktisk_info/648"
+//var endpoint_praktiskinfo_faq = "http://michelleyoung.dk/kea/09_cms/21-5_wp/wordpress/wp-json/wp/v2/praktisk_info/34"
 
 // der hvor json bliver puttet ind
 var theJSON_destinationer = [];
 //om215
-var theJSON_om215_hvorfor = [];
-var theJSON_om215_hvad = [];
-var theJSON_om215_hvem = [];
+//var theJSON_om215_hvorfor = [];
+//var theJSON_om215_hvad = [];
+//var theJSON_om215_hvem = [];
 //Boliger
 var theJSON_boliger_byt = [];
 var theJSON_boliger_indretning = [];
@@ -49,10 +49,10 @@ var theJSON_job = [];
 var theJSON_faq = [];
 
 //køb af andel
-var theJSON_kobafandel_ledigandel = [];
-var theJSON_kobafandel_foreninger = [];
-var theJSON_kobafandel_pakker = [];
-var theJSON_kobafandel_moedos = [];
+//var theJSON_kobafandel_ledigandel = [];
+//var theJSON_kobafandel_foreninger = [];
+//var theJSON_kobafandel_pakker = [];
+//var theJSON_kobafandel_moedos = [];
 
 // den template vi kloner ind i vores dropwdownmenu
 var menuboksetemplate = document.querySelector("#menutemplate");
