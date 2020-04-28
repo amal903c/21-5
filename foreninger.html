@@ -97,7 +97,7 @@
 
 
 
-    <h1>Stiftede foreninger </h1>
+    <h1 class="h1_foreninger">Stiftede foreninger </h1>
 
 
 
@@ -107,9 +107,9 @@
 
     <template class="forening_template">
         <article class="forening">
-            <img src="" alt="">
             <h2 class="h2_navn"></h2>
-            <p class="by"></p>
+            <img src="" alt="">
+            <p class="destinationer_foreninger"></p>
 
         </article>
     </template>
@@ -194,6 +194,7 @@
                 const klon = template_foreninger.cloneNode(true);
                 klon.querySelector(".h2_navn").textContent = forening.navn;
                 klon.querySelector("img").src = forening.billede.guid;
+                klon.querySelector(".destinationer_foreninger").innerHTML = forening.steder;
 
 
                 listeELM.appendChild(klon);
