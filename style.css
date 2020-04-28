@@ -243,6 +243,8 @@ h3 {
 
 
 
+
+
 /* resonsiv design */
 
 /* mobil */
@@ -350,12 +352,14 @@ h3 {
     }
 
     #navigation input {
-        margin: 1rem;
-        padding: 1rem;
+        margin: 0;
+        padding: 0.2rem;
+        height: 3vw;
     }
 
     .ombyt {
         flex-direction: row;
+        align-items: center;
     }
 
     .flag_container {
@@ -401,6 +405,8 @@ h3 {
 .hidden {
     display: none;
 }
+
+
 
 /* webdesign */
 #menu_linje {}
