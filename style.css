@@ -1962,6 +1962,11 @@ summary {
     background-color: rgba(233, 244, 248, 0.88);
 }
 
+#menu_punkter_content_nav:hover {
+    opacity: 0.6;
+    cursor: pointer;
+}
+
 .hvid {
     width: 350px;
     height: 400px;
