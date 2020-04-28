@@ -940,12 +940,9 @@ summary {
 
 /* STIFTEDE FORENINGER LOOPVIEW */
 
-.forening {
-    cursor: pointer;
-}
-
-.forening img:hover {
-    opacity: 0.6;
+.h1_foreninger {
+    margin-bottom: 0;
+    margin-left: 45px;
 }
 
 .liste_foreninger {
@@ -955,22 +952,34 @@ summary {
 }
 
 .forening h2 {
-    text-align: center;
-    margin: 7px 0 35px 0;
+    /*    text-align: center;*/
+    margin: 7px 0 15px 0;
     font-size: 1.3rem;
 }
 
+.destinationer_foreninger {
+    margin-bottom: 60px;
+}
+
 @media only screen and (min-width: 650px) {
-    .liste_forninger {
-        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    .liste_foreninger {
+        grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
     }
 
     .forening {
-        padding: 34px;
+        padding: 55px;
     }
 
     .forening h2 {
         margin: 7px 0 0 0;
+    }
+
+    .destinationer_foreninger {
+        margin-bottom: 0;
+    }
+
+    .h1_foreninger {
+        margin-left: 90px;
     }
 }
 
