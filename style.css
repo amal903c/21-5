@@ -317,6 +317,10 @@ h3 {
         display: none;
     }
 
+    #menu_punkter {
+        height: 8vw;
+    }
+
     #menu_punkter_content_nav {
         display: flex;
 
@@ -371,7 +375,7 @@ h3 {
     .dropdown_container_kobafandel {
         position: absolute;
         left: 0;
-        top: 6vw;
+        top: 8vw;
         width: auto;
         margin: 0 auto;
         right: 0;
@@ -2039,6 +2043,7 @@ summary {
     /* det nye */
     #menu_punkter_content_nav {
         width: 17vw;
+
     }
 
     .dropdown_container_boliger #menu_punkter_content_nav,
