@@ -1930,6 +1930,7 @@ summary {
     color: white;
     opacity: 1;
     text-align: center;
+    cursor: pointer;
 
 }
 
@@ -2104,6 +2105,7 @@ summary {
     background-color: #8DC2DA;
     padding: 1rem;
     padding: 20px 30px;
+    cursor: pointer;
 }
 
 
