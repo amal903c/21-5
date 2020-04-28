@@ -201,15 +201,17 @@ h3 {
 .dropdown_container_okonomi,
 .dropdown_container_praktiskinfo,
 .dropdown_container_kobafandel {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+    /*    display: grid;*/
+    /*    grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));*/
     width: 47vw;
     margin: 0 auto;
     grid-gap: 17px;
-    cursor: pointer;
     background-color: white;
     border-bottom: 2px solid rgb(242, 249, 252);
     box-shadow: 0px 15px 10px -18px #111;
+
+    display: flex;
+    flex-wrap: wrap;
 }
 
 
@@ -1966,6 +1968,24 @@ summary {
     opacity: 0.6;
     cursor: pointer;
 }
+
+/* det nye */
+#menu_punkter_content_nav {
+    width: 17vw;
+}
+
+.dropdown_container_boliger #menu_punkter_content_nav,
+.dropdown_container_om215 #menu_punkter_content_nav,
+.dropdown_container_okonomi #menu_punkter_content_nav {
+    width: 22vw;
+}
+
+.dropdown_container_kobafandel #menu_punkter_content_nav,
+.dropdown_container_praktiskinfo #menu_punkter_content_nav {
+    width: 26vw;
+}
+
+/* det nye slut */
 
 .hvid {
     width: 350px;
