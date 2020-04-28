@@ -474,6 +474,7 @@ summary {
     line-height: 50px;
     width: fit-content;
     text-align: center;
+    cursor: pointer;
 
 
 }
