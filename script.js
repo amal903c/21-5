@@ -401,6 +401,17 @@ function visPraktiskInfo() {
     })
     container_praktiskinfo.appendChild(klon);
 
+    //kloner faq
+    const klon3 = menuboksetemplate.cloneNode(true).content;
+    klon3.querySelector("h3").textContent = "Ofte stillede spørgsmål";
+    klon3.querySelector("img").src = `img/faq.jpg`;
+    klon3.querySelector("article").addEventListener("click", () => {
+        console.log("this.theJSON_faq.id")
+        location.href = `FAQ.html?id=34`;
+    })
+
+    container_praktiskinfo.appendChild(klon3);
+
     //kloner job ind
     const klon2 = menuboksetemplate.cloneNode(true).content;
     klon2.querySelector("h3").textContent = "Job";
@@ -412,18 +423,7 @@ function visPraktiskInfo() {
 
     container_praktiskinfo.appendChild(klon2);
 
-    //kloner faq
 
-    //MANGLER MANGLER MANGLER MANGLER MANGLER MANGLER MANGLER
-    const klon3 = menuboksetemplate.cloneNode(true).content;
-    klon3.querySelector("h3").textContent = "Ofte stillede spørgsmål";
-    klon3.querySelector("img").src = `img/faq.jpg`;
-    klon3.querySelector("article").addEventListener("click", () => {
-        console.log("this.theJSON_faq.id")
-        location.href = `FAQ.html?id=34`;
-    })
-
-    container_praktiskinfo.appendChild(klon3);
 }
 
 //Når man klikker på køb af andel:
