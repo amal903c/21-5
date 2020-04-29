@@ -15,6 +15,7 @@
     <meta name="msapplication-config" content="myIcons/browserconfig.xml">
     <meta name="theme-color" content="#ffffff">
     <style>
+        /*Styling af accordion som er FAQ*/
         .faq_accordion {
             background-color: rgba(233, 244, 248, 0.31);
             color: #585858;
@@ -26,16 +27,17 @@
             outline: none;
             font-size: 15px;
             transition: 0.4s;
-
             font-family: 'Montserrat', sans-serif;
         }
 
+        /*hovereffekt*/
         .active,
         .faq_accordion:hover {
             background-color: #E9F4F8;
         }
 
-        .faq_panel {
+        /*styling og transition af svarene, når der trykkes på et spørgsmål*/
+        .faq_svar {
             padding: 0 18px;
             background-color: white;
             max-height: 0;
@@ -43,6 +45,7 @@
             transition: max-height 0.2s ease-out;
         }
 
+        /*hovereffekt*/
         .faq details:hover {
             background: rgba(233, 244, 248, 0.31);
         }
@@ -62,7 +65,6 @@
             font-size: 1.5rem;
             color: #4b4b4b;
             border: none;
-
             font-family: 'Montserrat', sans-serif;
         }
 
@@ -71,7 +73,6 @@
         }
 
         .faq details[open] summary {
-            border-bottom: 1px solid #aaa;
             margin-bottom: .5em;
         }
 
@@ -214,7 +215,7 @@
 
             <template id="faq_template">
                 <button class="faq_accordion"></button>
-                <div class="faq_panel">
+                <div class="faq_svar">
                     <p></p>
                 </div>
             </template>
@@ -312,7 +313,7 @@
             theFAQ.forEach(question => {
                 const klonText = faq_TextTemplate.cloneNode(true).content;
                 klonText.querySelector(".faq_accordion").textContent = question.question;
-                klonText.querySelector(".faq_panel p").textContent = question.svar;
+                klonText.querySelector(".faq_svar p").textContent = question.svar;
 
                 if (question.kategori[0] == "21-5 generelle spørgsmål") {
                     document.querySelector("#generel").appendChild(klonText);
@@ -347,11 +348,11 @@
             for (i = 0; i < acc.length; i++) {
                 acc[i].addEventListener("click", function() {
                     this.classList.toggle("active");
-                    var faq_panel = this.nextElementSibling;
-                    if (faq_panel.style.maxHeight) {
-                        faq_panel.style.maxHeight = null;
+                    var faq_svar = this.nextElementSibling;
+                    if (faq_svar.style.maxHeight) {
+                        faq_svar.style.maxHeight = null;
                     } else {
-                        faq_panel.style.maxHeight = faq_panel.scrollHeight + "px";
+                        faq_svar.style.maxHeight = faq_svar.scrollHeight + "px";
                     }
                 });
             }

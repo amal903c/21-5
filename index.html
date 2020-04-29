@@ -20,15 +20,17 @@
 </head>
 
 <body>
+    <!--Template skabelon, hvor indholdet hentes ind med JS og REST API-->
     <template id="menutemplate">
         <article id="menu_punkter_content_nav">
             <h3 id="title"></h3>
             <img src="">
         </article>
     </template>
-    <!--MIDLERTIDIG HEADER-->
-    <nav id="navigation">
 
+
+    <nav id="navigation">
+        <!--Menu i mobil-->
         <div class="mobil_nav_container">
             <a class="logo_mobil logoimg" href="index.html"><img class="logoimg" src="img/logo.svg"></a>
             <div class="menuknap">☰</div>
@@ -42,6 +44,8 @@
                 <div class="dropdown_container hidden">
 
                 </div>
+
+                <!--De forskellige menupunkter-->
                 <li id="boliger">Boliger</li>
 
                 <div class="dropdown_container_boliger hidden">

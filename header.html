@@ -455,7 +455,7 @@
         function start() {
 
 
-            // gør så man kan klikke på menupunkterne
+            // gør menupunkterne klikbare ved, at tilføje dem som eventlisteners
 
             //destinationer
             document.querySelector("#destinationer").addEventListener("click", clickDestinationerFrem);
@@ -478,7 +478,7 @@
 
         }
 
-        // henter json
+        // henter json fra WP REST API
         async function loadData() {
 
             const resspons = await fetch(endpoint);
@@ -527,7 +527,7 @@
 
         }
 
-        //hvad der sker når man kilkker på destinationer
+        //hvad der sker når man klikker på destinationer
         function clickDestinationerFrem() {
             container.classList.remove("hidden")
             visDestinationer();
@@ -543,7 +543,7 @@
 
         }
 
-        // viser alt data
+        // viser alt data fra WP
         function visDestinationer() {
             container.innerHTML = "";
             container_boliger.innerHTML = "";
@@ -570,7 +570,7 @@
 
                     location.href = `basis_galleri.html?id=${destination.id}`;
                 })
-
+                /*Append til dokument*/
                 container.appendChild(klon);
 
 

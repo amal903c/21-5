@@ -228,15 +228,18 @@
             </div>
         </section>
     </main>
+
+    <!--Kontaktform-->
     <section class="contact">
         <div class="contactform">
             <h2>Book et møde</h2>
+            <!--Knapperne som har fået en class der er valgt-->
             <div id="knapper">
                 <button class="buttons clicked">Kaffemøde</button> <button class="buttons">Orienteringsmøde</button>
             </div>
+            <!--Inputs til kontaktformen, der har fået et placeholder navn-->
             <form action="/action_page.php">
                 <input type="text" id="navn" name="navn" placeholder="Navn">
-
                 <input type="text" id="email" name="email" placeholder="E-mail">
                 <input type="text" id="mobiltlf" name="mobiltlf" placeholder="Mobiltelefon">
                 <input type="text" id="adresse" name="adresse" placeholder="Adresse">
@@ -244,7 +247,7 @@
                 <input type="text" id="by" name="by" placeholder="By">
 
 
-
+                <!--Dropdown med valg af antal personer og disabled option på den valgte, da den ikke skal kunne vælges-->
                 <select id="antal" name="antal">
                     <option value="" disabled selected>Antal deltagere</option>
                     <option value="1">1 Deltager</option>
@@ -254,6 +257,7 @@
                     <option value="5">5 Deltagere</option>
                 </select>
 
+                <!--Dropdown med valg af netværk og disabled option på den valgte, da den ikke skal kunne vælges-->
                 <select id="network" name="network">
                     <option value="" disabled selected>Jeg har hørt om 21-5 via</option>
                     <option value="instagram">Instagram</option>
@@ -261,12 +265,13 @@
                     <option value="google">Google</option>
                     <option value="tryktemedier">Trykte medier</option>
                     <option value="familievenner">Familie/Venner</option>
-                    <option value="netwærk">Netværk</option>
+                    <option value="netværk">Netværk</option>
                     <option value="215ejere">21-5 Ejere</option>
                     <option value="vedikke">Ved ikke</option>
                     <option value="andet">Andet (Angiv gerne i kommentarfeltet hvor) </option>
                 </select>
 
+                <!--Tekstareal til eventuelle kommentarer-->
                 <textarea id="subject" name="subject" placeholder="Eventuel kommentar" style="height:100px"></textarea>
 
                 <input type="submit" value="Send">

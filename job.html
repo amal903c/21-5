@@ -6,6 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Job</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="myIcons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="myIcons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="myIcons/favicon-16x16.png">
+    <link rel="manifest" href="myIcons/site.webmanifest">
+    <link rel="mask-icon" href="myIcons/safari-pinned-tab.svg" color="#35aaa8">
+    <link rel="shortcut icon" href="myIcons/favicon.ico">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="msapplication-config" content="myIcons/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
+
 
     <style>
         #jobside {
@@ -251,53 +261,58 @@
             loadData();
         }
 
+
+        /*Henter dataen fra WP REST API som sættes ind i template */
         async function loadData() {
 
             let jsonData = await fetch(`http://michelleyoung.dk/kea/09_cms/21-5_wp/wordpress/wp-json/wp/v2/praktisk_info/${id}`);
             console.log(jsonData)
-
-            //            const resspons = await fetch(endpoint)
-
             theJob = await jsonData.json();
 
+            /*Kalder funktionen*/
             visJobside();
         }
 
-
+        /*Funktionen der bestemmer hvilken data der skal trækkes ud og implementeres på sitet*/
         function visJobside() {
             //            container.innerHTML = "";
             console.log(theJob)
 
 
             // mainoverskrift
+            /*Hvis der er en main_overskrift fra WP, skal den hentes*/
             if (theJob.main_overskrift) {
 
                 console.log(theJob.main_overskrift)
 
 
-
+                /*klon af tekst som returnere med alle attributes*/
                 const klonText = job_TextTemplate.cloneNode(true).content;
 
+                /*remover classen hide og indsætter tekst i h1 fra WP*/
                 klonText.querySelector("h1").classList.remove("hide");
                 klonText.querySelector("h1").textContent = theJob.main_overskrift;
-                //
 
+                /*appender klonen til dokumentet*/
                 job_textContainer.appendChild(klonText);
 
             }
 
             // overskrift 1
+            /*Hvis der er en overskrift fra WP, skal den hentes*/
+
             if (theJob.overskrift_1) {
 
                 console.log(theJob.overskrift_1)
 
+                /*klon af tekst som returnere med alle attributes*/
                 const klonText = job_TextTemplate.cloneNode(true).content;
-
+                /*remover classen hide og indsætter tekst i h2 fra WP*/
                 klonText.querySelector("h2").classList.remove("hide");
                 klonText.querySelector("h2").textContent = theJob.overskrift_1;
 
 
-
+                /*appender klonen til dokumentet*/
                 job_textContainer.appendChild(klonText);
 
             }
@@ -397,7 +412,7 @@
                 const klonImage = job_ImageTemplate.cloneNode(true).content;
                 //billederne sættes ind
                 klonImage.querySelector("img").src = billede.guid;
-                //vi skal appende vores kloner til dokumentet:
+                //vi appender vores kloner til dokumentet:
                 job_imageContainer.appendChild(klonImage);
             })
         }
