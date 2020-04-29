@@ -1019,11 +1019,13 @@ summary {
 
 /* BASISSIDE GALLERI */
 
+/*Gridopsætning af galleri*/
 #galleri_side {
     display: grid;
     grid-template-rows: auto auto;
 }
 
+/*Gridopsætning for galleri i web*/
 @media only screen and (min-width: 1020px) {
     #galleri_side {
         display: grid;
@@ -1033,16 +1035,6 @@ summary {
     .main_galleri {
         width: 50vw;
     }
-
-    /*
-    .template_image {
-        position: fixed;
-        top: 0;
-        right: 0;
-        height: 100vh;
-        width: 40vw;
-    }
-*/
 }
 
 
